@@ -1,6 +1,6 @@
 ﻿namespace Presentacion
 {
-    partial class VentanaPrincipal
+    partial class Form1
     {
         /// <summary>
         /// Variable del diseñador necesaria.
@@ -28,17 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.SuspendLayout();
-            // 
-            // VentanaPrincipal
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Name = "VentanaPrincipal";
-            this.Text = "Ventana Principal";
-            this.ResumeLayout(false);
-
+            this.Text = "Form1";
         }
 
         #endregion
