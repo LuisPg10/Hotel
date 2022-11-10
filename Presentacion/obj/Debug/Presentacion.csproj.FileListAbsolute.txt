@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 C:\Users\dapin\OneDrive\Documentos\Materias semestre\Programación\Hotel\Presentacion\bin\Debug\Presentacion.exe.config
 C:\Users\dapin\OneDrive\Documentos\Materias semestre\Programación\Hotel\Presentacion\bin\Debug\Presentacion.exe
 C:\Users\dapin\OneDrive\Documentos\Materias semestre\Programación\Hotel\Presentacion\bin\Debug\Presentacion.pdb
@@ -9,3 +10,25 @@ C:\Users\dapin\OneDrive\Documentos\Materias semestre\Programación\Hotel\Present
 C:\Users\dapin\OneDrive\Documentos\Materias semestre\Programación\Hotel\Presentacion\obj\Debug\Presentacion.csproj.CoreCompileInputs.cache
 C:\Users\dapin\OneDrive\Documentos\Materias semestre\Programación\Hotel\Presentacion\obj\Debug\Presentacion.exe
 C:\Users\dapin\OneDrive\Documentos\Materias semestre\Programación\Hotel\Presentacion\obj\Debug\Presentacion.pdb
+=======
+C:\Users\LENOVO\Hotel\Presentacion\bin\Debug\Presentacion.exe.config
+C:\Users\LENOVO\Hotel\Presentacion\bin\Debug\Presentacion.exe
+C:\Users\LENOVO\Hotel\Presentacion\bin\Debug\Presentacion.pdb
+C:\Users\LENOVO\Hotel\Presentacion\obj\Debug\Presentacion.csproj.AssemblyReference.cache
+C:\Users\LENOVO\Hotel\Presentacion\obj\Debug\Presentacion.csproj.SuggestedBindingRedirects.cache
+C:\Users\LENOVO\Hotel\Presentacion\obj\Debug\Presentacion.Properties.Resources.resources
+C:\Users\LENOVO\Hotel\Presentacion\obj\Debug\Presentacion.csproj.GenerateResource.cache
+C:\Users\LENOVO\Hotel\Presentacion\obj\Debug\Presentacion.csproj.CoreCompileInputs.cache
+C:\Users\LENOVO\Hotel\Presentacion\obj\Debug\Presentacion.exe
+C:\Users\LENOVO\Hotel\Presentacion\obj\Debug\Presentacion.pdb
+C:\Users\LENOVO\Hotel\Presentacion\obj\Debug\Presentacion.FormBienvenida.resources
+C:\Users\LENOVO\Hotel\Presentacion\obj\Debug\Presentacion.FormComentar.resources
+C:\Users\LENOVO\Hotel\Presentacion\obj\Debug\Presentacion.FormComentarios.resources
+C:\Users\LENOVO\Hotel\Presentacion\obj\Debug\Presentacion.FormConfirmar.resources
+C:\Users\LENOVO\Hotel\Presentacion\obj\Debug\Presentacion.FormHabitacion.resources
+C:\Users\LENOVO\Hotel\Presentacion\obj\Debug\Presentacion.FormRegistrar.resources
+C:\Users\LENOVO\Hotel\Presentacion\obj\Debug\Presentacion.FormReservar.resources
+C:\Users\LENOVO\Hotel\Presentacion\obj\Debug\Presentacion.FormPlantillaComentario.resources
+C:\Users\LENOVO\Hotel\Presentacion\obj\Debug\Presentacion.FormPlantillaHabitacion.resources
+C:\Users\LENOVO\Hotel\Presentacion\obj\Debug\Presentacion.FormInicioSesion.resources
+>>>>>>> 2daeee753bb37b429f12d71eaf5cb0818e8dc2e0
