@@ -1,0 +1,6 @@
+C:\Users\LENOVO\Hotel\Entidades\bin\Debug\Entidades.dll
+C:\Users\LENOVO\Hotel\Entidades\bin\Debug\Entidades.pdb
+C:\Users\LENOVO\Hotel\Entidades\obj\Debug\Entidades.csproj.AssemblyReference.cache
+C:\Users\LENOVO\Hotel\Entidades\obj\Debug\Entidades.csproj.CoreCompileInputs.cache
+C:\Users\LENOVO\Hotel\Entidades\obj\Debug\Entidades.dll
+C:\Users\LENOVO\Hotel\Entidades\obj\Debug\Entidades.pdb
