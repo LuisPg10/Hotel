@@ -31,4 +31,7 @@ C:\Users\LENOVO\Hotel\Presentacion\obj\Debug\Presentacion.FormReservar.resources
 C:\Users\LENOVO\Hotel\Presentacion\obj\Debug\Presentacion.FormPlantillaComentario.resources
 C:\Users\LENOVO\Hotel\Presentacion\obj\Debug\Presentacion.FormPlantillaHabitacion.resources
 C:\Users\LENOVO\Hotel\Presentacion\obj\Debug\Presentacion.FormInicioSesion.resources
+C:\Users\LENOVO\Hotel\Presentacion\obj\Debug\Presentacion.Cambiante.resources
+C:\Users\LENOVO\Hotel\Presentacion\obj\Debug\Presentacion.Cambiar.resources
 >>>>>>> 2daeee753bb37b429f12d71eaf5cb0818e8dc2e0
+>>>>>>> 34a77af17b21aaa3f5a342cd5cd010ef990ea12d

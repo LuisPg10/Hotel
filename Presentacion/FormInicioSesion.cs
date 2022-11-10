@@ -23,43 +23,22 @@ namespace Presentacion
 
         }
 
-        public void AbrirFormulario<MiForm>() where MiForm : Form, new()
-        {
-            Form formulario;
-            formulario = panelPrincipal.Controls.OfType<MiForm>().FirstOrDefault();//Busca en la colecion el formulario
-                                                                                   //si el formulario/instancia no existe
-            if (formulario == null)
-            {
-                formulario = new MiForm();
-                formulario.TopLevel = false;
-                formulario.FormBorderStyle = FormBorderStyle.None;
-                formulario.Dock = DockStyle.Fill;
-                panelPrincipal.Controls.Add(formulario);
-                panelPrincipal.Tag = formulario;
-                formulario.Show();
-                formulario.BringToFront();
-            }
-            //si el formulario/instancia existe
-            else
-            {
-                formulario.BringToFront();
-            }
-        }
-
         private void botonCrear_MouseClick(object sender, MouseEventArgs e)
         {
-            AbrirFormulario<FormRegistrar>();
+            Cambiar.AbrirFormulario<FormRegistrar>();
         }
 
         private void label2_MouseClick(object sender, MouseEventArgs e)
         {
 
-            AbrirFormulario<FormBienvenida>();
+            Cambiar.AbrirFormulario<FormBienvenida>();
         }
 
         private void FormInicioSesion_Load(object sender, EventArgs e)
         {
 
         }
+
+        
     }
 }
