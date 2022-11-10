@@ -1,3 +1,16 @@
+<<<<<<< HEAD
+C:\Users\dapin\OneDrive\Documentos\Materias semestre\Programación\Hotel\Presentacion\bin\Debug\Presentacion.exe.config
+C:\Users\dapin\OneDrive\Documentos\Materias semestre\Programación\Hotel\Presentacion\bin\Debug\Presentacion.exe
+C:\Users\dapin\OneDrive\Documentos\Materias semestre\Programación\Hotel\Presentacion\bin\Debug\Presentacion.pdb
+C:\Users\dapin\OneDrive\Documentos\Materias semestre\Programación\Hotel\Presentacion\obj\Debug\Presentacion.csproj.AssemblyReference.cache
+C:\Users\dapin\OneDrive\Documentos\Materias semestre\Programación\Hotel\Presentacion\obj\Debug\Presentacion.csproj.SuggestedBindingRedirects.cache
+C:\Users\dapin\OneDrive\Documentos\Materias semestre\Programación\Hotel\Presentacion\obj\Debug\Presentacion.Properties.Resources.resources
+C:\Users\dapin\OneDrive\Documentos\Materias semestre\Programación\Hotel\Presentacion\obj\Debug\Presentacion.ventanaPrincipal.resources
+C:\Users\dapin\OneDrive\Documentos\Materias semestre\Programación\Hotel\Presentacion\obj\Debug\Presentacion.csproj.GenerateResource.cache
+C:\Users\dapin\OneDrive\Documentos\Materias semestre\Programación\Hotel\Presentacion\obj\Debug\Presentacion.csproj.CoreCompileInputs.cache
+C:\Users\dapin\OneDrive\Documentos\Materias semestre\Programación\Hotel\Presentacion\obj\Debug\Presentacion.exe
+C:\Users\dapin\OneDrive\Documentos\Materias semestre\Programación\Hotel\Presentacion\obj\Debug\Presentacion.pdb
+=======
 C:\Users\LENOVO\Hotel\Presentacion\bin\Debug\Presentacion.exe.config
 C:\Users\LENOVO\Hotel\Presentacion\bin\Debug\Presentacion.exe
 C:\Users\LENOVO\Hotel\Presentacion\bin\Debug\Presentacion.pdb
@@ -20,3 +33,5 @@ C:\Users\LENOVO\Hotel\Presentacion\obj\Debug\Presentacion.FormPlantillaHabitacio
 C:\Users\LENOVO\Hotel\Presentacion\obj\Debug\Presentacion.FormInicioSesion.resources
 C:\Users\LENOVO\Hotel\Presentacion\obj\Debug\Presentacion.Cambiante.resources
 C:\Users\LENOVO\Hotel\Presentacion\obj\Debug\Presentacion.Cambiar.resources
+>>>>>>> 2daeee753bb37b429f12d71eaf5cb0818e8dc2e0
+>>>>>>> 34a77af17b21aaa3f5a342cd5cd010ef990ea12d

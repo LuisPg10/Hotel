@@ -46,9 +46,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Cambiante.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Cambiar.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -117,9 +114,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Cambiante.resx">
-      <DependentUpon>Cambiante.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Cambiar.resx">
       <DependentUpon>Cambiar.cs</DependentUpon>
     </EmbeddedResource>
