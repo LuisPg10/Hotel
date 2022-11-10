@@ -12,6 +12,9 @@ namespace Presentacion
 {
     public partial class FormInicioSesion : Form
     {
+        FormRegistrar registrar = new FormRegistrar();
+        FormBienvenida bienvenida = new FormBienvenida();
+        Cambiante cambiar = new Cambiante();
         public FormInicioSesion()
         {
             InitializeComponent();
@@ -23,43 +26,30 @@ namespace Presentacion
 
         }
 
-        public void AbrirFormulario<MiForm>() where MiForm : Form, new()
-        {
-            Form formulario;
-            formulario = panelPrincipal.Controls.OfType<MiForm>().FirstOrDefault();//Busca en la colecion el formulario
-                                                                                   //si el formulario/instancia no existe
-            if (formulario == null)
-            {
-                formulario = new MiForm();
-                formulario.TopLevel = false;
-                formulario.FormBorderStyle = FormBorderStyle.None;
-                formulario.Dock = DockStyle.Fill;
-                panelPrincipal.Controls.Add(formulario);
-                panelPrincipal.Tag = formulario;
-                formulario.Show();
-                formulario.BringToFront();
-            }
-            //si el formulario/instancia existe
-            else
-            {
-                formulario.BringToFront();
-            }
-        }
+        
 
         private void botonCrear_MouseClick(object sender, MouseEventArgs e)
         {
-            AbrirFormulario<FormRegistrar>();
+            Cambiar.AbrirFormulario<FormRegistrar>();
+            /*this.Hide();
+            registrar.ShowDialog();
+            this.Show();*/
         }
 
         private void label2_MouseClick(object sender, MouseEventArgs e)
         {
 
-            AbrirFormulario<FormBienvenida>();
+            Cambiar.AbrirFormulario<FormBienvenida>();
+            /*this.Hide();
+            bienvenida.ShowDialog();
+            this.Show();*/
         }
 
         private void FormInicioSesion_Load(object sender, EventArgs e)
         {
 
         }
+
+        
     }
 }

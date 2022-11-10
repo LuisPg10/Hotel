@@ -12,8 +12,8 @@ namespace Presentacion
         static void Main()
         {
             Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormInicioSesion());
+            //Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new Cambiar());
         }
     }
 }

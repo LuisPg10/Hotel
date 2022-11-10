@@ -25,7 +25,7 @@ namespace Presentacion
         private void AbrirFormulario<MiForm>() where MiForm : Form, new()
         {
             Form formulario;
-            formulario = panelPrincipal.Controls.OfType<MiForm>().FirstOrDefault();//Busca en la colecion el formulario
+            formulario = Cambiar.panelPrincipal.Controls.OfType<MiForm>().FirstOrDefault();//Busca en la colecion el formulario
                                                                                    //si el formulario/instancia no existe
             if (formulario == null)
             {
@@ -33,8 +33,8 @@ namespace Presentacion
                 formulario.TopLevel = false;
                 formulario.FormBorderStyle = FormBorderStyle.None;
                 formulario.Dock = DockStyle.Fill;
-                panelPrincipal.Controls.Add(formulario);
-                panelPrincipal.Tag = formulario;
+                Cambiar.panelPrincipal.Controls.Add(formulario);
+                Cambiar.panelPrincipal.Tag = formulario;
                 formulario.Show();
                 formulario.BringToFront();
             }
@@ -48,11 +48,14 @@ namespace Presentacion
         private void panel3_MouseClick(object sender, MouseEventArgs e)
         {
             AbrirFormulario<FormInicioSesion>();
+            //Program.incio.Show();
+            
         }
 
         private void label3_MouseClick(object sender, MouseEventArgs e)
         {
             AbrirFormulario<FormInicioSesion>();
+            
         }
 
     }

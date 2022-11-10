@@ -133,6 +133,7 @@
             this.ClientSize = new System.Drawing.Size(742, 478);
             this.Controls.Add(this.panelPrincipal);
             this.Name = "FormBienvenida";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormBienvenida";
             this.Load += new System.EventHandler(this.FormBienvenida_Load);
             this.panelPrincipal.ResumeLayout(false);

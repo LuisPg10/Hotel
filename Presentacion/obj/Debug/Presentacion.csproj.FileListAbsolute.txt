@@ -18,3 +18,5 @@ C:\Users\LENOVO\Hotel\Presentacion\obj\Debug\Presentacion.FormReservar.resources
 C:\Users\LENOVO\Hotel\Presentacion\obj\Debug\Presentacion.FormPlantillaComentario.resources
 C:\Users\LENOVO\Hotel\Presentacion\obj\Debug\Presentacion.FormPlantillaHabitacion.resources
 C:\Users\LENOVO\Hotel\Presentacion\obj\Debug\Presentacion.FormInicioSesion.resources
+C:\Users\LENOVO\Hotel\Presentacion\obj\Debug\Presentacion.Cambiante.resources
+C:\Users\LENOVO\Hotel\Presentacion\obj\Debug\Presentacion.Cambiar.resources

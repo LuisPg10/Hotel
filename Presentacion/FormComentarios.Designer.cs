@@ -131,6 +131,7 @@
             this.ClientSize = new System.Drawing.Size(742, 478);
             this.Controls.Add(this.panelPrincipal);
             this.Name = "FormComentarios";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormComentarios";
             this.Load += new System.EventHandler(this.FormComentarios_Load);
             this.panelPrincipal.ResumeLayout(false);

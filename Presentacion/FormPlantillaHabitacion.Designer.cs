@@ -177,6 +177,7 @@
             this.ClientSize = new System.Drawing.Size(571, 264);
             this.Controls.Add(this.panel1);
             this.Name = "FormPlantillaHabitacion";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormPlantillaHabitacion";
             this.panel1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
