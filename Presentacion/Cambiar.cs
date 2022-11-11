@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Logica;
 
 namespace Presentacion
 {
@@ -14,6 +15,7 @@ namespace Presentacion
     {
         public static Panel panelPrincipal;
         public static int numero = 0;
+        public static ServicioUsuario ServicioUsuario;
         public Cambiar()
         {
             InitializeComponent();
@@ -24,6 +26,7 @@ namespace Presentacion
             panelPrincipal.Size = new System.Drawing.Size(748, 483);
             panelPrincipal.TabIndex = 1;
 
+            ServicioUsuario = new ServicioUsuario();
             this.Controls.Add(panelPrincipal);
             AbrirFormulario<FormInicioSesion>();
         }

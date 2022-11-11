@@ -32,8 +32,8 @@
             this.botonCrear = new System.Windows.Forms.Label();
             this.botonEntrar = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textContraseña = new System.Windows.Forms.TextBox();
+            this.textUsuario = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panelPrincipal.SuspendLayout();
@@ -46,8 +46,8 @@
             this.panelPrincipal.BackColor = System.Drawing.Color.White;
             this.panelPrincipal.Controls.Add(this.botonCrear);
             this.panelPrincipal.Controls.Add(this.botonEntrar);
-            this.panelPrincipal.Controls.Add(this.textBox2);
-            this.panelPrincipal.Controls.Add(this.textBox1);
+            this.panelPrincipal.Controls.Add(this.textContraseña);
+            this.panelPrincipal.Controls.Add(this.textUsuario);
             this.panelPrincipal.Controls.Add(this.panel2);
             this.panelPrincipal.Location = new System.Drawing.Point(0, 0);
             this.panelPrincipal.Name = "panelPrincipal";
@@ -89,25 +89,29 @@
             this.label2.Text = "Entrar";
             this.label2.MouseClick += new System.Windows.Forms.MouseEventHandler(this.label2_MouseClick);
             // 
-            // textBox2
+            // textContraseña
             // 
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.textBox2.Location = new System.Drawing.Point(232, 249);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(259, 35);
-            this.textBox2.TabIndex = 2;
-            this.textBox2.Text = "Contraseña";
+            this.textContraseña.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textContraseña.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.textContraseña.Location = new System.Drawing.Point(232, 249);
+            this.textContraseña.Name = "textContraseña";
+            this.textContraseña.Size = new System.Drawing.Size(259, 35);
+            this.textContraseña.TabIndex = 2;
+            this.textContraseña.Text = "Contraseña";
+            this.textContraseña.Click += new System.EventHandler(this.textContraseña_Click);
+            this.textContraseña.MouseDown += new System.Windows.Forms.MouseEventHandler(this.textContraseña_MouseDown);
             // 
-            // textBox1
+            // textUsuario
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.textBox1.Location = new System.Drawing.Point(233, 181);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(259, 35);
-            this.textBox1.TabIndex = 1;
-            this.textBox1.Text = "Usuario";
+            this.textUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textUsuario.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.textUsuario.Location = new System.Drawing.Point(233, 181);
+            this.textUsuario.Name = "textUsuario";
+            this.textUsuario.Size = new System.Drawing.Size(259, 35);
+            this.textUsuario.TabIndex = 1;
+            this.textUsuario.Text = "Usuario";
+            this.textUsuario.Click += new System.EventHandler(this.textUsuario_Click);
+            this.textUsuario.MouseDown += new System.Windows.Forms.MouseEventHandler(this.textUsuario_MouseDown);
             // 
             // panel2
             // 
@@ -157,8 +161,8 @@
         private System.Windows.Forms.Panel panelPrincipal;
         private System.Windows.Forms.Panel botonEntrar;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textContraseña;
+        private System.Windows.Forms.TextBox textUsuario;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label botonCrear;

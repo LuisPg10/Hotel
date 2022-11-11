@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             this.panelPrincipal = new System.Windows.Forms.Panel();
+            this.textCorreo = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textContraseña = new System.Windows.Forms.TextBox();
+            this.textUser = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
             this.panelPrincipal.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -45,16 +45,27 @@
             // panelPrincipal
             // 
             this.panelPrincipal.BackColor = System.Drawing.Color.White;
-            this.panelPrincipal.Controls.Add(this.textBox3);
+            this.panelPrincipal.Controls.Add(this.textCorreo);
             this.panelPrincipal.Controls.Add(this.label3);
             this.panelPrincipal.Controls.Add(this.panel3);
-            this.panelPrincipal.Controls.Add(this.textBox2);
-            this.panelPrincipal.Controls.Add(this.textBox1);
+            this.panelPrincipal.Controls.Add(this.textContraseña);
+            this.panelPrincipal.Controls.Add(this.textUser);
             this.panelPrincipal.Controls.Add(this.panel2);
             this.panelPrincipal.Location = new System.Drawing.Point(-1, -1);
             this.panelPrincipal.Name = "panelPrincipal";
             this.panelPrincipal.Size = new System.Drawing.Size(748, 483);
             this.panelPrincipal.TabIndex = 1;
+            // 
+            // textCorreo
+            // 
+            this.textCorreo.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textCorreo.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.textCorreo.Location = new System.Drawing.Point(233, 149);
+            this.textCorreo.Name = "textCorreo";
+            this.textCorreo.Size = new System.Drawing.Size(259, 35);
+            this.textCorreo.TabIndex = 5;
+            this.textCorreo.Text = "Correo";
+            this.textCorreo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.textBox3_MouseDown);
             // 
             // label3
             // 
@@ -92,25 +103,27 @@
             this.label2.Text = "Entrar";
             this.label2.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel3_MouseClick);
             // 
-            // textBox2
+            // textContraseña
             // 
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.textBox2.Location = new System.Drawing.Point(232, 249);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(259, 35);
-            this.textBox2.TabIndex = 2;
-            this.textBox2.Text = "Contraseña";
+            this.textContraseña.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textContraseña.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.textContraseña.Location = new System.Drawing.Point(232, 249);
+            this.textContraseña.Name = "textContraseña";
+            this.textContraseña.Size = new System.Drawing.Size(259, 35);
+            this.textContraseña.TabIndex = 2;
+            this.textContraseña.Text = "Contraseña";
+            this.textContraseña.MouseDown += new System.Windows.Forms.MouseEventHandler(this.textContraseña_MouseDown);
             // 
-            // textBox1
+            // textUser
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.textBox1.Location = new System.Drawing.Point(233, 199);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(259, 35);
-            this.textBox1.TabIndex = 1;
-            this.textBox1.Text = "Nombre de usuario";
+            this.textUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textUser.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.textUser.Location = new System.Drawing.Point(233, 199);
+            this.textUser.Name = "textUser";
+            this.textUser.Size = new System.Drawing.Size(259, 35);
+            this.textUser.TabIndex = 1;
+            this.textUser.Text = "Nombre de usuario";
+            this.textUser.MouseDown += new System.Windows.Forms.MouseEventHandler(this.textUser_MouseDown);
             // 
             // panel2
             // 
@@ -131,16 +144,6 @@
             this.label1.Size = new System.Drawing.Size(209, 42);
             this.label1.TabIndex = 0;
             this.label1.Text = "Registrarse";
-            // 
-            // textBox3
-            // 
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.textBox3.Location = new System.Drawing.Point(233, 149);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(259, 35);
-            this.textBox3.TabIndex = 5;
-            this.textBox3.Text = "Correo";
             // 
             // FormRegistrar
             // 
@@ -165,12 +168,12 @@
         #endregion
 
         private System.Windows.Forms.Panel panelPrincipal;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textCorreo;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textContraseña;
+        private System.Windows.Forms.TextBox textUser;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label1;
     }

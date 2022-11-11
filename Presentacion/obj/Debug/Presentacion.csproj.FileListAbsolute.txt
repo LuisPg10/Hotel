@@ -46,3 +46,8 @@ C:\Users\dapin\OneDrive\Documentos\Materias semestre\Programación\Hotel\Present
 C:\Users\dapin\OneDrive\Documentos\Materias semestre\Programación\Hotel\Presentacion\obj\Debug\Presentacion.FormRegistrar.resources
 C:\Users\dapin\OneDrive\Documentos\Materias semestre\Programación\Hotel\Presentacion\obj\Debug\Presentacion.FormReservar.resources
 C:\Users\dapin\OneDrive\Documentos\Materias semestre\Programación\Hotel\Presentacion\obj\Debug\Presentacion.FormInicioSesion.resources
+C:\Users\LENOVO\Hotel\Presentacion\bin\Debug\Entidades.dll
+C:\Users\LENOVO\Hotel\Presentacion\bin\Debug\Logica.dll
+C:\Users\LENOVO\Hotel\Presentacion\bin\Debug\Entidades.pdb
+C:\Users\LENOVO\Hotel\Presentacion\bin\Debug\Logica.pdb
+C:\Users\LENOVO\Hotel\Presentacion\obj\Debug\Presentacion.csproj.CopyComplete
