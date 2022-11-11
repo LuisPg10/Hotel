@@ -8,11 +8,8 @@ namespace Entidades
             
         }
 
-        public Usuario(int id, string nombre, string username, string password, int numHabitacion) : base(id,nombre,username,password)
+        public Usuario(int id, string nombre, string correo, string username, string password) : base(id, nombre, correo, username, password)
         {
-            NumHabitacion = numHabitacion;
         }
-
-        
     }
 }
