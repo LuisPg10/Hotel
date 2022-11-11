@@ -1,0 +1,9 @@
+C:\Users\LENOVO\Hotel\Logica\bin\Debug\Logica.dll
+C:\Users\LENOVO\Hotel\Logica\bin\Debug\Logica.pdb
+C:\Users\LENOVO\Hotel\Logica\bin\Debug\Entidades.dll
+C:\Users\LENOVO\Hotel\Logica\bin\Debug\Entidades.pdb
+C:\Users\LENOVO\Hotel\Logica\obj\Debug\Logica.csproj.AssemblyReference.cache
+C:\Users\LENOVO\Hotel\Logica\obj\Debug\Logica.csproj.CoreCompileInputs.cache
+C:\Users\LENOVO\Hotel\Logica\obj\Debug\Logica.csproj.CopyComplete
+C:\Users\LENOVO\Hotel\Logica\obj\Debug\Logica.dll
+C:\Users\LENOVO\Hotel\Logica\obj\Debug\Logica.pdb
