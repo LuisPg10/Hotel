@@ -8,6 +8,7 @@ namespace Logica
     public class ServicioUsuario
     {
         List<Usuario> listaUsuarios = new List<Usuario>();
+        List<Habitacion> habitaciones = new List<Habitacion>();
         
         public void RegistrarUsuario(Usuario user)
         {
@@ -56,9 +57,15 @@ namespace Logica
             return validar;
         }
 
-        public void ReservarHabitacion()
+        public void ReservarHabitacion(Habitacion habitacion)
         {
-
+            habitaciones.Add(habitacion);
         }
+
+        public List<Habitacion> ListarHabitaciones()
+        {
+            return habitaciones;
+        }
+
     }
 }

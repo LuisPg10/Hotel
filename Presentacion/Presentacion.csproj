@@ -112,6 +112,12 @@
     <Compile Include="FormInicioSesion.Designer.cs">
       <DependentUpon>FormInicioSesion.cs</DependentUpon>
     </Compile>
+    <Compile Include="PresentacionAdmins\ModeloHabitacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PresentacionAdmins\ModeloHabitacion.Designer.cs">
+      <DependentUpon>ModeloHabitacion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Cambiar.resx">
@@ -147,6 +153,9 @@
     <EmbeddedResource Include="FormInicioSesion.resx">
       <DependentUpon>FormInicioSesion.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PresentacionAdmins\ModeloHabitacion.resx">
+      <DependentUpon>ModeloHabitacion.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -169,9 +178,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="imagenes\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Entidades\Entidades.csproj">
       <Project>{d7844f3f-3ebd-4149-b1c5-a582e9d37481}</Project>
@@ -181,6 +188,9 @@
       <Project>{c0f08bf5-6064-4515-a416-a82c26450b1a}</Project>
       <Name>Logica</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="imagenes\Imagen programación.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

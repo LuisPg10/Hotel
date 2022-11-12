@@ -7,3 +7,12 @@ C:\Users\LENOVO\Hotel\Logica\obj\Debug\Logica.csproj.CoreCompileInputs.cache
 C:\Users\LENOVO\Hotel\Logica\obj\Debug\Logica.csproj.CopyComplete
 C:\Users\LENOVO\Hotel\Logica\obj\Debug\Logica.dll
 C:\Users\LENOVO\Hotel\Logica\obj\Debug\Logica.pdb
+C:\Users\dapin\OneDrive\Documentos\Materias semestre\Programación\Hotel\Logica\bin\Debug\Logica.dll
+C:\Users\dapin\OneDrive\Documentos\Materias semestre\Programación\Hotel\Logica\bin\Debug\Logica.pdb
+C:\Users\dapin\OneDrive\Documentos\Materias semestre\Programación\Hotel\Logica\bin\Debug\Entidades.dll
+C:\Users\dapin\OneDrive\Documentos\Materias semestre\Programación\Hotel\Logica\bin\Debug\Entidades.pdb
+C:\Users\dapin\OneDrive\Documentos\Materias semestre\Programación\Hotel\Logica\obj\Debug\Logica.csproj.AssemblyReference.cache
+C:\Users\dapin\OneDrive\Documentos\Materias semestre\Programación\Hotel\Logica\obj\Debug\Logica.csproj.CoreCompileInputs.cache
+C:\Users\dapin\OneDrive\Documentos\Materias semestre\Programación\Hotel\Logica\obj\Debug\Logica.csproj.CopyComplete
+C:\Users\dapin\OneDrive\Documentos\Materias semestre\Programación\Hotel\Logica\obj\Debug\Logica.dll
+C:\Users\dapin\OneDrive\Documentos\Materias semestre\Programación\Hotel\Logica\obj\Debug\Logica.pdb
