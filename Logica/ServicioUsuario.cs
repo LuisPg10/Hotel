@@ -9,12 +9,12 @@ namespace Logica
     {
         List<Usuario> listaUsuarios = new List<Usuario>();
         
-        public void registrarUsuario(Usuario user)
+        public void RegistrarUsuario(Usuario user)
         {
             listaUsuarios.Add(user);
         }
 
-        public bool validarUsuario(string user, string pass)
+        public bool ValidarUsuario(string user, string pass)
         {
             bool validar = false;
 
@@ -29,7 +29,7 @@ namespace Logica
             return validar;
         }
 
-        public bool validarUsuario(string dato,int op)
+        public bool ValidarUsuario(string dato,int op)
         {
             bool validar = false;
 
@@ -56,6 +56,9 @@ namespace Logica
             return validar;
         }
 
+        public void ReservarHabitacion()
+        {
 
+        }
     }
 }

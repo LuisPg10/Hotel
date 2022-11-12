@@ -40,7 +40,7 @@ namespace Presentacion
             if (textUsuario.Text.Equals("Usuario") || textContraseña.Text.Equals("Contraseña") || textUsuario.Text.Equals("") || textContraseña.Text.Equals(""))
             {
                 MessageBox.Show("Complete todas las casillas");
-            }else if (Cambiar.ServicioUsuario.validarUsuario(textUsuario.Text,textContraseña.Text)==false)
+            }else if (Cambiar.ServicioUsuario.ValidarUsuario(textUsuario.Text,textContraseña.Text)==false)
             {
                 MessageBox.Show("Usuario o contraseña incorrectos!");
             }

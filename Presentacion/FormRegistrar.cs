@@ -29,11 +29,11 @@ namespace Presentacion
             {
                 MessageBox.Show("Complete todas las casillas");
             }
-            else if (Cambiar.ServicioUsuario.validarUsuario(textUser.Text,1) == true)
+            else if (Cambiar.ServicioUsuario.ValidarUsuario(textUser.Text,1) == true)
             {
                 MessageBox.Show("Este usuario ya esta registrado!");
             }
-            else if (Cambiar.ServicioUsuario.validarUsuario(textUser.Text, 2) == true)
+            else if (Cambiar.ServicioUsuario.ValidarUsuario(textUser.Text, 2) == true)
             {
                 MessageBox.Show("Este correo ya esta registrado!");
             }
@@ -44,7 +44,7 @@ namespace Presentacion
                 user.Correo = textCorreo.Text;
                 user.Username = textUser.Text;
                 user.Password = textContraseña.Text;
-                Cambiar.ServicioUsuario.registrarUsuario(user);
+                Cambiar.ServicioUsuario.RegistrarUsuario(user);
                 Cambiar.AbrirFormulario<FormInicioSesion>();
                 limpiar();
             }
@@ -120,6 +120,11 @@ namespace Presentacion
             textCorreo.Text = "Correo";
             textContraseña.Text = "Contraseña";
             
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -84,9 +84,9 @@
             this.panel3.BackColor = System.Drawing.Color.LightSkyBlue;
             this.panel3.Controls.Add(this.label2);
             this.panel3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.panel3.Location = new System.Drawing.Point(292, 322);
+            this.panel3.Location = new System.Drawing.Point(280, 317);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(126, 51);
+            this.panel3.Size = new System.Drawing.Size(161, 51);
             this.panel3.TabIndex = 3;
             this.panel3.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel3_MouseClick);
             // 
@@ -96,11 +96,12 @@
             this.label2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(17, 9);
+            this.label2.Location = new System.Drawing.Point(12, 9);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(94, 33);
+            this.label2.Size = new System.Drawing.Size(134, 33);
             this.label2.TabIndex = 0;
-            this.label2.Text = "Entrar";
+            this.label2.Text = "Registrar";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             this.label2.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel3_MouseClick);
             // 
             // textContraseña

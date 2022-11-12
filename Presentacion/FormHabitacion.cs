@@ -27,12 +27,9 @@ namespace Presentacion
             Cambiar.AbrirFormulario<FormBienvenida>();
         }
 
-        
-
         private void FormHabitacion_Load(object sender, EventArgs e)
         {
 
         }
-
     }
 }

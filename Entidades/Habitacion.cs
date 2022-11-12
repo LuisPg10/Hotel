@@ -5,7 +5,7 @@ namespace Entidades
         public int Id { get; set; }
         public int NumHabitacion { get; set; }
         public string TipoHabitacion { get; set; }
-
+        public double Precio { get; set; }
 
         public Habitacion()
         {
@@ -18,7 +18,5 @@ namespace Entidades
             NumHabitacion = numHabitacion;
             TipoHabitacion = tipoHabitacion;
         }
-
-
     }
 }
