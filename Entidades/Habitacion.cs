@@ -2,7 +2,7 @@ namespace Entidades
 {
     public class Habitacion
     {
-        public int Id { get; set; }
+        public uint Id { get; set; }
         public int NumHabitacion { get; set; }
         public string TipoHabitacion { get; set; }
         public double Precio { get; set; }
@@ -12,7 +12,7 @@ namespace Entidades
             
         }
 
-        public Habitacion(int id, int numHabitacion, string tipoHabitacion)
+        public Habitacion(uint id, int numHabitacion, string tipoHabitacion)
         {
             Id = id;
             NumHabitacion = numHabitacion;

@@ -9,8 +9,7 @@ namespace Entidades
         {
             
         }
-
-        public Administrador(int id, string nombre, string correo, string username, string password) : base(id, nombre, correo, username, password)
+        public Administrador(uint id, string nombre, string username, string password) : base(id, nombre, username, password)
         {
         }
     }
