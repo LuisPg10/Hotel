@@ -6,8 +6,7 @@ namespace Entidades
         {
             
         }
-
-        public SuperAdministrador(int id, string nombre, string correo, string username, string password) : base(id, nombre, correo, username, password)
+        public SuperAdministrador(uint id, string nombre, string username, string password) : base(id, nombre, username, password)
         {
         }
     }

@@ -4,12 +4,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{DFF980B9-4A48-4A4D-8DCF-0A8655BAE39E}</ProjectGuid>
+    <ProjectGuid>{B041E463-D65C-4DFE-A04A-72A665E8CBF7}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>Presentacion</RootNamespace>
     <AssemblyName>Presentacion</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
@@ -34,153 +36,83 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Deployment" />
-    <Reference Include="System.Drawing" />
     <Reference Include="System.Net.Http" />
-    <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Cambiar.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Cambiar.Designer.cs">
-      <DependentUpon>Cambiar.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormBienvenida.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormBienvenida.Designer.cs">
-      <DependentUpon>FormBienvenida.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormComentar.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormComentar.Designer.cs">
-      <DependentUpon>FormComentar.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormComentarios.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormComentarios.Designer.cs">
-      <DependentUpon>FormComentarios.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormConfirmar.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormConfirmar.Designer.cs">
-      <DependentUpon>FormConfirmar.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormHabitacion.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormHabitacion.Designer.cs">
-      <DependentUpon>FormHabitacion.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormPlantillaComentario.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormPlantillaComentario.Designer.cs">
-      <DependentUpon>FormPlantillaComentario.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormPlantillaHabitacion.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormPlantillaHabitacion.Designer.cs">
-      <DependentUpon>FormPlantillaHabitacion.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormRegistrar.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormRegistrar.Designer.cs">
-      <DependentUpon>FormRegistrar.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormReservar.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormReservar.Designer.cs">
-      <DependentUpon>FormReservar.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormInicioSesion.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormInicioSesion.Designer.cs">
-      <DependentUpon>FormInicioSesion.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Program.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Cambiar.resx">
-      <DependentUpon>Cambiar.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormBienvenida.resx">
-      <DependentUpon>FormBienvenida.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormComentar.resx">
-      <DependentUpon>FormComentar.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormComentarios.resx">
-      <DependentUpon>FormComentarios.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormConfirmar.resx">
-      <DependentUpon>FormConfirmar.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormHabitacion.resx">
-      <DependentUpon>FormHabitacion.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormPlantillaComentario.resx">
-      <DependentUpon>FormPlantillaComentario.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormPlantillaHabitacion.resx">
-      <DependentUpon>FormPlantillaHabitacion.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormRegistrar.resx">
-      <DependentUpon>FormRegistrar.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormReservar.resx">
-      <DependentUpon>FormReservar.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormInicioSesion.resx">
-      <DependentUpon>FormInicioSesion.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </EmbeddedResource>
+    </ApplicationDefinition>
+    <Page Include="Estilos\Colores.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Estilos\EstiloBotones.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Login.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Login.xaml.cs">
+      <DependentUpon>Login.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ViewModels\ViewModelCommand.cs" />
+    <Compile Include="ViewModels\LoginViewModel.cs" />
+    <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="ViewModels\ViewModelBase.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="imagenes\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Entidades\Entidades.csproj">
-      <Project>{d7844f3f-3ebd-4149-b1c5-a582e9d37481}</Project>
-      <Name>Entidades</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Logica\Logica.csproj">
-      <Project>{c0f08bf5-6064-4515-a416-a82c26450b1a}</Project>
-      <Name>Logica</Name>
-    </ProjectReference>
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
