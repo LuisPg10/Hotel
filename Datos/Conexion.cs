@@ -14,6 +14,7 @@ namespace Datos
     {
         public static MySqlConnection conectar;
 
+        //Metodo para establecer una conexion con la base de datos
         public MySqlConnection obtenerConexion()
         {
             try
@@ -30,6 +31,7 @@ namespace Datos
             return conectar;
         }
 
+        //Metodo para cerrar la conexion con la base de datos
         public void cerrarConexion()
         {
             try
