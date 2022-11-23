@@ -43,7 +43,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ServicioAdministrador.cs" />
+    <Compile Include="ServicioComentario.cs" />
     <Compile Include="ServicioGerente.cs" />
+    <Compile Include="ServicioHabitacion.cs" />
     <Compile Include="ServicioUsuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

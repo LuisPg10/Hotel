@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using MySql.Data.MySqlClient;
 using MySqlX.XDevAPI;
 using Datos;
+using System.Diagnostics.Contracts;
 
 namespace Logica
 {
@@ -59,7 +60,42 @@ namespace Logica
             }
         }
 
+        //Metodo para consultar un usuario en la base de datos y si existe retorna un objeto de tipo Usuario con sus datos
+        public Usuario consultarUsuario(int id)
+        {
+            Usuario user = new Usuario();
+            try
+            {
+                MySqlCommand comando = new MySqlCommand($"SELECT * FROM usuario WHERE IdUsuario = '{id}'", conexion.obtenerConexion());
+                MySqlDataReader consulta = comando.ExecuteReader();
+                while (consulta.Read())
+                {
+                    if (consulta.GetUInt32(0) == id)
+                    {
+                        user.Id = consulta.GetUInt32(0);
+                        user.Nombre = consulta.GetString(1);
+                        user.Correo = consulta.GetString(2);
+                        user.Username = consulta.GetString(3);
+                        user.Password = consulta.GetString(4);
+                        user.Habitacion = new ServicioHabitacion().consultarHabitacion(consulta.GetInt32(5));
+
+                    }
+                    else
+                    {
+                        user = null;
+                    }
+                }
+                conexion.cerrarConexion();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al consultar el usuario");
+            }
+            return user;
+        }
+
         //Metodo para verificar la existencia de un UserName en la base de datos
+        //Recomendado para el apartado de registrar usuarios
         public bool verificarUsuario(String username)
         {
             bool resultado = false;
@@ -84,7 +120,8 @@ namespace Logica
         }
 
         //Metodo para verificar la existencia del UserName y contraseña en la base de datos
-        public bool verificarEntrada(String username,String contra)
+        //Recomendado para el apartado de iniciar sesion
+        public bool verificarEntradaUsuario(String username,String contra)
         {
             bool resultado = false;
             try
@@ -106,5 +143,36 @@ namespace Logica
             }
             return resultado;
         }
+
+        //Metodo para cargar los datos de la tabla usuario en una lista
+        public List<Usuario> listaUsuarios()
+        {
+            List<Usuario> listaUsuarios = new List<Usuario>();
+
+            try
+            {
+                MySqlCommand comando = new MySqlCommand($"SELECT * FROM usuario", conexion.obtenerConexion());
+                MySqlDataReader consulta = comando.ExecuteReader();
+                while (consulta.Read())
+                {
+                    Usuario user = new Usuario();
+                    user.Id = consulta.GetUInt32(0);
+                    user.Nombre = consulta.GetString(1);
+                    user.Correo = consulta.GetString(2);
+                    user.Username = consulta.GetString(3);
+                    user.Password = consulta.GetString(4);
+                    user.Habitacion = new ServicioHabitacion().consultarHabitacion(consulta.GetInt32(5));
+                    listaUsuarios.Add(user);    
+                }
+                conexion.cerrarConexion();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al consultar el usuario");
+            }
+
+            return listaUsuarios;
+        }
+
     }
 }

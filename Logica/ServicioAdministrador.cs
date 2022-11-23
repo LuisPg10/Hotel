@@ -62,7 +62,7 @@ namespace Logica
             }
         }
 
-        //Metodo para consultar un usuario en la base de datos y si existe retorna un objeto de tipo Usuario con sus datos
+        //Metodo para consultar un administrador en la base de datos y si existe retorna un objeto de tipo Administrador con sus datos
         public Administrador consultarAdministrador(int id)
         {
             Administrador user = new Administrador();

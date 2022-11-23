@@ -62,6 +62,38 @@ namespace Logica
             }
         }
 
+        //Metodo para consultar un gerente en la base de datos y si existe retorna un objeto de tipo Gerente con sus datos
+        public Gerente consultarGerente(int id)
+        {
+            Gerente user = new Gerente();
+            try
+            {
+                MySqlCommand comando = new MySqlCommand($"SELECT * FROM gerente WHERE IdGerente = '{id}'", conexion.obtenerConexion());
+                MySqlDataReader consulta = comando.ExecuteReader();
+                while (consulta.Read())
+                {
+                    if (consulta.GetUInt32(0) == id)
+                    {
+                        user.Id = consulta.GetUInt32(0);
+                        user.Nombre = consulta.GetString(1);
+                        user.Correo = consulta.GetString(2);
+                        user.Username = consulta.GetString(3);
+                        user.Password = consulta.GetString(4);
+                    }
+                    else
+                    {
+                        user = null;
+                    }
+                }
+                conexion.cerrarConexion();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al consultar el Gerente");
+            }
+            return user;
+        }
+
         //Metodo para verificar la existencia de un UserName en la base de datos
         //Recomendado para el apartado de registrar gerentes
         public bool verificarGerente(String username)
