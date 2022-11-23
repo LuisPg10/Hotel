@@ -12,11 +12,12 @@ namespace Entidades
             
         }
 
-        public Habitacion(uint id, int numHabitacion, string tipoHabitacion)
+        public Habitacion(uint id, int numHabitacion, string tipoHabitacion, double precio)
         {
             Id = id;
             NumHabitacion = numHabitacion;
             TipoHabitacion = tipoHabitacion;
+            Precio = precio;
         }
     }
 }

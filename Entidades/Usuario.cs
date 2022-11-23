@@ -9,9 +9,11 @@ namespace Entidades
             
         }
 
-        public Usuario(uint id, string nombre, string correo, string username, string password) : base(id, nombre, username, password)
+
+        public Usuario(uint id, string nombre, string username, string password, string correo, Habitacion habitacion) : base(id, nombre, username, password)
         {
             Correo = correo;
+            Habitacion = habitacion;
         }
     }
 }
