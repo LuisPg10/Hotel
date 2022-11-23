@@ -2,69 +2,27 @@
 using Entidades;
 using System.Collections;
 using System.Collections.Generic;
+using MySql.Data.MySqlClient;
+using MySqlX.XDevAPI;
+using Datos;
 
 namespace Logica
 {
     public class ServicioUsuario
     {
-        List<Usuario> listaUsuarios = new List<Usuario>();
-        List<Habitacion> habitaciones = new List<Habitacion>();
+        Conexion conexion= new Conexion();
         
         public void RegistrarUsuario(Usuario user)
         {
-            listaUsuarios.Add(user);
-        }
-
-        public bool ValidarUsuario(string user, string pass)
-        {
-            bool validar = false;
-
-            foreach (Usuario usuario in listaUsuarios)
+            try
             {
-                if (usuario.Username.Equals(user) && usuario.Password.Equals(pass))
-                {
-                    validar = true;
-                }
+                MySqlCommand comando = new MySqlCommand($"Insert into usuario values({0},'{user.Nombre}','{user.Correo}','{user.Username}','{user.Password}',{user.Habitacion.Id})", conexion.obtenerConexion());
+                comando.ExecuteNonQuery();
+                Console.WriteLine("Usuario Registrado!");
+                conexion.cerrarConexion();
+            }catch(Exception ex) { 
+                Console.WriteLine("Error al agregar los datos");
             }
-
-            return validar;
-        }
-
-        public bool ValidarUsuario(string dato,int op)
-        {
-            bool validar = false;
-
-            foreach (Usuario usuario in listaUsuarios)
-            {
-                switch (op)
-                {
-                    case 1:
-                        if (usuario.Username.Equals(dato))
-                        {
-                            validar = true;
-                        }
-                        break;
-                    case 2:
-                        if (usuario.Correo.Equals(dato))
-                        {
-                            validar = true;
-                        }
-                        break;
-                }
-                
-            }
-
-            return validar;
-        }
-
-        public void ReservarHabitacion(Habitacion habitacion)
-        {
-            habitaciones.Add(habitacion);
-        }
-
-        public List<Habitacion> ListarHabitaciones()
-        {
-            return habitaciones;
         }
 
     }
