@@ -10,15 +10,14 @@
         WindowStartupLocation="CenterScreen" 
         WindowStyle="None" 
         Background="Transparent"
-        AllowsTransparency="True" Width="919">
-
-    <Window.DataContext>
-        <viewModel:MainViewModel/>
-    </Window.DataContext>
+        AllowsTransparency="True" Width="919" Title="Hotel">
 
     <Window.Resources>
         <DataTemplate DataType="{x:Type viewModel:LoginViewModel}">
             <local:Login/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModel:RegisterViewModel}">
+            <local:Register/>
         </DataTemplate>
     </Window.Resources>
 
@@ -34,14 +33,14 @@
             <Grid>
                 <Grid.RowDefinitions>
                     <!--Fila titulo-->
-                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="40"/>
                     <!--Fila contenido-->
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
                 <WrapPanel x:Name="barraTitulo" Grid.Row="0" FlowDirection="RightToLeft"
                            Background="Transparent" 
-                           MouseLeftButtonDown="barraTitulo_MouseLeftButtonDown" 
+                           MouseLeftButtonDown="barraTitulo_MouseLeftButtonDown"
                            MouseEnter="barraTitulo_MouseEnter">
 
                     <Button Name="btnClose" Click="btnClose_Click"
@@ -58,11 +57,7 @@
                     </Button>
                 </WrapPanel>
 
-                <ContentControl Content="{Binding CurrentChildView}" 
-                                Grid.Row="1"
-                                Margin="10"/>
-
-
+                <ContentControl  x:Name="panelContenedor" Grid.Row="1" Content="{Binding CurrentChildView}"/>
             </Grid>
         </Border>
     </Grid>

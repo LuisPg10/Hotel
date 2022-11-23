@@ -72,6 +72,7 @@
         <Setter Property="Height" Value="58"/>
         <Setter Property="Background" Value="#FFFFFF"/>
         <Setter Property="Foreground" Value="#787474"/>
+        <Setter Property="SpellCheck.IsEnabled" Value="True"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="TextBox">
@@ -115,4 +116,25 @@
         </Style.Triggers>
     </Style>
     
+    <!--LabelButton-->
+    <Style x:Key="labelButton" TargetType="Button">
+        <Setter Property="Foreground" Value="#1B18BC"/>
+        <Setter Property="Width" Value="70"/>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border BorderBrush="#FFFFFF" Background="#FFFFFF">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Cursor" Value="Hand"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
 </ResourceDictionary>

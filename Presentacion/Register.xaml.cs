@@ -3,11 +3,11 @@
 namespace Presentacion
 {
     /// <summary>
-    /// Lógica de interacción para Login.xaml
+    /// Lógica de interacción para Register.xaml
     /// </summary>
-    public partial class Login : UserControl
+    public partial class Register : UserControl
     {
-        public Login()
+        public Register()
         {
             InitializeComponent();
         }

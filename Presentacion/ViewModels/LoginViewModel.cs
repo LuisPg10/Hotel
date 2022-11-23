@@ -1,13 +1,13 @@
-﻿using System.Security;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Input;
 
 namespace Presentacion.ViewModels
 {
     public class LoginViewModel : ViewModelBase
     {
+        MainViewModel _mainViewModel;
         private string _userName;
-        private SecureString _password;
+        private string _password;
 
         //Propiedades
         public string UserName { 
@@ -21,7 +21,7 @@ namespace Presentacion.ViewModels
                 OnPropertyChange(nameof(UserName));
             }  
         }
-        public SecureString Password { 
+        public string Password { 
             get
             {
                 return _password;
@@ -32,27 +32,32 @@ namespace Presentacion.ViewModels
                 OnPropertyChange(nameof(Password));
             } 
         }
-        //Comandos
-        public ICommand LoginCommand { get; }
+
+        //Commands
         public ICommand ShowRegisterCommand { get; }
+        public ICommand ShowPersonViewModel { get; }
 
         //Constructor
-        public LoginViewModel()
+        public LoginViewModel(MainViewModel mainViewModel)
         {
-            LoginCommand = new ViewModelCommand(ExecuteLoginCommand, CanExecuteLoginCommand);
+            _mainViewModel = mainViewModel;
+
+            //Commands instance
+            ShowRegisterCommand = new RelayCommand(ExeCuteRegisterCommand);
+            ShowPersonViewModel = new RelayCommand(ExecutePersonViewCommand);
         }
 
-        private bool CanExecuteLoginCommand(object obj)
+        private void ExeCuteRegisterCommand(object obj)
         {
-            if (string.IsNullOrEmpty(UserName) || Password == null)
-            {
-                return false;
-            }
-            return true;
+            RegisterViewModel registerViewModel = new RegisterViewModel(_mainViewModel);
+            Register register = new Register();
+            register.DataContext = registerViewModel;
+            _mainViewModel.SetNewContent(register);
         }
-        private void ExecuteLoginCommand(object obj)
+
+        private void ExecutePersonViewCommand(object obj)
         {
-            MessageBox.Show("Hola");
+
         }
     }
 }

@@ -3,7 +3,7 @@ using System.Windows.Input;
 
 namespace Presentacion.ViewModels
 {
-    public class ViewModelCommand : ICommand
+    public class RelayCommand : ICommand
     {
 
         //Campos
@@ -11,12 +11,12 @@ namespace Presentacion.ViewModels
         private readonly Predicate<object> _canExecuteAction;
 
         //Constructores
-        public ViewModelCommand(Action<object> executeAction)
+        public RelayCommand(Action<object> executeAction)
         {
             _executeAction = executeAction;
             _canExecuteAction = null;
         }
-        public ViewModelCommand(Action<object> executeAction, Predicate<object> canExecuteAction)
+        public RelayCommand(Action<object> executeAction, Predicate<object> canExecuteAction)
         {
             _executeAction = executeAction;
             _canExecuteAction = canExecuteAction;

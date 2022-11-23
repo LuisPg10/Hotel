@@ -20,3 +20,5 @@ C:\Users\dapin\OneDrive\Documentos\Materias semestre\Programación\Hotel\Present
 C:\Users\dapin\OneDrive\Documentos\Materias semestre\Programación\Hotel\Presentacion\obj\Debug\Presentacion.csproj.CoreCompileInputs.cache
 C:\Users\dapin\OneDrive\Documentos\Materias semestre\Programación\Hotel\Presentacion\obj\Debug\Presentacion.exe
 C:\Users\dapin\OneDrive\Documentos\Materias semestre\Programación\Hotel\Presentacion\obj\Debug\Presentacion.pdb
+C:\Users\dapin\OneDrive\Documentos\Materias semestre\Programación\Hotel\Presentacion\obj\Debug\Register.g.cs
+C:\Users\dapin\OneDrive\Documentos\Materias semestre\Programación\Hotel\Presentacion\obj\Debug\Register.baml
