@@ -38,6 +38,13 @@ namespace Logica
             return datos.VerificarUsuario(username);
         }
 
+        //Metodo para verificar la existencia de un correo en la base de datos
+        //Recomendado para el apartado de registrar usuarios
+        public bool verificarCorreo(String correo)
+        {
+            return datos.verificarCorreo(correo);
+        }
+
         //Metodo para verificar la existencia del UserName y contraseña en la base de datos
         //Recomendado para el apartado de iniciar sesion
         public bool VerificarEntradaUsuario(string username,string contra)
