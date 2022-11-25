@@ -15,19 +15,19 @@ namespace Logica
         }
 
         //Metodo para eliminar administradores teniendo en cuenta el id
-        public void EliminarAdministrador(int id)
+        public void EliminarAdministrador(uint id)
         {
             datos.EliminarAdministrador(id);
         }
 
         //Metodo para actualizar los datos de un administrador teniendo en cuenta el id y los datos de un objeto de tipo Administrador
-        public void ActualizarGerente(int id, Administrador user)
+        public void ActualizarGerente(uint id, Administrador user)
         {
             datos.ActualizarGerente(id,user);
         }
 
         //Metodo para consultar un administrador en la base de datos y si existe retorna un objeto de tipo Administrador con sus datos
-        public Administrador consultarAdministrador(int id)
+        public Administrador consultarAdministrador(uint id)
         {
             
             return datos.consultarAdministrador(id);
@@ -35,7 +35,7 @@ namespace Logica
 
         //Metodo para verificar la existencia de un UserName en la base de datos
         //Recomendado para el apartado de registrar administradores
-        public bool verificarAdministrador(String username)
+        public bool verificarAdministrador(string username)
         {
             
             return datos.verificarAdministrador(username);
@@ -43,15 +43,15 @@ namespace Logica
 
         //Metodo para verificar la existencia del UserName y contraseña en la base de datos
         //Recomendado para el apartado de iniciar sesion
-        public bool verificarEntradaAdministrador(String username, String contra)
+        public bool verificarEntradaAdministrador(string username, string contra)
         {
             return datos.verificarEntradaAdministrador(username,contra);
         }
 
         //Metodo para cargar los datos de la tabla administrador en una lista
-        public List<Administrador> listaAdministradores()
+        public List<Administrador> ListaAdministradores()
         {
-            return datos.listaAdministradores();
+            return datos.ListaAdministradores();
         }
     }
 }

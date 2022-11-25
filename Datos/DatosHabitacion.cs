@@ -20,7 +20,7 @@ namespace Logica
         {
             try
             {
-                MySqlCommand comando = new MySqlCommand($"INSERT INTO habitacion VALUES({0},{habitacion.NumHabitacion},'{habitacion.TipoHabitacion}',{habitacion.Precio})", conexion.obtenerConexion());
+                MySqlCommand comando = new MySqlCommand($"INSERT INTO habitacion VALUES({0},{habitacion.NumHabitacion},'{habitacion.TipoHabitacion}',{habitacion.Precio})", conexion.ObtenerConexion());
                 comando.ExecuteNonQuery();
                 Console.WriteLine("Habitacion Registrada!");
                 conexion.cerrarConexion();
@@ -32,11 +32,11 @@ namespace Logica
         }
 
         //Metodo para eliminar una habitacion teniendo en cuenta el id
-        public void EliminarHabitacion(int id)
+        public void EliminarHabitacion(uint id)
         {
             try
             {
-                MySqlCommand comando = new MySqlCommand($"DELETE FROM habitacion WHERE IdHabitacion = {id}", conexion.obtenerConexion());
+                MySqlCommand comando = new MySqlCommand($"DELETE FROM habitacion WHERE IdHabitacion = {id}", conexion.ObtenerConexion());
                 comando.ExecuteNonQuery();
                 Console.WriteLine("Habitacion Eliminada!");
                 conexion.cerrarConexion();
@@ -48,11 +48,11 @@ namespace Logica
         }
 
         //Metodo para actualizar los datos de una habitacion teniendo en cuenta el id y los datos de un objeto de tipo Habitacion
-        public void ActualizarHabitacion(int id, Habitacion habitacion)
+        public void ActualizarHabitacion(uint id, Habitacion habitacion)
         {
             try
             {
-                MySqlCommand comando = new MySqlCommand($"UPDATE habitacion SET NunHabitacion = '{habitacion.NumHabitacion}', TipoHabitacion = '{habitacion.TipoHabitacion}', Precio = '{habitacion.Precio}' WHERE IdHabitacion = {id}", conexion.obtenerConexion());
+                MySqlCommand comando = new MySqlCommand($"UPDATE habitacion SET NunHabitacion = '{habitacion.NumHabitacion}', TipoHabitacion = '{habitacion.TipoHabitacion}', Precio = '{habitacion.Precio}' WHERE IdHabitacion = {id}", conexion.ObtenerConexion());
                 comando.ExecuteNonQuery();
                 Console.WriteLine("Datos actualizados!");
                 conexion.cerrarConexion();
@@ -64,12 +64,12 @@ namespace Logica
         }
 
         //Metodo para consultar una habitacion en la base de datos y si existe retorna un objetos de tipo Habitacion con sus datos
-        public Habitacion consultarHabitacion(int id)
+        public Habitacion ConsultarHabitacion(uint id)
         {
             Habitacion habitacion = new Habitacion();
             try
             {
-                MySqlCommand comando = new MySqlCommand($"SELECT * FROM habitacion WHERE IdHabitacion = {id}", conexion.obtenerConexion());
+                MySqlCommand comando = new MySqlCommand($"SELECT * FROM habitacion WHERE IdHabitacion = {id}", conexion.ObtenerConexion());
                 MySqlDataReader consulta = comando.ExecuteReader();
                 while (consulta.Read())
                 {
@@ -96,12 +96,12 @@ namespace Logica
         }
 
         //Metodo para cargar los datos de la tabla habitacion en una lista
-        public List<Habitacion> listaHabitaciones()
+        public List<Habitacion> ListaHabitaciones()
         {
             List<Habitacion> listahabitacion = new List<Habitacion>();
             try
             {
-                MySqlCommand comando = new MySqlCommand($"SELECT * FROM habitacion", conexion.obtenerConexion());
+                MySqlCommand comando = new MySqlCommand($"SELECT * FROM habitacion", conexion.ObtenerConexion());
                 MySqlDataReader consulta = comando.ExecuteReader();
                 while (consulta.Read())
                 {

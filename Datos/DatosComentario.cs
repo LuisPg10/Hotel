@@ -20,7 +20,7 @@ namespace Logica
         {
             try
             {
-                MySqlCommand comando = new MySqlCommand($"INSERT INTO comentario VALUES({0},{comentario.Usuario.Id},{comentario.Habitacion.Id},'{comentario.Comentarios}')", conexion.obtenerConexion());
+                MySqlCommand comando = new MySqlCommand($"INSERT INTO comentario VALUES({0},{comentario.Usuario.Id},{comentario.Habitacion.Id},'{comentario.Comentarios}')", conexion.ObtenerConexion());
                 comando.ExecuteNonQuery();
                 Console.WriteLine("Comentario Registrado!");
                 conexion.cerrarConexion();
@@ -32,11 +32,11 @@ namespace Logica
         }
 
         //Metodo para eliminar un comentario teniendo en cuenta el id
-        public void EliminarComentario(int id)
+        public void EliminarComentario(uint id)
         {
             try
             {
-                MySqlCommand comando = new MySqlCommand($"DELETE FROM comentario WHERE IdComentario = {id}", conexion.obtenerConexion());
+                MySqlCommand comando = new MySqlCommand($"DELETE FROM comentario WHERE IdComentario = {id}", conexion.ObtenerConexion());
                 comando.ExecuteNonQuery();
                 Console.WriteLine("Comentario Eliminado!");
                 conexion.cerrarConexion();
@@ -48,20 +48,20 @@ namespace Logica
         }
 
         //Metodo para consultar un comentario en la base de datos y si existe retorna un objetos de tipo comentario con sus datos
-        public Comentario consultarComentario(int id)
+        public Comentario ConsultarComentario(uint id)
         {
             Comentario comentario = new Comentario();
             try
             {
-                MySqlCommand comando = new MySqlCommand($"SELECT * FROM comentario WHERE IdComentario = {id}", conexion.obtenerConexion());
+                MySqlCommand comando = new MySqlCommand($"SELECT * FROM comentario WHERE IdComentario = {id}", conexion.ObtenerConexion());
                 MySqlDataReader consulta = comando.ExecuteReader();
                 while (consulta.Read())
                 {
                     if (consulta.GetUInt32(0) == id)
                     {
                         comentario.Id = consulta.GetUInt32(0);
-                        comentario.Usuario = new DatosUsuario().consultarUsuario(consulta.GetInt32(1));
-                        comentario.Habitacion = new DatosHabitacion().consultarHabitacion(consulta.GetInt32(1));
+                        comentario.Usuario = new DatosUsuario().ConsultarUsuario(consulta.GetUInt32(1));
+                        comentario.Habitacion = new DatosHabitacion().ConsultarHabitacion(consulta.GetUInt32(1));
                         comentario.Comentarios = consulta.GetString(3);
                     }
                     else
@@ -79,19 +79,19 @@ namespace Logica
         }
 
         //Metodo para cargar los datos de la tabla comentario en una lista
-        public List<Comentario> listaComentarios()
+        public List<Comentario> ListaComentarios()
         {
             List<Comentario> listaComentario = new List<Comentario>();
             try
             {
-                MySqlCommand comando = new MySqlCommand($"SELECT * FROM comentario", conexion.obtenerConexion());
+                MySqlCommand comando = new MySqlCommand($"SELECT * FROM comentario", conexion.ObtenerConexion());
                 MySqlDataReader consulta = comando.ExecuteReader();
                 while (consulta.Read())
                 {
                     Comentario comentario = new Comentario();
                     comentario.Id = consulta.GetUInt32(0);
-                    comentario.Usuario = new DatosUsuario().consultarUsuario(consulta.GetInt32(1));
-                    comentario.Habitacion = new DatosHabitacion().consultarHabitacion(consulta.GetInt32(1));
+                    comentario.Usuario = new DatosUsuario().ConsultarUsuario(consulta.GetUInt32(1));
+                    comentario.Habitacion = new DatosHabitacion().ConsultarHabitacion(consulta.GetUInt32(1));
                     comentario.Comentarios = consulta.GetString(3);
                     listaComentario.Add(comentario);
 

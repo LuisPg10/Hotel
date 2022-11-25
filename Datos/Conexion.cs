@@ -1,34 +1,28 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
 
 
 namespace Datos
 {
     public class Conexion
     {
-        public static MySqlConnection conectar;
+        public static MySqlConnection conexion;
 
         //Metodo para establecer una conexion con la base de datos
-        public MySqlConnection obtenerConexion()
+        public MySqlConnection ObtenerConexion()
         {
             try
             {
-                conectar = new MySqlConnection("server = 127.0.0.1; database = bdhotel; Uid = root; pwd = ;");
-                conectar.Open();
+                conexion = new MySqlConnection("server = 127.0.0.1; database = bdhotel; Uid = root; pwd = ;");
+                conexion.Open();
                 Console.WriteLine("Conexion exitosa!");
-                return conectar;
+                return conexion;
             }
             catch(Exception ex)
             {
                 Console.WriteLine($"Error {ex.Message}");
             }
-            return conectar;
+            return conexion;
         }
 
         //Metodo para cerrar la conexion con la base de datos
@@ -36,12 +30,12 @@ namespace Datos
         {
             try
             {
-                conectar.Close();
+                conexion.Close();
                 Console.WriteLine("Conexion cerrada!");
             }catch(Exception ex)
             {
                 Console.WriteLine($"Error {ex.Message}");
-                conectar.Close();
+                conexion.Close();
             }
         }
 

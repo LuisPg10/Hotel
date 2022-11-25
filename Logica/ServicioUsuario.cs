@@ -1,11 +1,5 @@
-﻿using System;
-using Entidades;
-using System.Collections;
+﻿using Entidades;
 using System.Collections.Generic;
-using MySql.Data.MySqlClient;
-using MySqlX.XDevAPI;
-using Datos;
-using System.Diagnostics.Contracts;
 
 namespace Logica
 {
@@ -20,43 +14,42 @@ namespace Logica
         }
 
         //Metodo para eliminar usuarios teniendo en cuenta el id
-        public void EliminarUsuario(int id)
+        public void EliminarUsuario(uint id)
         {
             datos.EliminarUsuario(id);
         }
 
         //Metodo para actualizar los datos de un usuario teniendo en cuenta el id y los datos de un objeto de tipo Usuario
-        public void ActualizarUsuario(int id, Usuario user)
+        public void ActualizarUsuario(uint id, Usuario user)
         {
             datos.ActualizarUsuario(id,user);
         }
 
         //Metodo para consultar un usuario en la base de datos y si existe retorna un objeto de tipo Usuario con sus datos
-        public Usuario consultarUsuario(int id)
+        public Usuario ConsultarUsuario(uint id)
         {
-            return datos.consultarUsuario(id);
+            return datos.ConsultarUsuario(id);
         }
 
         //Metodo para verificar la existencia de un UserName en la base de datos
         //Recomendado para el apartado de registrar usuarios
-        public bool verificarUsuario(String username)
+        public bool VerificarUsuario(string username)
         {
-            
-            return datos.verificarUsuario(username);
+            return datos.VerificarUsuario(username);
         }
 
         //Metodo para verificar la existencia del UserName y contraseña en la base de datos
         //Recomendado para el apartado de iniciar sesion
-        public bool verificarEntradaUsuario(String username,String contra)
+        public bool VerificarEntradaUsuario(string username,string contra)
         {
             
-            return datos.verificarEntradaUsuario(username,contra);
+            return datos.VerificarEntradaUsuario(username,contra);
         }
 
         //Metodo para cargar los datos de la tabla usuario en una lista
-        public List<Usuario> listaUsuarios()
+        public List<Usuario> ListaUsuarios()
         {
-            return datos.listaUsuarios();
+            return datos.ListaUsuarios();
         }
 
     }

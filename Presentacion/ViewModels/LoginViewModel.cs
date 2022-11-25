@@ -1,4 +1,4 @@
-﻿using System.Windows;
+﻿using Logica;
 using System.Windows.Input;
 
 namespace Presentacion.ViewModels
@@ -6,6 +6,9 @@ namespace Presentacion.ViewModels
     public class LoginViewModel : ViewModelBase
     {
         MainViewModel _mainViewModel;
+        ServicioUsuario _servicioUsuario;
+        MessageBox mensaje;
+
         private string _userName = "Usuario";
         private string _password = "Contraseña";
 
@@ -41,10 +44,11 @@ namespace Presentacion.ViewModels
         public LoginViewModel(MainViewModel mainViewModel)
         {
             _mainViewModel = mainViewModel;
+            _servicioUsuario = new ServicioUsuario();
 
             //Commands instance
             ShowRegisterCommand = new RelayCommand(ExeCuteRegisterCommand);
-            ShowPersonViewModel = new RelayCommand(ExecutePersonViewCommand, CanExecutePersonViewCommand);
+            ShowPersonViewModel = new RelayCommand(ExecutePersonViewCommand);
         }
         public LoginViewModel(){}
 
@@ -58,15 +62,25 @@ namespace Presentacion.ViewModels
 
         private void ExecutePersonViewCommand(object obj)
         {
-            PersonViewModel personViewModel = new PersonViewModel(_mainViewModel, UserName);
-            PWindow user = new PWindow();
-            user.DataContext = personViewModel;
-            _mainViewModel.SetNewContent(user);
-        }
 
-        private bool CanExecutePersonViewCommand(object obj)
-        {
-            return true;
+            if ((_userName.Equals("Usuario") || _password.Equals("Contraseña")) ||
+                string.IsNullOrEmpty(_userName) || string.IsNullOrEmpty(_password))
+            {
+                mensaje = new MessageBox("Campos vacíos, rellene los campos necesarios");
+                mensaje.ShowDialog();
+            }
+            else if (!_servicioUsuario.VerificarEntradaUsuario(_userName, _password))
+            {
+                mensaje = new MessageBox("UserName o contraseña incorrecta");
+                mensaje.ShowDialog();
+            }
+            else
+            {
+                PersonViewModel personViewModel = new PersonViewModel(_mainViewModel, UserName);
+                PWindow user = new PWindow();
+                user.DataContext = personViewModel;
+                _mainViewModel.SetNewContent(user);
+            }
         }
     }
 }

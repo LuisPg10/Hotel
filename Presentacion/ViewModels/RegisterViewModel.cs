@@ -1,13 +1,19 @@
-﻿using System.Windows.Input;
+﻿using Entidades;
+using Logica;
+using System.Windows.Input;
 
 namespace Presentacion.ViewModels
 {
     public class RegisterViewModel: ViewModelBase
     {
+        uint cont = 0;
         MainViewModel _mainViewModel;
-        private string _correo;
-        private string _usuario;
-        private string _password;
+        ServicioUsuario _servicioUsuario;
+        MessageBox mensaje;
+
+        private string _correo = "Correo";
+        private string _userName = "Nombre de usuario";
+        private string _password = "Contraseña";
 
         public string Correo
         {
@@ -22,16 +28,16 @@ namespace Presentacion.ViewModels
             }
         }
 
-        public string Usuario
+        public string UserName
         {
             get
             {
-                return _usuario;
+                return _userName;
             }
             set
             {
-                _usuario = value;
-                OnPropertyChange(nameof(Usuario));
+                _userName = value;
+                OnPropertyChange(nameof(UserName));
             }
         }
 
@@ -52,10 +58,13 @@ namespace Presentacion.ViewModels
         public ICommand ShowSuccessFullCommand { get; }
         public RegisterViewModel(MainViewModel mainViewModel)
         {
+            _servicioUsuario = new ServicioUsuario();
+            _mainViewModel = mainViewModel;
+
             ShowLoginCommand = new RelayCommand(ExecuteShowLoginCommand);
             ShowSuccessFullCommand = new RelayCommand(ExeCuteShowSuccessFullCommand);
-            _mainViewModel = mainViewModel;
         }
+        public RegisterViewModel(){}
 
         private void ExecuteShowLoginCommand(object obj)
         {
@@ -67,7 +76,23 @@ namespace Presentacion.ViewModels
 
         private void ExeCuteShowSuccessFullCommand(object obj)
         {
-
+            if ((_userName.Equals("Usuario") || _password.Equals("Contraseña")) || _correo.Equals("Correo")
+                || string.IsNullOrEmpty(_userName) || string.IsNullOrEmpty(_password) || string.IsNullOrEmpty(_correo))
+            {
+                mensaje = new MessageBox("Campos vacíos, rellene los campos necesarios");
+            }
+            else if (_servicioUsuario.VerificarUsuario(_userName))
+            {
+                mensaje = new MessageBox("Ya existe un usuario con ese nombre");
+            }
+            else
+            {
+                cont++;
+                Usuario user = new Usuario(cont, _userName,_correo, _userName, _password);
+                _servicioUsuario.RegistrarUsuario(user);
+                mensaje = new MessageBox("Registro exitoso");
+            }
+            mensaje.ShowDialog();
         }
     }
 }

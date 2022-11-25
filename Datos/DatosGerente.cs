@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
-using MySqlX.XDevAPI;
 using Datos;
 using Entidades;
 
@@ -19,7 +15,7 @@ namespace Logica
         {
             try
             {
-                MySqlCommand comando = new MySqlCommand($"Insert into gerente values({0},'{user.Nombre}','{user.Correo}','{user.Username}','{user.Password}')", conexion.obtenerConexion());
+                MySqlCommand comando = new MySqlCommand($"Insert into gerente values({0},'{user.Nombre}','{user.Correo}','{user.Username}','{user.Password}')", conexion.ObtenerConexion());
                 comando.ExecuteNonQuery();
                 Console.WriteLine("Gerente Registrado!");
                 conexion.cerrarConexion();
@@ -31,11 +27,11 @@ namespace Logica
         }
 
         //Metodo para eliminar gerentes teniendo en cuenta el id
-        public void EliminarGerente(int id)
+        public void EliminarGerente(uint id)
         {
             try
             {
-                MySqlCommand comando = new MySqlCommand($"DELETE FROM gerente WHERE IdGerente = {id}", conexion.obtenerConexion());
+                MySqlCommand comando = new MySqlCommand($"DELETE FROM gerente WHERE IdGerente = {id}", conexion.ObtenerConexion());
                 comando.ExecuteNonQuery();
                 Console.WriteLine("Gerente Eliminado!");
                 conexion.cerrarConexion();
@@ -47,11 +43,11 @@ namespace Logica
         }
 
         //Metodo para actualizar los datos de un gerente teniendo en cuenta el id y los datos de un objeto de tipo Gerente
-        public void ActualizarGerente(int id, Gerente user)
+        public void ActualizarGerente(uint id, Gerente user)
         {
             try
             {
-                MySqlCommand comando = new MySqlCommand($"UPDATE gerente SET Nombre = '{user.Nombre}', Correo = '{user.Correo}', UserName = '{user.Username}', Contraseña = '{user.Password}' WHERE IdGerente = {id}", conexion.obtenerConexion());
+                MySqlCommand comando = new MySqlCommand($"UPDATE gerente SET Nombre = '{user.Nombre}', Correo = '{user.Correo}', UserName = '{user.Username}', Contraseña = '{user.Password}' WHERE IdGerente = {id}", conexion.ObtenerConexion());
                 comando.ExecuteNonQuery();
                 Console.WriteLine("Datos actualizados!");
                 conexion.cerrarConexion();
@@ -63,12 +59,12 @@ namespace Logica
         }
 
         //Metodo para consultar un gerente en la base de datos y si existe retorna un objeto de tipo Gerente con sus datos
-        public Gerente consultarGerente(int id)
+        public Gerente ConsultarGerente(uint id)
         {
             Gerente user = new Gerente();
             try
             {
-                MySqlCommand comando = new MySqlCommand($"SELECT * FROM gerente WHERE IdGerente = '{id}'", conexion.obtenerConexion());
+                MySqlCommand comando = new MySqlCommand($"SELECT * FROM gerente WHERE IdGerente = '{id}'", conexion.ObtenerConexion());
                 MySqlDataReader consulta = comando.ExecuteReader();
                 while (consulta.Read())
                 {
@@ -96,12 +92,12 @@ namespace Logica
 
         //Metodo para verificar la existencia de un UserName en la base de datos
         //Recomendado para el apartado de registrar gerentes
-        public bool verificarGerente(String username)
+        public bool VerificarGerente(string username)
         {
             bool resultado = false;
             try
             {
-                MySqlCommand comando = new MySqlCommand($"SELECT * FROM gerente WHERE UserName = '{username}'", conexion.obtenerConexion());
+                MySqlCommand comando = new MySqlCommand($"SELECT * FROM gerente WHERE UserName = '{username}'", conexion.ObtenerConexion());
                 MySqlDataReader consulta = comando.ExecuteReader();
                 while (consulta.Read())
                 {
@@ -121,12 +117,12 @@ namespace Logica
 
         //Metodo para verificar la existencia del UserName y contraseña en la base de datos
         //Recomendado para el apartado de iniciar sesion
-        public bool verificarEntradaGerente(String username, String contra)
+        public bool VerificarEntradaGerente(string username, string contra)
         {
             bool resultado = false;
             try
             {
-                MySqlCommand comando = new MySqlCommand($"SELECT * FROM Gerente WHERE UserName = '{username}' AND Contraseña = '{contra}'", conexion.obtenerConexion());
+                MySqlCommand comando = new MySqlCommand($"SELECT * FROM Gerente WHERE UserName = '{username}' AND Contraseña = '{contra}'", conexion.ObtenerConexion());
                 MySqlDataReader consulta = comando.ExecuteReader();
                 while (consulta.Read())
                 {
@@ -145,13 +141,13 @@ namespace Logica
         }
 
         //Metodo para cargar los datos de la tabla gerente en una lista
-        public List<Gerente> listaGerentes()
+        public List<Gerente> ListaGerentes()
         {
             List<Gerente> listaGerente = new List<Gerente>();
 
             try
             {
-                MySqlCommand comando = new MySqlCommand($"SELECT * FROM gerente", conexion.obtenerConexion());
+                MySqlCommand comando = new MySqlCommand($"SELECT * FROM gerente", conexion.ObtenerConexion());
                 MySqlDataReader consulta = comando.ExecuteReader();
                 while (consulta.Read())
                 {

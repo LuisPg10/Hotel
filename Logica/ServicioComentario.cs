@@ -1,13 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MySqlX.XDevAPI;
-using System.Diagnostics.Contracts;
+﻿using System.Collections.Generic;
 using Entidades;
-using Datos;
-using MySql.Data.MySqlClient;
 
 namespace Logica
 {
@@ -22,23 +14,23 @@ namespace Logica
         }
 
         //Metodo para eliminar un comentario teniendo en cuenta el id
-        public void EliminarComentario(int id)
+        public void EliminarComentario(uint id)
         {
             datos.EliminarComentario(id);
         }
 
         //Metodo para consultar un comentario en la base de datos y si existe retorna un objetos de tipo comentario con sus datos
-        public Comentario consultarComentario(int id)
+        public Comentario ConsultarComentario(uint id)
         {
             
-            return datos.consultarComentario(id);
+            return datos.ConsultarComentario(id);
         }
 
         //Metodo para cargar los datos de la tabla comentario en una lista
-        public List<Comentario> listaComentarios()
+        public List<Comentario> ListaComentarios()
         {
             
-            return datos.listaComentarios();
+            return datos.ListaComentarios();
         }
 
     }

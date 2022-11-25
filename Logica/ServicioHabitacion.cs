@@ -1,12 +1,4 @@
-﻿using Datos;
-using MySql.Data.MySqlClient;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MySqlX.XDevAPI;
-using System.Diagnostics.Contracts;
+﻿using System.Collections.Generic;
 using Entidades;
 
 namespace Logica
@@ -22,28 +14,28 @@ namespace Logica
         }
 
         //Metodo para eliminar una habitacion teniendo en cuenta el id
-        public void EliminarHabitacion(int id)
+        public void EliminarHabitacion(uint id)
         {
             datos.EliminarHabitacion(id);
         }
 
         //Metodo para actualizar los datos de una habitacion teniendo en cuenta el id y los datos de un objeto de tipo Habitacion
-        public void ActualizarHabitacion(int id, Habitacion habitacion)
+        public void ActualizarHabitacion(uint id, Habitacion habitacion)
         {
             datos.ActualizarHabitacion(id,habitacion);
         }
 
         //Metodo para consultar una habitacion en la base de datos y si existe retorna un objetos de tipo Habitacion con sus datos
-        public Habitacion consultarHabitacion(int id)
+        public Habitacion ConsultarHabitacion(uint id)
         {
-            return datos.consultarHabitacion(id);
+            return datos.ConsultarHabitacion(id);
         }
 
         //Metodo para cargar los datos de la tabla habitacion en una lista
-        public List<Habitacion> listaHabitaciones()
+        public List<Habitacion> ListaHabitaciones()
         {
             
-            return datos.listaHabitaciones();
+            return datos.ListaHabitaciones();
         }
 
     }

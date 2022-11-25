@@ -64,7 +64,7 @@
 
             <Border Grid.Row="0" BorderBrush="#908E8E"
                     BorderThickness="0, 2, 0, 2">
-                <ScrollViewer Margin="0,0,10,0">
+                <ScrollViewer Margin="0,0,10,0" ScrollViewer.VerticalScrollBarVisibility="Auto">
                     <StackPanel>
                        
                     </StackPanel>

@@ -19,7 +19,7 @@ namespace Logica
         {
             try
             {
-                MySqlCommand comando = new MySqlCommand($"Insert into administrador values({0},'{user.Nombre}','{user.Correo}','{user.Username}','{user.Password}')", conexion.obtenerConexion());
+                MySqlCommand comando = new MySqlCommand($"Insert into administrador values({0},'{user.Nombre}','{user.Correo}','{user.Username}','{user.Password}')", conexion.ObtenerConexion());
                 comando.ExecuteNonQuery();
                 Console.WriteLine("Administrador Registrado!");
                 conexion.cerrarConexion();
@@ -31,11 +31,11 @@ namespace Logica
         }
 
         //Metodo para eliminar administradores teniendo en cuenta el id
-        public void EliminarAdministrador(int id)
+        public void EliminarAdministrador(uint id)
         {
             try
             {
-                MySqlCommand comando = new MySqlCommand($"DELETE FROM administrador WHERE IdAdministrador = {id}", conexion.obtenerConexion());
+                MySqlCommand comando = new MySqlCommand($"DELETE FROM administrador WHERE IdAdministrador = {id}", conexion.ObtenerConexion());
                 comando.ExecuteNonQuery();
                 Console.WriteLine("Administrador Eliminado!");
                 conexion.cerrarConexion();
@@ -47,11 +47,11 @@ namespace Logica
         }
 
         //Metodo para actualizar los datos de un administrador teniendo en cuenta el id y los datos de un objeto de tipo Administrador
-        public void ActualizarGerente(int id, Administrador user)
+        public void ActualizarGerente(uint id, Administrador user)
         {
             try
             {
-                MySqlCommand comando = new MySqlCommand($"UPDATE administrador SET Nombre = '{user.Nombre}', Correo = '{user.Correo}', UserName = '{user.Username}', Contraseña = '{user.Password}' WHERE IdAdministrador = {id}", conexion.obtenerConexion());
+                MySqlCommand comando = new MySqlCommand($"UPDATE administrador SET Nombre = '{user.Nombre}', Correo = '{user.Correo}', UserName = '{user.Username}', Contraseña = '{user.Password}' WHERE IdAdministrador = {id}", conexion.ObtenerConexion());
                 comando.ExecuteNonQuery();
                 Console.WriteLine("Datos actualizados!");
                 conexion.cerrarConexion();
@@ -63,12 +63,12 @@ namespace Logica
         }
 
         //Metodo para consultar un administrador en la base de datos y si existe retorna un objeto de tipo Administrador con sus datos
-        public Administrador consultarAdministrador(int id)
+        public Administrador consultarAdministrador(uint id)
         {
             Administrador user = new Administrador();
             try
             {
-                MySqlCommand comando = new MySqlCommand($"SELECT * FROM administrador WHERE IdAdministrador = '{id}'", conexion.obtenerConexion());
+                MySqlCommand comando = new MySqlCommand($"SELECT * FROM administrador WHERE IdAdministrador = '{id}'", conexion.ObtenerConexion());
                 MySqlDataReader consulta = comando.ExecuteReader();
                 while (consulta.Read())
                 {
@@ -97,12 +97,12 @@ namespace Logica
 
         //Metodo para verificar la existencia de un UserName en la base de datos
         //Recomendado para el apartado de registrar administradores
-        public bool verificarAdministrador(String username)
+        public bool verificarAdministrador(string username)
         {
             bool resultado = false;
             try
             {
-                MySqlCommand comando = new MySqlCommand($"SELECT * FROM administrador WHERE UserName = '{username}'", conexion.obtenerConexion());
+                MySqlCommand comando = new MySqlCommand($"SELECT * FROM administrador WHERE UserName = '{username}'", conexion.ObtenerConexion());
                 MySqlDataReader consulta = comando.ExecuteReader();
                 while (consulta.Read())
                 {
@@ -122,12 +122,12 @@ namespace Logica
 
         //Metodo para verificar la existencia del UserName y contraseña en la base de datos
         //Recomendado para el apartado de iniciar sesion
-        public bool verificarEntradaAdministrador(String username, String contra)
+        public bool verificarEntradaAdministrador(string username, string contra)
         {
             bool resultado = false;
             try
             {
-                MySqlCommand comando = new MySqlCommand($"SELECT * FROM administrador WHERE UserName = '{username}' AND Contraseña = '{contra}'", conexion.obtenerConexion());
+                MySqlCommand comando = new MySqlCommand($"SELECT * FROM administrador WHERE UserName = '{username}' AND Contraseña = '{contra}'", conexion.ObtenerConexion());
                 MySqlDataReader consulta = comando.ExecuteReader();
                 while (consulta.Read())
                 {
@@ -146,13 +146,13 @@ namespace Logica
         }
 
         //Metodo para cargar los datos de la tabla administrador en una lista
-        public List<Administrador> listaAdministradores()
+        public List<Administrador> ListaAdministradores()
         {
             List<Administrador> listaAdministrador = new List<Administrador>();
 
             try
             {
-                MySqlCommand comando = new MySqlCommand($"SELECT * FROM administrador", conexion.obtenerConexion());
+                MySqlCommand comando = new MySqlCommand($"SELECT * FROM administrador", conexion.ObtenerConexion());
                 MySqlDataReader consulta = comando.ExecuteReader();
                 while (consulta.Read())
                 {

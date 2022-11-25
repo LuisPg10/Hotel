@@ -1,11 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MySql.Data.MySqlClient;
-using MySqlX.XDevAPI;
-using Datos;
 using Entidades;
 
 namespace Logica
@@ -21,42 +15,41 @@ namespace Logica
         }
 
         //Metodo para eliminar gerentes teniendo en cuenta el id
-        public void EliminarGerente(int id)
+        public void EliminarGerente(uint id)
         {
             datos.EliminarGerente(id);
         }
 
         //Metodo para actualizar los datos de un gerente teniendo en cuenta el id y los datos de un objeto de tipo Gerente
-        public void ActualizarGerente(int id, Gerente user)
+        public void ActualizarGerente(uint id, Gerente user)
         {
             datos.ActualizarGerente(id,user);
         }
 
         //Metodo para consultar un gerente en la base de datos y si existe retorna un objeto de tipo Gerente con sus datos
-        public Gerente consultarGerente(int id)
+        public Gerente ConsultarGerente(uint id)
         {
-            return datos.consultarGerente(id);
+            return datos.ConsultarGerente(id);
         }
 
         //Metodo para verificar la existencia de un UserName en la base de datos
         //Recomendado para el apartado de registrar gerentes
-        public bool verificarGerente(String username)
+        public bool VerificarGerente(string username)
         {
-            
-            return datos.verificarGerente(username);
+            return datos.VerificarGerente(username);
         }
 
         //Metodo para verificar la existencia del UserName y contraseña en la base de datos
         //Recomendado para el apartado de iniciar sesion
-        public bool verificarEntradaGerente(String username, String contra)
+        public bool VerificarEntradaGerente(string username, string contra)
         {
-            return datos.verificarEntradaGerente(username,contra);
+            return datos.VerificarEntradaGerente(username,contra);
         }
 
         //Metodo para cargar los datos de la tabla gerente en una lista
-        public List<Gerente> listaGerentes()
+        public List<Gerente> ListaGerentes()
         {
-            return datos.listaGerentes();
+            return datos.ListaGerentes();
         }
     }
 }
