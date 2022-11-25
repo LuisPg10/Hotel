@@ -117,12 +117,12 @@ namespace Logica
 
         //Metodo para verificar la existencia de un correo en la base de datos
         //Recomendado para el apartado de registrar usuarios
-        public bool verificarCorreo(String correo)
+        public bool verificarCorreo(string correo)
         {
             bool resultado = false;
             try
             {
-                MySqlCommand comando = new MySqlCommand($"SELECT * FROM usuario WHERE Correo = '{correo}'", conexion.obtenerConexion());
+                MySqlCommand comando = new MySqlCommand($"SELECT * FROM usuario WHERE Correo = '{correo}'", conexion.ObtenerConexion());
                 MySqlDataReader consulta = comando.ExecuteReader();
                 while (consulta.Read())
                 {

@@ -40,7 +40,7 @@ namespace Logica
 
         //Metodo para verificar la existencia de un correo en la base de datos
         //Recomendado para el apartado de registrar usuarios
-        public bool verificarCorreo(String correo)
+        public bool verificarCorreo(string correo)
         {
             return datos.verificarCorreo(correo);
         }
