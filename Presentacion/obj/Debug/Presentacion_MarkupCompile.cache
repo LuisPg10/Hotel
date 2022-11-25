@@ -9,12 +9,19 @@ Presentacion
 none
 false
 DEBUG;TRACE
+<<<<<<< HEAD
 C:\Users\LENOVO\Hotel\Presentacion\App.xaml
 4-1412428953
 
 11-296775647
+=======
+C:\Users\dapin\OneDrive\Documentos\Materias semestre\Programación\Hotel\Presentacion\App.xaml
+6-1045517736
+
+14676638258
+>>>>>>> 998e0004e7341cf63ca8378e5d539990619ee11e
 13-38814620
-Estilos\Colores.xaml;Estilos\EstiloBotones.xaml;Login.xaml;MainWindow.xaml;
+Estilos\Colores.xaml;Estilos\EstiloBotones.xaml;Login.xaml;MainWindow.xaml;PWindow.xaml;Register.xaml;
 
 True
 

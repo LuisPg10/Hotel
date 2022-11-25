@@ -1,13 +1,13 @@
-﻿using System.Security;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Input;
 
 namespace Presentacion.ViewModels
 {
     public class LoginViewModel : ViewModelBase
     {
-        private string _userName;
-        private SecureString _password;
+        MainViewModel _mainViewModel;
+        private string _userName = "Usuario";
+        private string _password = "Contraseña";
 
         //Propiedades
         public string UserName { 
@@ -21,7 +21,7 @@ namespace Presentacion.ViewModels
                 OnPropertyChange(nameof(UserName));
             }  
         }
-        public SecureString Password { 
+        public string Password { 
             get
             {
                 return _password;
@@ -32,27 +32,41 @@ namespace Presentacion.ViewModels
                 OnPropertyChange(nameof(Password));
             } 
         }
-        //Comandos
-        public ICommand LoginCommand { get; }
+
+        //Commands
         public ICommand ShowRegisterCommand { get; }
+        public ICommand ShowPersonViewModel { get; }
 
         //Constructor
-        public LoginViewModel()
+        public LoginViewModel(MainViewModel mainViewModel)
         {
-            LoginCommand = new ViewModelCommand(ExecuteLoginCommand, CanExecuteLoginCommand);
+            _mainViewModel = mainViewModel;
+
+            //Commands instance
+            ShowRegisterCommand = new RelayCommand(ExeCuteRegisterCommand);
+            ShowPersonViewModel = new RelayCommand(ExecutePersonViewCommand, CanExecutePersonViewCommand);
+        }
+        public LoginViewModel(){}
+
+        private void ExeCuteRegisterCommand(object obj)
+        {
+            RegisterViewModel registerViewModel = new RegisterViewModel(_mainViewModel);
+            Register register = new Register();
+            register.DataContext = registerViewModel;
+            _mainViewModel.SetNewContent(register);
         }
 
-        private bool CanExecuteLoginCommand(object obj)
+        private void ExecutePersonViewCommand(object obj)
         {
-            if (string.IsNullOrEmpty(UserName) || Password == null)
-            {
-                return false;
-            }
-            return true;
+            PersonViewModel personViewModel = new PersonViewModel(_mainViewModel, UserName);
+            PWindow user = new PWindow();
+            user.DataContext = personViewModel;
+            _mainViewModel.SetNewContent(user);
         }
-        private void ExecuteLoginCommand(object obj)
+
+        private bool CanExecutePersonViewCommand(object obj)
         {
-            MessageBox.Show("Hola");
+            return true;
         }
     }
 }
