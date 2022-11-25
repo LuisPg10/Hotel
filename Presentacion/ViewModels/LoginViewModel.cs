@@ -6,8 +6,8 @@ namespace Presentacion.ViewModels
     public class LoginViewModel : ViewModelBase
     {
         MainViewModel _mainViewModel;
-        private string _userName;
-        private string _password;
+        private string _userName = "Usuario";
+        private string _password = "Contraseña";
 
         //Propiedades
         public string UserName { 
@@ -44,8 +44,9 @@ namespace Presentacion.ViewModels
 
             //Commands instance
             ShowRegisterCommand = new RelayCommand(ExeCuteRegisterCommand);
-            ShowPersonViewModel = new RelayCommand(ExecutePersonViewCommand);
+            ShowPersonViewModel = new RelayCommand(ExecutePersonViewCommand, CanExecutePersonViewCommand);
         }
+        public LoginViewModel(){}
 
         private void ExeCuteRegisterCommand(object obj)
         {
@@ -57,7 +58,15 @@ namespace Presentacion.ViewModels
 
         private void ExecutePersonViewCommand(object obj)
         {
+            PersonViewModel personViewModel = new PersonViewModel(_mainViewModel, UserName);
+            PWindow user = new PWindow();
+            user.DataContext = personViewModel;
+            _mainViewModel.SetNewContent(user);
+        }
 
+        private bool CanExecutePersonViewCommand(object obj)
+        {
+            return true;
         }
     }
 }

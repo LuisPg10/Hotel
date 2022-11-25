@@ -16,13 +16,13 @@ namespace Presentacion
         {
             InitializeComponent();
 
-            MainViewModel _mainViewModel = new MainViewModel();
-            LoginViewModel loginViewModel = new LoginViewModel(_mainViewModel);
+            MainViewModel mainViewModel = new MainViewModel();
+            LoginViewModel loginViewModel = new LoginViewModel(mainViewModel);
             Login login = new Login();
             login.DataContext = loginViewModel;
 
-            _mainViewModel.CurrentChildView = login;
-            DataContext = _mainViewModel;
+            mainViewModel.CurrentChildView = login;
+            DataContext = mainViewModel;
         }
 
         [DllImport("user32.dll")]

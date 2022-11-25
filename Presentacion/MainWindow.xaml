@@ -8,9 +8,7 @@
         mc:Ignorable="d"
         Height="629" 
         WindowStartupLocation="CenterScreen" 
-        WindowStyle="None" 
-        Background="Transparent"
-        AllowsTransparency="True" Width="919" Title="Hotel">
+        Background="Transparent" Width="1243" Title="Hotel" WindowStyle="None" AllowsTransparency="True">
 
     <Window.Resources>
         <DataTemplate DataType="{x:Type viewModel:LoginViewModel}">
@@ -27,7 +25,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        
+
         <!--Columna principal-->
         <Border Background="#FFFFFF" Grid.Column="0">
             <Grid>
