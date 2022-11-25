@@ -119,6 +119,31 @@ namespace Logica
             return resultado;
         }
 
+        //Metodo para verificar la existencia de un correo en la base de datos
+        //Recomendado para el apartado de registrar usuarios
+        public bool verificarCorreo(String correo)
+        {
+            bool resultado = false;
+            try
+            {
+                MySqlCommand comando = new MySqlCommand($"SELECT * FROM usuario WHERE Correo = '{correo}'", conexion.obtenerConexion());
+                MySqlDataReader consulta = comando.ExecuteReader();
+                while (consulta.Read())
+                {
+                    if (consulta.GetString(2).Equals(correo))
+                    {
+                        resultado = true;
+                    }
+                }
+                conexion.cerrarConexion();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al verificar el correo");
+            }
+            return resultado;
+        }
+
         //Metodo para verificar la existencia del UserName y contraseña en la base de datos
         //Recomendado para el apartado de iniciar sesion
         public bool verificarEntradaUsuario(String username,String contra)
