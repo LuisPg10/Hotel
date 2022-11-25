@@ -59,7 +59,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Estilos\EstiloBotones.xaml">
+    <Page Include="Estilos\EstiloControles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -137,6 +137,16 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Imagenes\twitter.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Entidades\Entidades.csproj">
+      <Project>{d7844f3f-3ebd-4149-b1c5-a582e9d37481}</Project>
+      <Name>Entidades</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Logica\Logica.csproj">
+      <Project>{c0f08bf5-6064-4515-a416-a82c26450b1a}</Project>
+      <Name>Logica</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
