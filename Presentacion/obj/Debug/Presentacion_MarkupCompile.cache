@@ -4,17 +4,26 @@
 winexe
 C#
 .cs
-C:\Users\LENOVO\Hotel\Presentacion\obj\Debug\
+C:\Users\dapin\OneDrive\Documentos\Materias semestre\Programación\Hotel\Presentacion\obj\Debug\
 Presentacion
 none
 false
 DEBUG;TRACE
+<<<<<<< HEAD
 C:\Users\LENOVO\Hotel\Presentacion\App.xaml
 6-1045517736
 
 15-1696550917
 13-38814620
 Estilos\Colores.xaml;Estilos\EstiloBotones.xaml;Login.xaml;MainWindow.xaml;PWindow.xaml;Register.xaml;
+=======
+C:\Users\dapin\OneDrive\Documentos\Materias semestre\Programación\Hotel\Presentacion\App.xaml
+6511205231
 
-True
+14676638258
+151021465358
+Estilos\Colores.xaml;Estilos\EstiloControles.xaml;Login.xaml;MainWindow.xaml;PWindow.xaml;Register.xaml;
+>>>>>>> 1606a6ffaff9be7159d3c007c74cb9ce0f254175
+
+False
 
