@@ -42,7 +42,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IServicio.cs" />
     <Compile Include="ServicioAdministrador.cs" />
     <Compile Include="ServicioComentario.cs" />
     <Compile Include="ServicioGerente.cs" />
