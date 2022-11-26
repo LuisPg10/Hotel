@@ -50,7 +50,6 @@ namespace Logica
         //Recomendado para el apartado de iniciar sesion
         public bool VerificarEntradaUsuario(string username,string contra)
         {
-            
             return datos.VerificarEntradaUsuario(username,contra);
         }
 
@@ -60,5 +59,9 @@ namespace Logica
             return datos.ListaUsuarios();
         }
 
+        public bool VerificareEntrada()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
