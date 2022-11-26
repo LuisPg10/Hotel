@@ -1,4 +1,5 @@
-﻿using Logica;
+﻿using Entidades;
+using Logica;
 using System.Windows.Input;
 
 namespace Presentacion.ViewModels
@@ -7,10 +8,10 @@ namespace Presentacion.ViewModels
     {
         MainViewModel _mainViewModel;
         ServicioUsuario _servicioUsuario;
-        MessageBox mensaje;
 
         private string _userName = "Usuario";
         private string _password = "Contraseña";
+        private string _errorMessage;
 
         //Propiedades
         public string UserName { 
@@ -35,7 +36,18 @@ namespace Presentacion.ViewModels
                 OnPropertyChange(nameof(Password));
             } 
         }
-
+        public string ErrorMessage
+        {
+            get
+            {
+                return _errorMessage;
+            }
+            set
+            {
+                _errorMessage = value;
+                OnPropertyChange(nameof(ErrorMessage));
+            }
+        }
         //Commands
         public ICommand ShowRegisterCommand { get; }
         public ICommand ShowPersonViewModel { get; }
@@ -59,24 +71,25 @@ namespace Presentacion.ViewModels
             register.DataContext = registerViewModel;
             _mainViewModel.SetNewContent(register);
         }
-
         private void ExecutePersonViewCommand(object obj)
         {
 
             if ((_userName.Equals("Usuario") || _password.Equals("Contraseña")) ||
                 string.IsNullOrEmpty(_userName) || string.IsNullOrEmpty(_password))
             {
-                mensaje = new MessageBox("Campos vacíos, rellene los campos necesarios");
-                mensaje.ShowDialog();
+                ErrorMessage = "Campos vacíos, rellene los campos necesarios";
             }
             else if (!_servicioUsuario.VerificarEntradaUsuario(_userName, _password))
             {
-                mensaje = new MessageBox("UserName o contraseña incorrecta");
-                mensaje.ShowDialog();
+                ErrorMessage = "Usuario o contraseña incorrecta";
             }
             else
             {
-                PersonViewModel personViewModel = new PersonViewModel(_mainViewModel, UserName);
+                ErrorMessage = string.Empty;
+                PersonViewModel personViewModel;
+                Usuario usuario = _servicioUsuario.ConsultarUsuario(UserName);
+
+                personViewModel = new PersonViewModel(_mainViewModel, usuario.Nombre);
                 PWindow user = new PWindow();
                 user.DataContext = personViewModel;
                 _mainViewModel.SetNewContent(user);

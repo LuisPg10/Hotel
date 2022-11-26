@@ -24,5 +24,9 @@ namespace Presentacion
             if (e.LeftButton == System.Windows.Input.MouseButtonState.Pressed)
                 DragMove();
         }
+        public void Text (string label)
+        {
+            message.Content = label;
+        }
     }
 }

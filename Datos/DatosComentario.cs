@@ -1,15 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MySqlX.XDevAPI;
-using System.Diagnostics.Contracts;
 using Entidades;
-using Datos;
 using MySql.Data.MySqlClient;
 
-namespace Logica
+namespace Datos
 {
     public class DatosComentario
     {
@@ -20,12 +14,12 @@ namespace Logica
         {
             try
             {
-                MySqlCommand comando = new MySqlCommand($"INSERT INTO comentario VALUES({0},{comentario.Usuario.Id},{comentario.Habitacion.Id},'{comentario.Comentarios}')", conexion.ObtenerConexion());
+                MySqlCommand comando = new MySqlCommand($"INSERT INTO comentarios VALUES({0},{comentario.Usuario.Id},{comentario.Habitacion.Id},'{comentario.Comentarios}')", conexion.ObtenerConexion());
                 comando.ExecuteNonQuery();
                 Console.WriteLine("Comentario Registrado!");
                 conexion.cerrarConexion();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 Console.WriteLine("Error al agregar los datos");
             }
@@ -36,12 +30,12 @@ namespace Logica
         {
             try
             {
-                MySqlCommand comando = new MySqlCommand($"DELETE FROM comentario WHERE IdComentario = {id}", conexion.ObtenerConexion());
+                MySqlCommand comando = new MySqlCommand($"DELETE FROM comentarios WHERE IdComentario = {id}", conexion.ObtenerConexion());
                 comando.ExecuteNonQuery();
                 Console.WriteLine("Comentario Eliminado!");
                 conexion.cerrarConexion();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 Console.WriteLine("Error al eliminar el comentario");
             }
@@ -53,14 +47,14 @@ namespace Logica
             Comentario comentario = new Comentario();
             try
             {
-                MySqlCommand comando = new MySqlCommand($"SELECT * FROM comentario WHERE IdComentario = {id}", conexion.ObtenerConexion());
+                MySqlCommand comando = new MySqlCommand($"SELECT * FROM comentarios WHERE IdComentario = {id}", conexion.ObtenerConexion());
                 MySqlDataReader consulta = comando.ExecuteReader();
                 while (consulta.Read())
                 {
                     if (consulta.GetUInt32(0) == id)
                     {
                         comentario.Id = consulta.GetUInt32(0);
-                        comentario.Usuario = new DatosUsuario().ConsultarUsuario(consulta.GetUInt32(1));
+                        comentario.Usuario = new DatosUsuario().ConsultarUsuario(consulta.GetString(3));
                         comentario.Habitacion = new DatosHabitacion().ConsultarHabitacion(consulta.GetUInt32(1));
                         comentario.Comentarios = consulta.GetString(3);
                     }
@@ -71,7 +65,7 @@ namespace Logica
                 }
                 conexion.cerrarConexion();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 Console.WriteLine("Error al consultar el comentario");
             }
@@ -84,21 +78,20 @@ namespace Logica
             List<Comentario> listaComentario = new List<Comentario>();
             try
             {
-                MySqlCommand comando = new MySqlCommand($"SELECT * FROM comentario", conexion.ObtenerConexion());
+                MySqlCommand comando = new MySqlCommand($"SELECT * FROM comentarios", conexion.ObtenerConexion());
                 MySqlDataReader consulta = comando.ExecuteReader();
                 while (consulta.Read())
                 {
                     Comentario comentario = new Comentario();
                     comentario.Id = consulta.GetUInt32(0);
-                    comentario.Usuario = new DatosUsuario().ConsultarUsuario(consulta.GetUInt32(1));
+                    comentario.Usuario = new DatosUsuario().ConsultarUsuario(consulta.GetString(3));
                     comentario.Habitacion = new DatosHabitacion().ConsultarHabitacion(consulta.GetUInt32(1));
                     comentario.Comentarios = consulta.GetString(3);
                     listaComentario.Add(comentario);
-
                 }
                 conexion.cerrarConexion();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 Console.WriteLine("Error al consultar el comentario");
             }

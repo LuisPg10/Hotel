@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using MySql.Data.MySqlClient;
-using Datos;
 using Entidades;
 
-namespace Logica
+namespace Datos
 {
     public class DatosGerente
     {
@@ -15,12 +14,12 @@ namespace Logica
         {
             try
             {
-                MySqlCommand comando = new MySqlCommand($"Insert into gerente values({0},'{user.Nombre}','{user.Correo}','{user.Username}','{user.Password}')", conexion.ObtenerConexion());
+                MySqlCommand comando = new MySqlCommand($"Insert into gerentes values({0},'{user.Username}','{user.Password}')", conexion.ObtenerConexion());
                 comando.ExecuteNonQuery();
                 Console.WriteLine("Gerente Registrado!");
                 conexion.cerrarConexion();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 Console.WriteLine("Error al agregar los datos");
             }
@@ -31,12 +30,12 @@ namespace Logica
         {
             try
             {
-                MySqlCommand comando = new MySqlCommand($"DELETE FROM gerente WHERE IdGerente = {id}", conexion.ObtenerConexion());
+                MySqlCommand comando = new MySqlCommand($"DELETE FROM gerentes WHERE IdGerente = {id}", conexion.ObtenerConexion());
                 comando.ExecuteNonQuery();
                 Console.WriteLine("Gerente Eliminado!");
                 conexion.cerrarConexion();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 Console.WriteLine("Error al eliminar el gerente");
             }
@@ -47,12 +46,12 @@ namespace Logica
         {
             try
             {
-                MySqlCommand comando = new MySqlCommand($"UPDATE gerente SET Nombre = '{user.Nombre}', Correo = '{user.Correo}', UserName = '{user.Username}', Contraseña = '{user.Password}' WHERE IdGerente = {id}", conexion.ObtenerConexion());
+                MySqlCommand comando = new MySqlCommand($"UPDATE gerentes SET UserName = '{user.Username}', Pssword = '{user.Password}' WHERE IdGerente = {id}", conexion.ObtenerConexion());
                 comando.ExecuteNonQuery();
                 Console.WriteLine("Datos actualizados!");
                 conexion.cerrarConexion();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 Console.WriteLine("Error al actualizar los datos");
             }
@@ -64,17 +63,15 @@ namespace Logica
             Gerente user = new Gerente();
             try
             {
-                MySqlCommand comando = new MySqlCommand($"SELECT * FROM gerente WHERE IdGerente = '{id}'", conexion.ObtenerConexion());
+                MySqlCommand comando = new MySqlCommand($"SELECT * FROM gerentes WHERE IdGerente = '{id}'", conexion.ObtenerConexion());
                 MySqlDataReader consulta = comando.ExecuteReader();
                 while (consulta.Read())
                 {
                     if (consulta.GetUInt32(0) == id)
                     {
                         user.Id = consulta.GetUInt32(0);
-                        user.Nombre = consulta.GetString(1);
-                        user.Correo = consulta.GetString(2);
-                        user.Username = consulta.GetString(3);
-                        user.Password = consulta.GetString(4);
+                        user.Username = consulta.GetString(1);
+                        user.Password = consulta.GetString(2);
                     }
                     else
                     {
@@ -83,7 +80,7 @@ namespace Logica
                 }
                 conexion.cerrarConexion();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 Console.WriteLine("Error al consultar el Gerente");
             }
@@ -97,20 +94,20 @@ namespace Logica
             bool resultado = false;
             try
             {
-                MySqlCommand comando = new MySqlCommand($"SELECT * FROM gerente WHERE UserName = '{username}'", conexion.ObtenerConexion());
+                MySqlCommand comando = new MySqlCommand($"SELECT * FROM gerentes WHERE UserName = '{username}'", conexion.ObtenerConexion());
                 MySqlDataReader consulta = comando.ExecuteReader();
                 while (consulta.Read())
                 {
-                    if (consulta.GetString(3).Equals(username))
+                    if (consulta.GetString(1).Equals(username))
                     {
                         resultado = true;
                     }
                 }
                 conexion.cerrarConexion();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine("Error al consultar el usuario");
+                Console.WriteLine("Error al consultar el Usuario");
             }
             return resultado;
         }
@@ -122,20 +119,20 @@ namespace Logica
             bool resultado = false;
             try
             {
-                MySqlCommand comando = new MySqlCommand($"SELECT * FROM Gerente WHERE UserName = '{username}' AND Contraseña = '{contra}'", conexion.ObtenerConexion());
+                MySqlCommand comando = new MySqlCommand($"SELECT * FROM Gerentes WHERE UserName = '{username}' AND Pssword = '{contra}'", conexion.ObtenerConexion());
                 MySqlDataReader consulta = comando.ExecuteReader();
                 while (consulta.Read())
                 {
-                    if (consulta.GetString(3).Equals(username) && consulta.GetString(4).Equals(contra))
+                    if (consulta.GetString(1).Equals(username) && consulta.GetString(2).Equals(contra))
                     {
                         resultado = true;
                     }
                 }
                 conexion.cerrarConexion();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine("Error al consultar el usuario");
+                Console.WriteLine("Error al consultar el Usuario");
             }
             return resultado;
         }
@@ -147,21 +144,19 @@ namespace Logica
 
             try
             {
-                MySqlCommand comando = new MySqlCommand($"SELECT * FROM gerente", conexion.ObtenerConexion());
+                MySqlCommand comando = new MySqlCommand($"SELECT * FROM gerentes", conexion.ObtenerConexion());
                 MySqlDataReader consulta = comando.ExecuteReader();
                 while (consulta.Read())
                 {
                     Gerente user = new Gerente();
                     user.Id = consulta.GetUInt32(0);
-                    user.Nombre = consulta.GetString(1);
-                    user.Correo = consulta.GetString(2);
-                    user.Username = consulta.GetString(3);
-                    user.Password = consulta.GetString(4);
+                    user.Username = consulta.GetString(1);
+                    user.Password = consulta.GetString(2);
                     listaGerente.Add(user);
                 }
                 conexion.cerrarConexion();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 Console.WriteLine("Error al consultar el gerente");
             }

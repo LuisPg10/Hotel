@@ -1,15 +1,9 @@
-﻿using Datos;
-using MySql.Data.MySqlClient;
+﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MySqlX.XDevAPI;
-using System.Diagnostics.Contracts;
 using Entidades;
 
-namespace Logica
+namespace Datos
 {
     public class DatosHabitacion
     {
@@ -20,12 +14,12 @@ namespace Logica
         {
             try
             {
-                MySqlCommand comando = new MySqlCommand($"INSERT INTO habitacion VALUES({0},{habitacion.NumHabitacion},'{habitacion.TipoHabitacion}',{habitacion.Precio})", conexion.ObtenerConexion());
+                MySqlCommand comando = new MySqlCommand($"INSERT INTO habitaciones VALUES({habitacion.Id},{habitacion.NumHabitacion},'{habitacion.TipoHabitacion}',{habitacion.Precio},{habitacion.Usuario.Id})", conexion.ObtenerConexion());
                 comando.ExecuteNonQuery();
                 Console.WriteLine("Habitacion Registrada!");
                 conexion.cerrarConexion();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 Console.WriteLine("Error al agregar los datos");
             }
@@ -36,12 +30,12 @@ namespace Logica
         {
             try
             {
-                MySqlCommand comando = new MySqlCommand($"DELETE FROM habitacion WHERE IdHabitacion = {id}", conexion.ObtenerConexion());
+                MySqlCommand comando = new MySqlCommand($"DELETE FROM habitaciones WHERE IdHabitacion = {id}", conexion.ObtenerConexion());
                 comando.ExecuteNonQuery();
                 Console.WriteLine("Habitacion Eliminada!");
                 conexion.cerrarConexion();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 Console.WriteLine("Error al eliminar la habitacion");
             }
@@ -52,12 +46,12 @@ namespace Logica
         {
             try
             {
-                MySqlCommand comando = new MySqlCommand($"UPDATE habitacion SET NunHabitacion = '{habitacion.NumHabitacion}', TipoHabitacion = '{habitacion.TipoHabitacion}', Precio = '{habitacion.Precio}' WHERE IdHabitacion = {id}", conexion.ObtenerConexion());
+                MySqlCommand comando = new MySqlCommand($"UPDATE habitaciones SET NumHabitacion = '{habitacion.NumHabitacion}', TipoHabitacion = '{habitacion.TipoHabitacion}', Precio = '{habitacion.Precio}', IdUsuario = '{habitacion.Usuario.Id}' WHERE IdHabitacion = {id}", conexion.ObtenerConexion());
                 comando.ExecuteNonQuery();
                 Console.WriteLine("Datos actualizados!");
                 conexion.cerrarConexion();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 Console.WriteLine("Error al actualizar los datos");
             }
@@ -69,7 +63,7 @@ namespace Logica
             Habitacion habitacion = new Habitacion();
             try
             {
-                MySqlCommand comando = new MySqlCommand($"SELECT * FROM habitacion WHERE IdHabitacion = {id}", conexion.ObtenerConexion());
+                MySqlCommand comando = new MySqlCommand($"SELECT * FROM habitaciones WHERE IdHabitacion = {id}", conexion.ObtenerConexion());
                 MySqlDataReader consulta = comando.ExecuteReader();
                 while (consulta.Read())
                 {
@@ -88,7 +82,7 @@ namespace Logica
                 }
                 conexion.cerrarConexion();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 Console.WriteLine("Error al consultar la habitacion");
             }
@@ -101,7 +95,7 @@ namespace Logica
             List<Habitacion> listahabitacion = new List<Habitacion>();
             try
             {
-                MySqlCommand comando = new MySqlCommand($"SELECT * FROM habitacion", conexion.ObtenerConexion());
+                MySqlCommand comando = new MySqlCommand($"SELECT * FROM habitaciones", conexion.ObtenerConexion());
                 MySqlDataReader consulta = comando.ExecuteReader();
                 while (consulta.Read())
                 {
@@ -115,7 +109,7 @@ namespace Logica
                 }
                 conexion.cerrarConexion();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 Console.WriteLine("Error al consultar la habitacion");
             }

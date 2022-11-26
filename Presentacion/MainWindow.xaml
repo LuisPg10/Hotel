@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Height="629" 
         WindowStartupLocation="CenterScreen" 
-        Background="Transparent" Width="1243" Title="Hotel" WindowStyle="None" AllowsTransparency="True">
+        Background="Transparent" Width="700" Title="Hotel" WindowStyle="None" AllowsTransparency="True">
 
     <Window.Resources>
         <DataTemplate DataType="{x:Type viewModel:LoginViewModel}">

@@ -1,5 +1,6 @@
 ﻿using Entidades;
 using System.Collections.Generic;
+using Datos;
 
 namespace Logica
 {
@@ -19,16 +20,16 @@ namespace Logica
             datos.EliminarUsuario(id);
         }
 
-        //Metodo para actualizar los datos de un usuario teniendo en cuenta el id y los datos de un objeto de tipo Usuario
+        //Metodo para actualizar los datos de un Usuario teniendo en cuenta el id y los datos de un objeto de tipo Usuario
         public void ActualizarUsuario(uint id, Usuario user)
         {
             datos.ActualizarUsuario(id,user);
         }
 
-        //Metodo para consultar un usuario en la base de datos y si existe retorna un objeto de tipo Usuario con sus datos
-        public Usuario ConsultarUsuario(uint id)
+        //Metodo para consultar un Usuario en la base de datos y si existe retorna un objeto de tipo Usuario con sus datos
+        public Usuario ConsultarUsuario(string username)
         {
-            return datos.ConsultarUsuario(id);
+            return datos.ConsultarUsuario(username);
         }
 
         //Metodo para verificar la existencia de un UserName en la base de datos
@@ -42,7 +43,7 @@ namespace Logica
         //Recomendado para el apartado de registrar usuarios
         public bool verificarCorreo(string correo)
         {
-            return datos.verificarCorreo(correo);
+            return datos.VerificarCorreo(correo);
         }
 
         //Metodo para verificar la existencia del UserName y contraseña en la base de datos
@@ -53,7 +54,7 @@ namespace Logica
             return datos.VerificarEntradaUsuario(username,contra);
         }
 
-        //Metodo para cargar los datos de la tabla usuario en una lista
+        //Metodo para cargar los datos de la tabla Usuario en una lista
         public List<Usuario> ListaUsuarios()
         {
             return datos.ListaUsuarios();

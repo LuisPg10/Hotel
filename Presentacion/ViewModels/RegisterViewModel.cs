@@ -6,14 +6,15 @@ namespace Presentacion.ViewModels
 {
     public class RegisterViewModel: ViewModelBase
     {
-        uint cont = 0;
         MainViewModel _mainViewModel;
         ServicioUsuario _servicioUsuario;
         MessageBox mensaje;
 
         private string _correo = "Correo";
-        private string _userName = "Nombre de usuario";
+        private string _nombre = "Nombre";
+        private string _userName = "Usuario";
         private string _password = "Contraseña";
+        private string _errorMessage;
 
         public string Correo
         {
@@ -27,7 +28,18 @@ namespace Presentacion.ViewModels
                 OnPropertyChange(nameof(Correo));
             }
         }
-
+        public string Nombre
+        {
+            get
+            {
+                return _nombre;
+            }
+            set
+            {
+                _nombre = value;
+                OnPropertyChange(nameof(Nombre));
+            }
+        }
         public string UserName
         {
             get
@@ -40,7 +52,6 @@ namespace Presentacion.ViewModels
                 OnPropertyChange(nameof(UserName));
             }
         }
-
         public string Password
         {
             get
@@ -53,9 +64,22 @@ namespace Presentacion.ViewModels
                 OnPropertyChange(nameof(Password));
             }
         }
+        public string ErrorMessage
+        {
+            get
+            {
+                return _errorMessage;
+            }
+            set
+            {
+                _errorMessage = value;
+                OnPropertyChange(nameof(ErrorMessage));
+            }
+        }
 
         public ICommand ShowLoginCommand { get; }
         public ICommand ShowSuccessFullCommand { get; }
+
         public RegisterViewModel(MainViewModel mainViewModel)
         {
             _servicioUsuario = new ServicioUsuario();
@@ -65,7 +89,6 @@ namespace Presentacion.ViewModels
             ShowSuccessFullCommand = new RelayCommand(ExeCuteShowSuccessFullCommand);
         }
         public RegisterViewModel(){}
-
         private void ExecuteShowLoginCommand(object obj)
         {
             LoginViewModel loginViewModel = new LoginViewModel(_mainViewModel);
@@ -73,26 +96,29 @@ namespace Presentacion.ViewModels
             login.DataContext = loginViewModel;
             _mainViewModel.SetNewContent(login);
         }
-
         private void ExeCuteShowSuccessFullCommand(object obj)
         {
-            if ((_userName.Equals("Usuario") || _password.Equals("Contraseña")) || _correo.Equals("Correo")
-                || string.IsNullOrEmpty(_userName) || string.IsNullOrEmpty(_password) || string.IsNullOrEmpty(_correo))
+            if ((_userName.Equals("Usuario") || _password.Equals("Contraseña")) || _correo.Equals("Correo") ||
+                _nombre.Equals("Nombre") || string.IsNullOrEmpty(_userName) || 
+                string.IsNullOrEmpty(_password) || string.IsNullOrEmpty(_correo))
             {
-                mensaje = new MessageBox("Campos vacíos, rellene los campos necesarios");
+                ErrorMessage = "Campos vacíos, rellene los campos necesarios";
             }
-            else if (_servicioUsuario.VerificarUsuario(_userName))
+            else if (_servicioUsuario.VerificarUsuario(_userName) || _servicioUsuario.verificarCorreo(_correo))
             {
-                mensaje = new MessageBox("Ya existe un usuario con ese nombre");
+                ErrorMessage = "Usuario o correo ya registrado";
             }
             else
             {
-                cont++;
-                Usuario user = new Usuario(cont, _userName,_correo, _userName, _password);
+                Usuario user = new Usuario(0, _nombre, _correo, _userName, _password);
                 _servicioUsuario.RegistrarUsuario(user);
+
+                ErrorMessage = string.Empty;
                 mensaje = new MessageBox("Registro exitoso");
+                mensaje.ShowDialog();
+
+                ExecuteShowLoginCommand(obj);
             }
-            mensaje.ShowDialog();
         }
     }
 }

@@ -7,10 +7,13 @@
         public Habitacion Habitacion { get; set; }
         public string Comentarios { get; set; }
 
-        public Comentario()
+        public Comentario(){}
+        public Comentario(Usuario usuario, Habitacion habitacion, string comentarios)
         {
+            Usuario = usuario;
+            Habitacion = habitacion;
+            Comentarios = comentarios;
         }
-
         public Comentario(uint id, Usuario usuario, Habitacion habitacion, string comentarios)
         {
             Id = id;

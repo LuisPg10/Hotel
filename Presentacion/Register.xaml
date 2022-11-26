@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:viewModel="clr-namespace:Presentacion.ViewModels"
              mc:Ignorable="d" 
-             d:Height="589" d:Width="1243">
+             d:Height="589" d:Width="700">
 
     <UserControl.DataContext>
         <viewModel:RegisterViewModel/>
@@ -19,42 +19,64 @@
             </Grid.ColumnDefinitions>
 
             <Grid.RowDefinitions>
-                <RowDefinition Height="541"/>
                 <RowDefinition/>
+                <RowDefinition Height="48"/>
             </Grid.RowDefinitions>
 
-            <StackPanel Grid.Row="0" Orientation="Vertical" Width="340" Margin="0, 10, 0, 0">
-                <Label Style="{StaticResource labelTitular}" FontSize="55"
+            <Border Grid.Row="0" VerticalAlignment="Center">
+                <StackPanel Grid.Row="0" Orientation="Vertical" Width="400" Margin="0, 10, 0, 0">
+                    <Label Style="{StaticResource labelTitular}" FontSize="55"
                    Width="276">
-                    Registrarse
-                </Label>
+                        Registrarse
+                    </Label>
 
-                <TextBox Margin="0, 50, 0, 0" 
+                    <TextBox Margin="0, 50, 0, 0" 
                          Style="{DynamicResource txtBox}"
                          Text="{Binding Correo}">
-                </TextBox>
-                <TextBox Margin="0, 15, 0, 0"
+                    </TextBox>
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBox Grid.Column="0" Margin="0, 15, 10, 0"
                          Style="{DynamicResource txtBox}"
+                         HorizontalContentAlignment="Center"
+                         Text="{Binding Nombre}">
+                        </TextBox>
+                        <TextBox  Grid.Column="1" Margin="0, 15, 0, 0"
+                         Style="{DynamicResource txtBox}"
+                         HorizontalContentAlignment="Center"
                          Text="{Binding UserName}">
-                </TextBox>
-                <TextBox Margin="0, 15, 0, 50" 
+                        </TextBox>
+                    </Grid>
+                    <TextBox Margin="0, 15, 0, 12" 
                          Style="{DynamicResource txtBox}"
                          Text="{Binding Password}">
-                </TextBox>
+                    </TextBox>
 
-                <Button Style="{StaticResource btnMain}"
+                    <Label HorizontalAlignment="Center" 
+                       FontSize="15" Margin="0, 15, 0, 15"
+                       Height="30"
+                       Foreground="Red" Content="{Binding ErrorMessage}">
+                    </Label>
+
+                    <Button Style="{StaticResource btnMain}"
                         Command="{Binding ShowSuccessFullCommand}"
-                    FontSize="50" Margin="0, 0, 0, 12">
-                    Registrar
-                </Button>
+                    FontSize="50" Margin="0, 0, 0, 8">
+                        Registrar
+                    </Button>
 
-                <Button x:Name="btnLogin"
+                    <Button x:Name="btnLogin"
                     Command="{Binding ShowLoginCommand}"
                     Style="{StaticResource labelButton}"
                     Margin="0, 5, 0, 0">
-                    Iniciar Sesión
-                </Button>
-            </StackPanel>
+                        Iniciar Sesión
+                    </Button>
+                </StackPanel>
+            </Border>
 
             <StackPanel  Grid.Row="1" FlowDirection="RightToLeft" 
                      Orientation="Horizontal"

@@ -1,14 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
-using MySqlX.XDevAPI;
-using Datos;
 using Entidades;
 
-namespace Logica
+namespace Datos
 {
     public class DatosAdministrador
     {
@@ -19,12 +14,12 @@ namespace Logica
         {
             try
             {
-                MySqlCommand comando = new MySqlCommand($"Insert into administrador values({0},'{user.Nombre}','{user.Correo}','{user.Username}','{user.Password}')", conexion.ObtenerConexion());
+                MySqlCommand comando = new MySqlCommand($"Insert into administradores values({0},'{user.Username}','{user.Password}')", conexion.ObtenerConexion());
                 comando.ExecuteNonQuery();
                 Console.WriteLine("Administrador Registrado!");
                 conexion.cerrarConexion();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 Console.WriteLine("Error al agregar los datos");
             }
@@ -35,12 +30,12 @@ namespace Logica
         {
             try
             {
-                MySqlCommand comando = new MySqlCommand($"DELETE FROM administrador WHERE IdAdministrador = {id}", conexion.ObtenerConexion());
+                MySqlCommand comando = new MySqlCommand($"DELETE FROM administradores WHERE IdAdministrador = {id}", conexion.ObtenerConexion());
                 comando.ExecuteNonQuery();
                 Console.WriteLine("Administrador Eliminado!");
                 conexion.cerrarConexion();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 Console.WriteLine("Error al eliminar el administrador");
             }
@@ -51,12 +46,12 @@ namespace Logica
         {
             try
             {
-                MySqlCommand comando = new MySqlCommand($"UPDATE administrador SET Nombre = '{user.Nombre}', Correo = '{user.Correo}', UserName = '{user.Username}', Contraseña = '{user.Password}' WHERE IdAdministrador = {id}", conexion.ObtenerConexion());
+                MySqlCommand comando = new MySqlCommand($"UPDATE administradores SET UserName = '{user.Username}', Pssword = '{user.Password}' WHERE IdAdministrador = {id}", conexion.ObtenerConexion());
                 comando.ExecuteNonQuery();
                 Console.WriteLine("Datos actualizados!");
                 conexion.cerrarConexion();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 Console.WriteLine("Error al actualizar los datos");
             }
@@ -68,18 +63,15 @@ namespace Logica
             Administrador user = new Administrador();
             try
             {
-                MySqlCommand comando = new MySqlCommand($"SELECT * FROM administrador WHERE IdAdministrador = '{id}'", conexion.ObtenerConexion());
+                MySqlCommand comando = new MySqlCommand($"SELECT * FROM administradores WHERE IdAdministrador = '{id}'", conexion.ObtenerConexion());
                 MySqlDataReader consulta = comando.ExecuteReader();
                 while (consulta.Read())
                 {
                     if (consulta.GetUInt32(0) == id)
                     {
                         user.Id = consulta.GetUInt32(0);
-                        user.Nombre = consulta.GetString(1);
-                        user.Correo = consulta.GetString(2);
-                        user.Username = consulta.GetString(3);
-                        user.Password = consulta.GetString(4);
-
+                        user.Username = consulta.GetString(1);
+                        user.Password = consulta.GetString(2);
                     }
                     else
                     {
@@ -88,7 +80,7 @@ namespace Logica
                 }
                 conexion.cerrarConexion();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 Console.WriteLine("Error al consultar el administrador");
             }
@@ -102,20 +94,20 @@ namespace Logica
             bool resultado = false;
             try
             {
-                MySqlCommand comando = new MySqlCommand($"SELECT * FROM administrador WHERE UserName = '{username}'", conexion.ObtenerConexion());
+                MySqlCommand comando = new MySqlCommand($"SELECT * FROM administradores WHERE UserName = '{username}'", conexion.ObtenerConexion());
                 MySqlDataReader consulta = comando.ExecuteReader();
                 while (consulta.Read())
                 {
-                    if (consulta.GetString(3).Equals(username))
+                    if (consulta.GetString(1).Equals(username))
                     {
                         resultado = true;
                     }
                 }
                 conexion.cerrarConexion();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine("Error al consultar el usuario");
+                Console.WriteLine("Error al consultar el Usuario");
             }
             return resultado;
         }
@@ -127,20 +119,20 @@ namespace Logica
             bool resultado = false;
             try
             {
-                MySqlCommand comando = new MySqlCommand($"SELECT * FROM administrador WHERE UserName = '{username}' AND Contraseña = '{contra}'", conexion.ObtenerConexion());
+                MySqlCommand comando = new MySqlCommand($"SELECT * FROM administradores WHERE UserName = '{username}' AND Pssword = '{contra}'", conexion.ObtenerConexion());
                 MySqlDataReader consulta = comando.ExecuteReader();
                 while (consulta.Read())
                 {
-                    if (consulta.GetString(3).Equals(username) && consulta.GetString(4).Equals(contra))
+                    if (consulta.GetString(1).Equals(username) && consulta.GetString(2).Equals(contra))
                     {
                         resultado = true;
                     }
                 }
                 conexion.cerrarConexion();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine("Error al consultar el usuario");
+                Console.WriteLine("Error al consultar el Usuario");
             }
             return resultado;
         }
@@ -152,21 +144,19 @@ namespace Logica
 
             try
             {
-                MySqlCommand comando = new MySqlCommand($"SELECT * FROM administrador", conexion.ObtenerConexion());
+                MySqlCommand comando = new MySqlCommand($"SELECT * FROM administradores", conexion.ObtenerConexion());
                 MySqlDataReader consulta = comando.ExecuteReader();
                 while (consulta.Read())
                 {
                     Administrador user = new Administrador();
                     user.Id = consulta.GetUInt32(0);
-                    user.Nombre = consulta.GetString(1);
-                    user.Correo = consulta.GetString(2);
-                    user.Username = consulta.GetString(3);
-                    user.Password = consulta.GetString(4);
+                    user.Username = consulta.GetString(1);
+                    user.Password = consulta.GetString(2);
                     listaAdministrador.Add(user);
                 }
                 conexion.cerrarConexion();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 Console.WriteLine("Error al consultar el administrador");
             }

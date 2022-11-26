@@ -2,25 +2,23 @@
 using Entidades;
 using System.Collections.Generic;
 using MySql.Data.MySqlClient;
-using Datos;
 
-namespace Logica
+namespace Datos
 {
     public class DatosUsuario
     {
         Conexion conexion= new Conexion();
         
-
         //Metodo para registrar usuarios a traves de los datos de un objeto de tipo Usuario
         public void RegistrarUsuario(Usuario user)
         {
             try
             {
-                MySqlCommand comando = new MySqlCommand($"INSERT INTO usuario VALUES('{user.Nombre}','{user.Correo}','{user.Username}','{user.Password}')", conexion.ObtenerConexion());
+                MySqlCommand comando = new MySqlCommand($"INSERT INTO usuarios VALUES({0},'{user.Nombre}','{user.Correo}','{user.Username}','{user.Password}','NULL')", conexion.ObtenerConexion());
                 comando.ExecuteNonQuery();
                 Console.WriteLine("Usuario Registrado!");
                 conexion.cerrarConexion();
-            }catch(Exception ex) { 
+            }catch(Exception) { 
                 Console.WriteLine("Error al agregar los datos");
             }
         }
@@ -29,44 +27,44 @@ namespace Logica
         {
             try
             {
-                MySqlCommand comando = new MySqlCommand($"DELETE FROM usuario WHERE IdUsuario = {id}", conexion.ObtenerConexion());
+                MySqlCommand comando = new MySqlCommand($"DELETE FROM usuarios WHERE IdUsuario = {id}", conexion.ObtenerConexion());
                 comando.ExecuteNonQuery();
                 Console.WriteLine("Usuario Eliminado!");
                 conexion.cerrarConexion();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine("Error al eliminar el usuario");
+                Console.WriteLine("Error al eliminar el Usuario");
             }
         }
 
-        //Metodo para actualizar los datos de un usuario teniendo en cuenta el id y los datos de un objeto de tipo Usuario
+        //Metodo para actualizar los datos de un Usuario teniendo en cuenta el id y los datos de un objeto de tipo Usuario
         public void ActualizarUsuario(uint id, Usuario user)
         {
             try
             {
-                MySqlCommand comando = new MySqlCommand($"UPDATE usuario SET Nombre = '{user.Nombre}', Correo = '{user.Correo}', UserName = '{user.Username}', Contraseña = '{user.Password}', IdHabitacion = {user.Habitacion.Id} WHERE IdUsuario = {id}", conexion.ObtenerConexion());
+                MySqlCommand comando = new MySqlCommand($"UPDATE usuarios SET Nombre = '{user.Nombre}', Correo = '{user.Correo}', UserName = '{user.Username}', Pssword = '{user.Password}', IdHabitacion = {user.Habitacion.Id} WHERE IdUsuario = {id}", conexion.ObtenerConexion());
                 comando.ExecuteNonQuery();
                 Console.WriteLine("Datos actualizados!");
                 conexion.cerrarConexion();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 Console.WriteLine("Error al actualizar los datos");
             }
         }
 
-        //Metodo para consultar un usuario en la base de datos y si existe retorna un objeto de tipo Usuario con sus datos
-        public Usuario ConsultarUsuario(uint id)
+        //Metodo para consultar un Usuario en la base de datos y si existe retorna un objeto de tipo Usuario con sus datos
+        public Usuario ConsultarUsuario(string username)
         {
             Usuario user = new Usuario();
             try
             {
-                MySqlCommand comando = new MySqlCommand($"SELECT * FROM usuario WHERE IdUsuario = '{id}'", conexion.ObtenerConexion());
+                MySqlCommand comando = new MySqlCommand($"SELECT * FROM usuarios WHERE UserName = '{username}'", conexion.ObtenerConexion());
                 MySqlDataReader consulta = comando.ExecuteReader();
                 while (consulta.Read())
                 {
-                    if (consulta.GetUInt32(0) == id)
+                    if (consulta.GetString(3) == username)
                     {
                         user.Id = consulta.GetUInt32(0);
                         user.Nombre = consulta.GetString(1);
@@ -74,7 +72,6 @@ namespace Logica
                         user.Username = consulta.GetString(3);
                         user.Password = consulta.GetString(4);
                         user.Habitacion = new DatosHabitacion().ConsultarHabitacion(consulta.GetUInt32(5));
-
                     }
                     else
                     {
@@ -83,9 +80,9 @@ namespace Logica
                 }
                 conexion.cerrarConexion();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine("Error al consultar el usuario");
+                Console.WriteLine("Error al consultar el Usuario");
             }
             return user;
         }
@@ -97,7 +94,7 @@ namespace Logica
             bool resultado = false;
             try
             {
-                MySqlCommand comando = new MySqlCommand($"SELECT * FROM usuario WHERE UserName = '{username}'", conexion.ObtenerConexion());
+                MySqlCommand comando = new MySqlCommand($"SELECT * FROM usuarios WHERE UserName = '{username}'", conexion.ObtenerConexion());
                 MySqlDataReader consulta = comando.ExecuteReader();
                 while(consulta.Read())
                 {
@@ -106,23 +103,22 @@ namespace Logica
                         resultado = true;
                     }               
                 }
-                conexion.cerrarConexion();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine("Error al consultar el usuario");
+                Console.WriteLine("Error al consultar el Usuario");
             }
             return resultado;
         }
 
         //Metodo para verificar la existencia de un correo en la base de datos
         //Recomendado para el apartado de registrar usuarios
-        public bool verificarCorreo(string correo)
+        public bool VerificarCorreo(string correo)
         {
             bool resultado = false;
             try
             {
-                MySqlCommand comando = new MySqlCommand($"SELECT * FROM usuario WHERE Correo = '{correo}'", conexion.ObtenerConexion());
+                MySqlCommand comando = new MySqlCommand($"SELECT * FROM usuarios WHERE Correo = '{correo}'", conexion.ObtenerConexion());
                 MySqlDataReader consulta = comando.ExecuteReader();
                 while (consulta.Read())
                 {
@@ -133,7 +129,7 @@ namespace Logica
                 }
                 conexion.cerrarConexion();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 Console.WriteLine("Error al verificar el correo");
             }
@@ -147,7 +143,7 @@ namespace Logica
             bool resultado = false;
             try
             {
-                MySqlCommand comando = new MySqlCommand($"SELECT * FROM usuario WHERE UserName = '{username}' AND Contraseña = '{contra}'", conexion.ObtenerConexion());
+                MySqlCommand comando = new MySqlCommand($"SELECT * FROM usuarios WHERE UserName = '{username}' AND Pssword = '{contra}'", conexion.ObtenerConexion());
                 MySqlDataReader consulta = comando.ExecuteReader();
                 while (consulta.Read())
                 {
@@ -158,21 +154,21 @@ namespace Logica
                 }
                 conexion.cerrarConexion();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine("Error al consultar el usuario");
+                Console.WriteLine("Error al consultar el Usuario");
             }
             return resultado;
         }
 
-        //Metodo para cargar los datos de la tabla usuario en una lista
+        //Metodo para cargar los datos de la tabla Usuario en una lista
         public List<Usuario> ListaUsuarios()
         {
             List<Usuario> listaUsuarios = new List<Usuario>();
 
             try
             {
-                MySqlCommand comando = new MySqlCommand($"SELECT * FROM usuario", conexion.ObtenerConexion());
+                MySqlCommand comando = new MySqlCommand($"SELECT * FROM usuarios", conexion.ObtenerConexion());
                 MySqlDataReader consulta = comando.ExecuteReader();
                 while (consulta.Read())
                 {
@@ -187,9 +183,9 @@ namespace Logica
                 }
                 conexion.cerrarConexion();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine("Error al consultar el usuario");
+                Console.WriteLine("Error al consultar el Usuario");
             }
 
             return listaUsuarios;
