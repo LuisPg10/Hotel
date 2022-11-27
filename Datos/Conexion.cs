@@ -13,7 +13,7 @@ namespace Datos
         {
             try
             {
-                conexion = new MySqlConnection("server= localhost; database= bdhotel; Uid= root; pwd= Lp25dg10oc03/;");
+                conexion = new MySqlConnection("server= localhost; database= bdhotel; Uid= root; pwd= ;");
                 conexion.Open();
                 Console.WriteLine("Conexion exitosa!");
                 return conexion;
