@@ -12,6 +12,7 @@ namespace Entidades
         }
         public Persona(string username, string password)
         {
+            Id = 0;
             Username = username;
             Password = password;
         }

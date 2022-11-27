@@ -95,15 +95,17 @@ namespace Datos
             List<Habitacion> listahabitacion = new List<Habitacion>();
             try
             {
-                MySqlCommand comando = new MySqlCommand($"SELECT * FROM habitaciones", conexion.ObtenerConexion());
+                MySqlCommand comando = new MySqlCommand($"SELECT * FROM habitaciones WHERE IdUsuario = NULL", conexion.ObtenerConexion());
                 MySqlDataReader consulta = comando.ExecuteReader();
                 while (consulta.Read())
                 {
                     Habitacion habitacion = new Habitacion();
                     habitacion.Id = consulta.GetUInt32(0);
-                    habitacion.NumHabitacion = consulta.GetInt32(1);
-                    habitacion.TipoHabitacion = consulta.GetString(2);
-                    habitacion.Precio = consulta.GetDouble(3);
+                    habitacion.Nombre = consulta.GetString(1);
+                    habitacion.NumHabitacion = consulta.GetInt32(2);
+                    habitacion.TipoHabitacion = consulta.GetString(3);
+                    habitacion.Descripcion = consulta.GetString(4);
+                    habitacion.Precio = consulta.GetDouble(5);
 
                     listahabitacion.Add(habitacion);
                 }

@@ -9,7 +9,8 @@ namespace Entidades
         public Gerente(string username, string password) : base(username, password)
         {
         }
-        public Gerente(uint id, string username, string password, List<Administrador> administradores) : base(id, username, password)
+        public Gerente(uint id, string username, 
+            string password, List<Administrador> administradores) : base(id, username, password)
         {
             Administradores = administradores;
         }

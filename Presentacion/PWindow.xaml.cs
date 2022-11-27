@@ -44,7 +44,7 @@ namespace Presentacion
             contenedorPersonal.Children.Clear();
             foreach (var habitacion in habitaciones)
             {
-                var room = new Rooms();
+                var room = new Rooms(habitacion);
                 contenedorPersonal.Children.Add(room);
             }
         }

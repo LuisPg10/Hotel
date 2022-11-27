@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using Entidades;
+using System.Windows.Controls;
 
 namespace Presentacion
 {
@@ -7,9 +8,16 @@ namespace Presentacion
     /// </summary>
     public partial class Rooms : UserControl
     {
-        public Rooms()
+        public Rooms(Habitacion habitacion)
         {
             InitializeComponent();
+            tituloHabitacion.Content = habitacion.Nombre;
+            descripcion.Text = habitacion.Descripcion;
+            idHabitacion.Content = $"Id: {habitacion.Id}";
+            NumHabitacion.Content = $"No. Habitacion: {habitacion.NumHabitacion}";
+            tipoHabitacion.Content = $"Tipo: {habitacion.TipoHabitacion}";
+            precioHabitacion.Content = $"Precio: {habitacion.Precio}";
         }
+        public Rooms() { }
     }
 }

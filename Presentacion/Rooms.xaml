@@ -5,22 +5,68 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Presentacion"
              mc:Ignorable="d"
-             Background="Transparent"
-             BorderBrush="#908E8E"
-             BorderThickness="2"
              Margin="20, 30, 20, 0"
-             Height="300" d:DesignWidth="800"
-             MaxWidth="800">
+             Height="350" d:DesignWidth="920"
+             MaxWidth="920">
 
-    <Border CornerRadius="30" Background="#FFFFFF">
+    <UserControl.DataContext>
+        <local:Rooms/>
+    </UserControl.DataContext>
+
+    <Border CornerRadius="30" BorderBrush="#908E8E" BorderThickness="3"
+            Background="#FFFFFF">
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="300"/>
+                <ColumnDefinition Width="369"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
-            <Border  CornerRadius="30" Grid.Column="0" Padding="20, 0, 20, 0">
+            <Border Grid.Column="0" Padding="20, 0, 20, 0">
                 <Image Source="Imagenes/Foto.png"/>
+            </Border>
+
+            <Border Grid.Column="1" Padding="0, 17, 0, 0">
+                <Grid>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="45"/>
+                        <RowDefinition/>
+                        <RowDefinition Height="80"/>
+                        <RowDefinition Height="80"/>
+                    </Grid.RowDefinitions>
+
+                    <Label x:Name="tituloHabitacion" Grid.Row="0" FontSize="30"
+                           Content="{Binding tituloHabitacion}"/>
+
+                    <ScrollViewer Grid.Row="1">
+                        <TextBlock x:Name="descripcion" FontSize="20" Text="{Binding descripcion}"/>
+                    </ScrollViewer>
+                    <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
+                        <StackPanel Orientation="Horizontal">
+                            <Label x:Name="idHabitacion" FontSize="20" 
+                                   Content="{Binding idHabitacion}"/>
+                            <Label x:Name="NumHabitacion" FontSize="20" 
+                           Width="auto" Content="{Binding NumHabitacion}"/>
+                            <Label x:Name="tipoHabitacion" FontSize="20" 
+                            Width="auto" Content="{Binding tipoHabitacion}"/>
+                            <Label x:Name="precioHabitacion" FontSize="20" 
+                                   Content="{Binding precioHabitacion}"/>
+                        </StackPanel>
+                    </ScrollViewer>
+
+                    <Border Grid.Row="3">
+                        <StackPanel Grid.Row="3" Orientation="Horizontal" FlowDirection="RightToLeft">
+                            <Button Style="{StaticResource btnActionBox}"
+                                Margin="30, 0, 10, 0">
+                                Comentarios
+                            </Button>
+                            <Button Style="{StaticResource btnActionBox}">
+                                Reservar
+                            </Button>
+                        </StackPanel>
+                    </Border>
+                </Grid>
+
             </Border>
         </Grid>
     </Border>
