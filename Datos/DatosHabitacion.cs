@@ -95,7 +95,7 @@ namespace Datos
             List<Habitacion> listahabitacion = new List<Habitacion>();
             try
             {
-                MySqlCommand comando = new MySqlCommand($"SELECT * FROM habitaciones WHERE IdUsuario = NULL", conexion.ObtenerConexion());
+                MySqlCommand comando = new MySqlCommand($"SELECT * FROM habitaciones", conexion.ObtenerConexion());
                 MySqlDataReader consulta = comando.ExecuteReader();
                 while (consulta.Read())
                 {
