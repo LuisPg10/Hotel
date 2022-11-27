@@ -87,6 +87,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="NotRoom.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="PWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -95,16 +99,26 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Rooms.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MessageBox.xaml.cs">
       <DependentUpon>MessageBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="NotRoom.xaml.cs">
+      <DependentUpon>NotRoom.xaml</DependentUpon>
     </Compile>
     <Compile Include="PWindow.xaml.cs">
       <DependentUpon>PWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Register.xaml.cs">
       <DependentUpon>Register.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Rooms.xaml.cs">
+      <DependentUpon>Rooms.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\RegisterViewModel.cs" />
     <Compile Include="ViewModels\PersonViewModel.cs" />
@@ -155,6 +169,18 @@
       <Project>{c0f08bf5-6064-4515-a416-a82c26450b1a}</Project>
       <Name>Logica</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\sad.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\FlechaVolver.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Foto.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\HabitacionReservada.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

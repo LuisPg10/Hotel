@@ -110,7 +110,7 @@ namespace Presentacion.ViewModels
             }
             else
             {
-                Usuario user = new Usuario(0, _nombre, _correo, _userName, _password);
+                Usuario user = new Usuario(_nombre, _correo, _userName, _password, null);
                 _servicioUsuario.RegistrarUsuario(user);
 
                 ErrorMessage = string.Empty;

@@ -1,45 +1,74 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 
 namespace Presentacion.ViewModels
 {
     public class PersonViewModel: ViewModelBase
     {
         MainViewModel _mainViewModel;
-        private string namePerson = " Bienvenido User  ";
+        
+        private string namePerson;
+        private string message = $" Bienvenido user ";
+        private string textBtn = "Habitacion reservada";
 
-        public string NamePerson
+        public string Message
         {
             get
             {
-                return namePerson;
+                return message;
             }
             set
             {
-                namePerson = value;
-                OnPropertyChange(nameof(NamePerson));
+                message = value;
+                OnPropertyChange(nameof(Message));
             }
         }
-
+        public string TextBtn
+        {
+            get
+            {
+                return textBtn;
+            }
+            set
+            {
+                textBtn = value;
+                OnPropertyChange(nameof(TextBtn));
+            }
+        }
+        
         public ICommand ShowLoginViewCommand { get; }
+        public ICommand ShowRoomCommand { get; }
         public PersonViewModel() { }
         public PersonViewModel(MainViewModel mainViewModel, string namePerson) { 
+
             _mainViewModel = mainViewModel;
-            NamePerson = $"Bienvenido {namePerson}  ";
 
+            this.namePerson = namePerson;
+            message = $" Bienvenido {namePerson} ";
+
+            
             ShowLoginViewCommand = new RelayCommand(ExecuteShowLoginViewCommand);
+            ShowRoomCommand = new RelayCommand(ExecuteShowRoomCommand);
         }
-
         private void ExecuteShowLoginViewCommand(object obj)
         {
             Login login = new Login();
             LoginViewModel loginViewModel = new LoginViewModel(_mainViewModel);
             login.DataContext = loginViewModel;
             _mainViewModel.SetNewContent(login);
+        }
+        private void ExecuteShowRoomCommand(object obj)
+        {
+
+            if (Message.Equals($" Bienvenido {namePerson} "))
+            {
+                Message = " Habitación ";
+                TextBtn = "←";
+            }
+            else
+            {
+                Message = $" Bienvenido {namePerson} ";
+                TextBtn = "Habitacion reservada";
+            }
         }
     }
 }

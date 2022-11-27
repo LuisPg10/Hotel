@@ -100,12 +100,12 @@ namespace Datos
                 while (consulta.Read())
                 {
                     Habitacion habitacion = new Habitacion();
-                        habitacion.Id = consulta.GetUInt32(0);
-                        habitacion.NumHabitacion = consulta.GetInt32(1);
-                        habitacion.TipoHabitacion = consulta.GetString(2);
-                        habitacion.Precio = consulta.GetDouble(4);
-                    listahabitacion.Add(habitacion);
+                    habitacion.Id = consulta.GetUInt32(0);
+                    habitacion.NumHabitacion = consulta.GetInt32(1);
+                    habitacion.TipoHabitacion = consulta.GetString(2);
+                    habitacion.Precio = consulta.GetDouble(3);
 
+                    listahabitacion.Add(habitacion);
                 }
                 conexion.cerrarConexion();
             }

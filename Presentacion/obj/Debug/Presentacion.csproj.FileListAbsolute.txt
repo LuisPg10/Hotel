@@ -45,3 +45,7 @@ C:\Users\dapin\OneDrive\Documentos\Materias semestre\Programación\Hotel\Present
 C:\Users\dapin\OneDrive\Documentos\Materias semestre\Programación\Hotel\Presentacion\obj\Debug\Presentacion.csproj.CopyComplete
 C:\Users\dapin\OneDrive\Documentos\Materias semestre\Programación\Hotel\Presentacion\obj\Debug\MessageBox.g.cs
 C:\Users\dapin\OneDrive\Documentos\Materias semestre\Programación\Hotel\Presentacion\obj\Debug\MessageBox.baml
+C:\Users\dapin\OneDrive\Documentos\Materias semestre\Programación\Hotel\Presentacion\obj\Debug\NotRoom.g.cs
+C:\Users\dapin\OneDrive\Documentos\Materias semestre\Programación\Hotel\Presentacion\obj\Debug\NotRoom.baml
+C:\Users\dapin\OneDrive\Documentos\Materias semestre\Programación\Hotel\Presentacion\obj\Debug\Rooms.g.cs
+C:\Users\dapin\OneDrive\Documentos\Materias semestre\Programación\Hotel\Presentacion\obj\Debug\Rooms.baml

@@ -2,6 +2,7 @@
 using Entidades;
 using System.Collections.Generic;
 using MySql.Data.MySqlClient;
+using System.Windows.Forms;
 
 namespace Datos
 {
@@ -14,12 +15,12 @@ namespace Datos
         {
             try
             {
-                MySqlCommand comando = new MySqlCommand($"INSERT INTO usuarios VALUES({0},'{user.Nombre}','{user.Correo}','{user.Username}','{user.Password}','NULL')", conexion.ObtenerConexion());
+                MySqlCommand comando = new MySqlCommand($"INSERT INTO usuarios VALUES({user.Id},'{user.Nombre}','{user.Correo}','{user.Username}','{user.Password}',NULL)", conexion.ObtenerConexion());
                 comando.ExecuteNonQuery();
                 Console.WriteLine("Usuario Registrado!");
                 conexion.cerrarConexion();
             }catch(Exception) { 
-                Console.WriteLine("Error al agregar los datos");
+                Console.WriteLine($"Error al agregar los datos");
             }
         }
         //Metodo para eliminar usuarios teniendo en cuenta el id

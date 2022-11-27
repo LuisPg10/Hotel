@@ -1,17 +1,8 @@
-﻿using System;
+﻿using Entidades;
+using Logica;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Presentacion
 {
@@ -20,14 +11,42 @@ namespace Presentacion
     /// </summary>
     public partial class PWindow : UserControl
     {
-        public PWindow()
+        string mensaje;
+        List<Habitacion> habitaciones;
+        Usuario usuario;
+        public PWindow(Usuario usuario, List<Habitacion> habitaciones)
         {
             InitializeComponent();
+            this.usuario = usuario;
+            this.habitaciones = habitaciones;
+            CargarHabitaciones();
+            mensaje = "No has reservado habitación";
         }
 
-        private void ContentControl_Scroll(object sender, System.Windows.Controls.Primitives.ScrollEventArgs e)
+        private void btnRoom_Back_Click(object sender, RoutedEventArgs e)
         {
+            if (mensaje.Equals(mensaje = "No has reservado habitación"))
+            {
+                contenedorPersonal.Children.Clear();
+                NotRoom habitaciuon = new NotRoom(mensaje);
+                contenedorPersonal.Children.Add(habitaciuon);
+                mensaje = string.Empty;
+            }
+            else
+            {
+                CargarHabitaciones();
+                mensaje = "No has reservado habitación";
+            }
+        }
 
+        private void CargarHabitaciones()
+        {
+            contenedorPersonal.Children.Clear();
+            foreach (var habitacion in habitaciones)
+            {
+                var room = new Rooms();
+                contenedorPersonal.Children.Add(room);
+            }
         }
     }
 }

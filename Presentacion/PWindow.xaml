@@ -10,6 +10,7 @@
     <UserControl.DataContext>
         <viewModel:PersonViewModel/>
     </UserControl.DataContext>
+    
     <Grid Background="#FFFFFF">
 
         <Grid.ColumnDefinitions>
@@ -27,10 +28,11 @@
                 <ColumnDefinition Width="1086*"/>
                 <ColumnDefinition Width="157*"/>
             </Grid.ColumnDefinitions>
-            <Label x:Name="labelTitulo" Width="auto" 
+            <Label x:Name="labelTitulo" Width="auto"
+                   MinWidth="430"
                    Height="110" HorizontalAlignment="Left"
                    Foreground="#FFFFFF"
-                   FontSize="55" Content="{Binding NamePerson}" Margin="0,5,0,5">
+                   FontSize="55" Content="{Binding Message}" Margin="0,5,0,5">
                 <Label.Template>
                     <ControlTemplate TargetType="{x:Type Label}">
                         <Border Background="{StaticResource primaryColor}"
@@ -45,14 +47,16 @@
         <WrapPanel Grid.Row="1" 
                    FlowDirection="RightToLeft">
             <Button Style="{StaticResource labelButton}"
-                    Foreground="#000000" Margin="20, 10, 10, 10"
+                    Foreground="#000000" Margin="20, 10, 20, 10"
                     Width="120" FontSize="20" Command="{Binding ShowLoginViewCommand}">
                 Cerrar Sesión
             </Button>
-            <Button Style="{StaticResource labelButton}"
+            <Button x:Name="btnRoom_Back" Style="{StaticResource labelButton}"
+                    Content="{Binding TextBtn}"
+                    Command="{Binding ShowRoomCommand}"
                     Foreground="#000000" FontSize="20"
-                    Width="218">
-                Habitaciones reservadas
+                    MinWidth="70"
+                    Width="auto" Click="btnRoom_Back_Click">
             </Button>
         </WrapPanel>
 
@@ -64,10 +68,8 @@
 
             <Border Grid.Row="0" BorderBrush="#908E8E"
                     BorderThickness="0, 2, 0, 2">
-                <ScrollViewer Margin="0,0,10,0" ScrollViewer.VerticalScrollBarVisibility="Auto">
-                    <StackPanel>
-                       
-                    </StackPanel>
+                <ScrollViewer ScrollViewer.VerticalScrollBarVisibility="Auto" Margin="0, 0, 15, 0">
+                    <StackPanel x:Name="contenedorPersonal" Margin="0, 0, 0, 30"/>
                 </ScrollViewer>
             </Border>
             <Border Grid.Row="1">

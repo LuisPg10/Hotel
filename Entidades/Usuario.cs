@@ -10,16 +10,20 @@ namespace Entidades
             
         }
 
-        public Usuario(string nombre, string correo, string username, string password) : base(username, password)
+        public Usuario(string nombre, string correo, string username, string password, Habitacion habitacion) : base(username, password)
         {
+            Id = 0;
             Nombre = nombre;
             Correo = correo;
+            Habitacion = habitacion;
         }
 
-        public Usuario(uint id, string nombre, string correo, string username, string password) : base(id,username, password)
+        public Usuario(uint id, string nombre, string correo, string username, string password, Habitacion habitacion) : base(id,username, password)
         {
+            Id = 0;
             Nombre = nombre;
             Correo = correo;
+            Habitacion = habitacion;
         }
     }
 }
