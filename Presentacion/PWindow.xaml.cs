@@ -25,11 +25,20 @@ namespace Presentacion
 
         private void btnRoom_Back_Click(object sender, RoutedEventArgs e)
         {
-            if (mensaje.Equals(mensaje = "No has reservado habitación"))
+            if (mensaje.Equals("No has reservado habitación"))
             {
-                contenedorPersonal.Children.Clear();
-                NotRoom habitaciuon = new NotRoom(mensaje);
-                contenedorPersonal.Children.Add(habitaciuon);
+                if (usuario.Habitacion==null)
+                {
+                    contenedorPersonal.Children.Clear();
+                    var habitaciuon = new NotRoom(mensaje);
+                    contenedorPersonal.Children.Add(habitaciuon);
+                }
+                else
+                {
+                    contenedorPersonal.Children.Clear();
+                    var habitacion = new YesRoom(usuario.Habitacion);
+                    contenedorPersonal.Children.Add(habitacion);
+                }
                 mensaje = string.Empty;
             }
             else
@@ -44,7 +53,7 @@ namespace Presentacion
             contenedorPersonal.Children.Clear();
             foreach (var habitacion in habitaciones)
             {
-                var room = new Rooms(habitacion);
+                var room = new Rooms(habitacion, usuario);
                 contenedorPersonal.Children.Add(room);
             }
         }

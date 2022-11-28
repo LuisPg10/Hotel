@@ -21,9 +21,9 @@ namespace Logica
         }
 
         //Metodo para actualizar los datos de una habitacion teniendo en cuenta el id y los datos de un objeto de tipo Habitacion
-        public void ActualizarHabitacion(uint id, Habitacion habitacion)
+        public void ActualizarHabitacion(Habitacion habitacion)
         {
-            datos.ActualizarHabitacion(id,habitacion);
+            datos.ActualizarHabitacion(habitacion);
         }
 
         //Metodo para consultar una habitacion en la base de datos y si existe retorna un objetos de tipo Habitacion con sus datos

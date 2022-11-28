@@ -2,7 +2,6 @@
 using Entidades;
 using System.Collections.Generic;
 using MySql.Data.MySqlClient;
-using System.Windows.Forms;
 
 namespace Datos
 {
@@ -40,11 +39,11 @@ namespace Datos
         }
 
         //Metodo para actualizar los datos de un Usuario teniendo en cuenta el id y los datos de un objeto de tipo Usuario
-        public void ActualizarUsuario(uint id, Usuario user)
+        public void ActualizarUsuario(Usuario user)
         {
             try
             {
-                MySqlCommand comando = new MySqlCommand($"UPDATE usuarios SET Nombre = '{user.Nombre}', Correo = '{user.Correo}', UserName = '{user.Username}', Pssword = '{user.Password}', IdHabitacion = {user.Habitacion.Id} WHERE IdUsuario = {id}", conexion.ObtenerConexion());
+                MySqlCommand comando = new MySqlCommand($"UPDATE usuarios SET IdHabitacion = {user.Habitacion.Id} WHERE IdUsuario = {user.Id}", conexion.ObtenerConexion());
                 comando.ExecuteNonQuery();
                 Console.WriteLine("Datos actualizados!");
                 conexion.cerrarConexion();
@@ -73,6 +72,7 @@ namespace Datos
                         user.Username = consulta.GetString(3);
                         user.Password = consulta.GetString(4);
                         user.Habitacion = new DatosHabitacion().ConsultarHabitacion(consulta.GetUInt32(5));
+                        user.Habitacion.Usuario = user;
                     }
                     else
                     {

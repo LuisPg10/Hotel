@@ -42,11 +42,11 @@ namespace Datos
         }
 
         //Metodo para actualizar los datos de una habitacion teniendo en cuenta el id y los datos de un objeto de tipo Habitacion
-        public void ActualizarHabitacion(uint id, Habitacion habitacion)
+        public void ActualizarHabitacion(Habitacion habitacion)
         {
             try
             {
-                MySqlCommand comando = new MySqlCommand($"UPDATE habitaciones SET NumHabitacion = '{habitacion.NumHabitacion}', TipoHabitacion = '{habitacion.TipoHabitacion}', Precio = '{habitacion.Precio}', IdUsuario = '{habitacion.Usuario.Id}' WHERE IdHabitacion = {id}", conexion.ObtenerConexion());
+                MySqlCommand comando = new MySqlCommand($"UPDATE habitaciones SET IdUsuario = '{habitacion.Usuario.Id}' WHERE IdHabitacion = {habitacion.Id}", conexion.ObtenerConexion());
                 comando.ExecuteNonQuery();
                 Console.WriteLine("Datos actualizados!");
                 conexion.cerrarConexion();
@@ -70,10 +70,11 @@ namespace Datos
                     if (consulta.GetUInt32(0)==id)
                     {
                         habitacion.Id = consulta.GetUInt32(0);
-                        habitacion.NumHabitacion = consulta.GetInt32(1);
-                        habitacion.TipoHabitacion = consulta.GetString(2);
-                        habitacion.Precio = consulta.GetDouble(4);
-
+                        habitacion.Nombre = consulta.GetString(1);
+                        habitacion.NumHabitacion = consulta.GetInt32(2);
+                        habitacion.TipoHabitacion = consulta.GetString(3);
+                        habitacion.Descripcion = consulta.GetString(4);
+                        habitacion.Precio = consulta.GetDouble(5);
                     }
                     else
                     {

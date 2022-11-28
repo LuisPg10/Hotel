@@ -49,3 +49,7 @@ C:\Users\dapin\OneDrive\Documentos\Materias semestre\Programación\Hotel\Present
 C:\Users\dapin\OneDrive\Documentos\Materias semestre\Programación\Hotel\Presentacion\obj\Debug\NotRoom.baml
 C:\Users\dapin\OneDrive\Documentos\Materias semestre\Programación\Hotel\Presentacion\obj\Debug\Rooms.g.cs
 C:\Users\dapin\OneDrive\Documentos\Materias semestre\Programación\Hotel\Presentacion\obj\Debug\Rooms.baml
+C:\Users\dapin\OneDrive\Documentos\Materias semestre\Programación\Hotel\Presentacion\obj\Debug\YesRoom.g.cs
+C:\Users\dapin\OneDrive\Documentos\Materias semestre\Programación\Hotel\Presentacion\obj\Debug\YesRoom.baml
+C:\Users\dapin\OneDrive\Documentos\Materias semestre\Programación\Hotel\Presentacion\obj\Debug\ConfirmReserva.g.cs
+C:\Users\dapin\OneDrive\Documentos\Materias semestre\Programación\Hotel\Presentacion\obj\Debug\ConfirmReserva.baml

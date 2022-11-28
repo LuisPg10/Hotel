@@ -29,7 +29,7 @@
                 <Grid>
 
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="45"/>
+                        <RowDefinition Height="60"/>
                         <RowDefinition/>
                         <RowDefinition Height="80"/>
                         <RowDefinition Height="80"/>
@@ -38,8 +38,11 @@
                     <Label x:Name="tituloHabitacion" Grid.Row="0" FontSize="30"
                            Content="{Binding tituloHabitacion}"/>
 
-                    <ScrollViewer Grid.Row="1">
-                        <TextBlock x:Name="descripcion" FontSize="20" Text="{Binding descripcion}"/>
+                    <ScrollViewer Grid.Row="1" Margin="0, 0, 12, 0" VerticalScrollBarVisibility="Auto">
+                        <TextBlock x:Name="descripcion" FontSize="20" 
+                                   TextWrapping="Wrap"
+                                   TextAlignment="Justify" 
+                                   Text="{Binding descripcion}"/>
                     </ScrollViewer>
                     <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
                         <StackPanel Orientation="Horizontal">
@@ -60,7 +63,7 @@
                                 Margin="30, 0, 10, 0">
                                 Comentarios
                             </Button>
-                            <Button Style="{StaticResource btnActionBox}">
+                            <Button x:Name="btnReserva" Style="{StaticResource btnActionBox}" Click="btnReserva_Click">
                                 Reservar
                             </Button>
                         </StackPanel>

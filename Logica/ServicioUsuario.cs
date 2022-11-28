@@ -21,9 +21,9 @@ namespace Logica
         }
 
         //Metodo para actualizar los datos de un Usuario teniendo en cuenta el id y los datos de un objeto de tipo Usuario
-        public void ActualizarUsuario(uint id, Usuario user)
+        public void ActualizarUsuario(Usuario user)
         {
-            datos.ActualizarUsuario(id,user);
+            datos.ActualizarUsuario(user);
         }
 
         //Metodo para consultar un Usuario en la base de datos y si existe retorna un objeto de tipo Usuario con sus datos
@@ -57,11 +57,6 @@ namespace Logica
         public List<Usuario> ListaUsuarios()
         {
             return datos.ListaUsuarios();
-        }
-
-        public bool VerificareEntrada()
-        {
-            throw new System.NotImplementedException();
         }
     }
 }
