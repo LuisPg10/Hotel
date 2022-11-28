@@ -14,6 +14,7 @@ namespace Presentacion
         Habitacion habitacion;
         ServicioUsuario servicioUsuario;
         ServicioHabitacion serviciohabitacion;
+        public bool action = false;
         public ConfirmReserva(Habitacion habitacion)
         {
             InitializeComponent();
@@ -30,6 +31,7 @@ namespace Presentacion
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             Close();
+            action = false;
         }
         public ConfirmReserva(){ }
 
@@ -52,6 +54,7 @@ namespace Presentacion
                 servicioUsuario.ActualizarUsuario(Usuario);
                 mensaje = new MessageBox("Reserva exitosa");
                 Close();
+                action = true;
             }
             else
             {

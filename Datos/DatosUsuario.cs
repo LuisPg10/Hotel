@@ -97,6 +97,41 @@ namespace Datos
             return user;
         }
 
+        //Metodo para consultar un Usuario en la base de datos y si existe retorna un objeto de tipo Usuario con sus datos
+        //Esto según su id
+        public Usuario ConsultarUsuario(uint id)
+        {
+            Usuario user = new Usuario();
+            try
+            {
+                MySqlCommand comando = new MySqlCommand($"SELECT * FROM usuarios WHERE IdUsuario = {id}", conexion.ObtenerConexion());
+                MySqlDataReader consulta = comando.ExecuteReader();
+                while (consulta.Read())
+                {
+                    if (consulta.GetUInt32(0) == id)
+                    {
+                        user.Id = consulta.GetUInt32(0);
+                        user.Nombre = consulta.GetString(1);
+                        user.Correo = consulta.GetString(2);
+                        user.Username = consulta.GetString(3);
+                        user.Password = consulta.GetString(4);
+                        user.Habitacion = new DatosHabitacion().ConsultarHabitacion(consulta.GetUInt32(5));
+                        user.Habitacion.Usuario = user;
+                    }
+                    else
+                    {
+                        user = null;
+                    }
+                }
+                conexion.cerrarConexion();
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Error al consultar el Usuario");
+            }
+            return user;
+        }
+
         //Metodo para verificar la existencia de un UserName en la base de datos
         //Recomendado para el apartado de registrar usuarios
         public bool VerificarUsuario(string username)

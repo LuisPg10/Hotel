@@ -32,6 +32,13 @@ namespace Logica
             return datos.ConsultarUsuario(username);
         }
 
+        //Metodo para consultar un Usuario en la base de datos y si existe retorna un objeto de tipo Usuario con sus datos
+        //Esto lo va a hacer segun el id del usuario
+        public Usuario ConsultarUsuario(uint id)
+        {
+            return datos.ConsultarUsuario(id);
+        }
+
         //Metodo para verificar la existencia de un UserName en la base de datos
         //Recomendado para el apartado de registrar usuarios
         public bool VerificarUsuario(string username)

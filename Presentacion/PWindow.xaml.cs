@@ -1,6 +1,5 @@
 ﻿using Entidades;
 using Logica;
-using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -12,23 +11,23 @@ namespace Presentacion
     public partial class PWindow : UserControl
     {
         string mensaje;
-        List<Habitacion> habitaciones;
+        ServicioHabitacion servicioHabitacion;
         Usuario usuario;
-        public PWindow(Usuario usuario, List<Habitacion> habitaciones)
+        public PWindow(Usuario usuario)
         {
             InitializeComponent();
             this.usuario = usuario;
-            this.habitaciones = habitaciones;
+            servicioHabitacion = new ServicioHabitacion();
             CargarHabitaciones();
             mensaje = "No has reservado habitación";
         }
-        public PWindow(){ }
+        public PWindow() { }
 
         private void btnRoom_Back_Click(object sender, RoutedEventArgs e)
         {
             if (mensaje.Equals("No has reservado habitación"))
             {
-                if (usuario.Habitacion==null)
+                if (usuario.Habitacion == null)
                 {
                     contenedorPersonal.Children.Clear();
                     var habitaciuon = new NotRoom(mensaje);
@@ -52,10 +51,13 @@ namespace Presentacion
         private void CargarHabitaciones()
         {
             contenedorPersonal.Children.Clear();
-            foreach (var habitacion in habitaciones)
+            foreach (var habitacion in servicioHabitacion.ListaHabitaciones())
             {
-                var room = new Rooms(habitacion, usuario);
-                contenedorPersonal.Children.Add(room);
+                if (habitacion.Usuario == null)
+                {
+                    var room = new Rooms(habitacion, usuario, contenedorPersonal);
+                    contenedorPersonal.Children.Add(room);
+                }
             }
         }
     }

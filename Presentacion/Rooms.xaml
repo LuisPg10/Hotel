@@ -39,7 +39,8 @@
                            Content="{Binding tituloHabitacion}"/>
 
                     <ScrollViewer Grid.Row="1" Margin="0, 0, 12, 0" VerticalScrollBarVisibility="Auto">
-                        <TextBlock x:Name="descripcion" FontSize="20" 
+                        <TextBlock x:Name="descripcion" FontSize="20"
+                                   Margin="0, 0, 30, 0"
                                    TextWrapping="Wrap"
                                    TextAlignment="Justify" 
                                    Text="{Binding descripcion}"/>

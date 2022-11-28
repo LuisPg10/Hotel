@@ -10,7 +10,9 @@ namespace Presentacion
     {
         Habitacion habitacion;
         Usuario usuario;
-        public Rooms(Habitacion habitacion, Usuario usuario)
+        StackPanel contenedor;
+
+        public Rooms(Habitacion habitacion, Usuario usuario, StackPanel contendor)
         {
             InitializeComponent();
             this.habitacion = habitacion;
@@ -21,6 +23,7 @@ namespace Presentacion
             tipoHabitacion.Content = $"Tipo: {habitacion.TipoHabitacion}";
             precioHabitacion.Content = $"Precio: {habitacion.Precio}";
             this.usuario = usuario;
+            this.contenedor = contendor;
         }
         public Rooms() { }
 
@@ -31,6 +34,9 @@ namespace Presentacion
                 ConfirmReserva confirm = new ConfirmReserva(habitacion);
                 confirm.Usuario = usuario;
                 confirm.ShowDialog();
+
+                if (confirm.action == true)
+                    contenedor.Children.Remove(this);
             }
             else
             {

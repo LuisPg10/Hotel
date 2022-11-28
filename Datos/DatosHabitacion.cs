@@ -69,14 +69,14 @@ namespace Datos
         //Metodo para consultar una habitacion en la base de datos y si existe retorna un objetos de tipo Habitacion con sus datos
         public Habitacion ConsultarHabitacion(uint id)
         {
-            Habitacion habitacion = new Habitacion();
+            var habitacion = new Habitacion();
             try
             {
                 MySqlCommand comando = new MySqlCommand($"SELECT * FROM habitaciones WHERE IdHabitacion = {id}", conexion.ObtenerConexion());
                 MySqlDataReader consulta = comando.ExecuteReader();
                 while (consulta.Read())
                 {
-                    if (consulta.GetUInt32(0)==id)
+                    if (consulta.GetUInt32(0) == id)
                     {
                         habitacion.Id = consulta.GetUInt32(0);
                         habitacion.Nombre = consulta.GetString(1);
@@ -109,13 +109,20 @@ namespace Datos
                 MySqlDataReader consulta = comando.ExecuteReader();
                 while (consulta.Read())
                 {
-                    Habitacion habitacion = new Habitacion();
-                    habitacion.Id = consulta.GetUInt32(0);
-                    habitacion.Nombre = consulta.GetString(1);
-                    habitacion.NumHabitacion = consulta.GetInt32(2);
-                    habitacion.TipoHabitacion = consulta.GetString(3);
-                    habitacion.Descripcion = consulta.GetString(4);
-                    habitacion.Precio = consulta.GetDouble(5);
+                    var habitacion = new Habitacion
+                    {
+                        Id = consulta.GetUInt32(0),
+                        Nombre = consulta.GetString(1),
+                        NumHabitacion = consulta.GetInt32(2),
+                        TipoHabitacion = consulta.GetString(3),
+                        Descripcion = consulta.GetString(4),
+                        Precio = consulta.GetDouble(5)
+                    };
+
+                    if (!DBNull.Value.Equals(consulta.GetValue(6)))
+                    {
+                        habitacion.Usuario = new DatosUsuario().ConsultarUsuario(consulta.GetUInt32(6));
+                    }
 
                     listahabitacion.Add(habitacion);
                 }

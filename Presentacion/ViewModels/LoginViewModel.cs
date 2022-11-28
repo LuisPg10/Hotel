@@ -8,7 +8,6 @@ namespace Presentacion.ViewModels
     {
         MainViewModel _mainViewModel;
         ServicioUsuario _servicioUsuario;
-        ServicioHabitacion _servicioHabitacion;
 
         private string _userName = "Usuario";
         private string _password = "Contraseña";
@@ -58,7 +57,6 @@ namespace Presentacion.ViewModels
         {
             _mainViewModel = mainViewModel;
             _servicioUsuario = new ServicioUsuario();
-            _servicioHabitacion = new ServicioHabitacion();
 
             //Commands instance
             ShowRegisterCommand = new RelayCommand(ExeCuteRegisterCommand);
@@ -92,7 +90,7 @@ namespace Presentacion.ViewModels
                 Usuario usuario = _servicioUsuario.ConsultarUsuario(UserName);
 
                 personViewModel = new PersonViewModel(_mainViewModel, usuario.Nombre);
-                PWindow user = new PWindow(usuario, _servicioHabitacion.ListaHabitaciones());
+                PWindow user = new PWindow(usuario);
                 user.DataContext = personViewModel;
                 _mainViewModel.SetNewContent(user);
             }
