@@ -59,6 +59,9 @@
     <Compile Include="ConfirmReserva.xaml.cs">
       <DependentUpon>ConfirmReserva.xaml</DependentUpon>
     </Compile>
+    <Compile Include="TwoMessagebox.xaml.cs">
+      <DependentUpon>TwoMessagebox.xaml</DependentUpon>
+    </Compile>
     <Compile Include="YesRoom.xaml.cs">
       <DependentUpon>YesRoom.xaml</DependentUpon>
     </Compile>
@@ -110,6 +113,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Rooms.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TwoMessagebox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

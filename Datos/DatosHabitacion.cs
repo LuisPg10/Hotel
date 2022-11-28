@@ -46,7 +46,16 @@ namespace Datos
         {
             try
             {
-                MySqlCommand comando = new MySqlCommand($"UPDATE habitaciones SET IdUsuario = '{habitacion.Usuario.Id}' WHERE IdHabitacion = {habitacion.Id}", conexion.ObtenerConexion());
+                MySqlCommand comando;
+
+                if (habitacion.Usuario != null)
+                {
+                    comando = new MySqlCommand($"UPDATE habitaciones SET IdUsuario = '{habitacion.Usuario.Id}' WHERE IdHabitacion = {habitacion.Id}", conexion.ObtenerConexion());
+                }
+                else
+                {
+                    comando = new MySqlCommand($"UPDATE habitaciones SET IdUsuario = NULL WHERE IdHabitacion = {habitacion.Id}", conexion.ObtenerConexion());
+                }
                 comando.ExecuteNonQuery();
                 Console.WriteLine("Datos actualizados!");
                 conexion.cerrarConexion();

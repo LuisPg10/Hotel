@@ -22,6 +22,7 @@ namespace Presentacion
             CargarHabitaciones();
             mensaje = "No has reservado habitación";
         }
+        public PWindow(){ }
 
         private void btnRoom_Back_Click(object sender, RoutedEventArgs e)
         {
@@ -36,7 +37,8 @@ namespace Presentacion
                 else
                 {
                     contenedorPersonal.Children.Clear();
-                    var habitacion = new YesRoom(usuario.Habitacion);
+                    var habitacion = new YesRoom(usuario.Habitacion, contenedorPersonal);
+                    habitacion.Usuario = usuario;
                     contenedorPersonal.Children.Add(habitacion);
                 }
                 mensaje = string.Empty;
@@ -47,7 +49,6 @@ namespace Presentacion
                 mensaje = "No has reservado habitación";
             }
         }
-
         private void CargarHabitaciones()
         {
             contenedorPersonal.Children.Clear();

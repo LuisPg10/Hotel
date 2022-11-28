@@ -1,4 +1,6 @@
 ﻿using Entidades;
+using Logica;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace Presentacion
@@ -8,9 +10,16 @@ namespace Presentacion
     /// </summary>
     public partial class YesRoom : UserControl
     {
-        public YesRoom(Habitacion habitacion)
+        ServicioUsuario servicioUsuario;
+        ServicioHabitacion servicioHabitacion;
+        StackPanel panelPrincipal;
+        public Usuario Usuario{ get; set; }
+        public YesRoom(Habitacion habitacion, StackPanel panel)
         {
             InitializeComponent();
+            panelPrincipal = panel;
+            servicioUsuario = new ServicioUsuario();
+            servicioHabitacion = new ServicioHabitacion();
             tituloHabitacion.Content = habitacion.Nombre;
             descripcion.Text = habitacion.Descripcion;
             idHabitacion.Content = $"Id: {habitacion.Id}";
@@ -20,9 +29,22 @@ namespace Presentacion
         }
         public YesRoom(){ }
 
-        private void cancel_Click(object sender, System.Windows.RoutedEventArgs e)
+        private void cancel_Click(object sender, RoutedEventArgs e)
         {
-            
+            var mensaje = new TwoMessagebox("¿Seguro desea cancelar la reserva");
+            mensaje.ShowDialog();
+
+            if(mensaje.action == true)
+            {
+                Usuario.Habitacion.Usuario = null;
+                servicioHabitacion.ActualizarHabitacion(Usuario.Habitacion);
+                Usuario.Habitacion = null;
+                servicioUsuario.ActualizarUsuario(Usuario);
+
+                panelPrincipal.Children.Clear();
+                var mensaje2 = new NotRoom("No has reservado habitación");
+                panelPrincipal.Children.Add(mensaje2);
+            }
         }
     }
 }

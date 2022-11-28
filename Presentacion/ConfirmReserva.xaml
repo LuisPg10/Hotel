@@ -41,6 +41,7 @@
                            Content="{Binding tituloHabitacion}"/>
 
                         <DatePicker  x:Name ="fecha" Style="{DynamicResource datoFecha}" Grid.Row="1" SelectedDateFormat="Short"
+                                     Text="Selecciona el dia a reservar"
                                     DisplayDateStart="11/30/2022"
                                     HorizontalContentAlignment="Center" 
                                     VerticalContentAlignment="Center"

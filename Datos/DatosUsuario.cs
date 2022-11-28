@@ -43,7 +43,16 @@ namespace Datos
         {
             try
             {
-                MySqlCommand comando = new MySqlCommand($"UPDATE usuarios SET IdHabitacion = {user.Habitacion.Id} WHERE IdUsuario = {user.Id}", conexion.ObtenerConexion());
+                MySqlCommand comando;
+
+                if (user.Habitacion != null)
+                {
+                    comando = new MySqlCommand($"UPDATE usuarios SET IdHabitacion = {user.Habitacion.Id} WHERE IdUsuario = {user.Id}", conexion.ObtenerConexion());
+                }
+                else
+                {
+                    comando = new MySqlCommand($"UPDATE usuarios SET IdHabitacion = NULL WHERE IdUsuario = {user.Id}", conexion.ObtenerConexion());
+                }
                 comando.ExecuteNonQuery();
                 Console.WriteLine("Datos actualizados!");
                 conexion.cerrarConexion();
