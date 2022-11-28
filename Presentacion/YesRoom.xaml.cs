@@ -11,6 +11,7 @@ namespace Presentacion
     public partial class YesRoom : UserControl
     {
         ServicioUsuario servicioUsuario;
+        Habitacion habitacion;
         ServicioHabitacion servicioHabitacion;
         StackPanel panelPrincipal;
         public Usuario Usuario{ get; set; }
@@ -20,6 +21,8 @@ namespace Presentacion
             panelPrincipal = panel;
             servicioUsuario = new ServicioUsuario();
             servicioHabitacion = new ServicioHabitacion();
+            this.habitacion = habitacion;
+
             tituloHabitacion.Content = habitacion.Nombre;
             descripcion.Text = habitacion.Descripcion;
             idHabitacion.Content = $"Id: {habitacion.Id}";
@@ -45,6 +48,13 @@ namespace Presentacion
                 var mensaje2 = new NotRoom("No has reservado habitación");
                 panelPrincipal.Children.Add(mensaje2);
             }
+        }
+
+        private void btnComentar_Click(object sender, RoutedEventArgs e)
+        {
+            Comment comentario = new Comment(habitacion);
+            comentario.ShowDialog();
+
         }
     }
 }

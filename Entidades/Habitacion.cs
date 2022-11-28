@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace Entidades
 {
     public class Habitacion
@@ -9,6 +11,7 @@ namespace Entidades
         public string Descripcion { get; set; }
         public double Precio { get; set; }
         public Usuario Usuario { get; set; }
+        public List<Comentario> comentarios = new List<Comentario>();
 
         public Habitacion(){}
         public Habitacion(string nombre, 
