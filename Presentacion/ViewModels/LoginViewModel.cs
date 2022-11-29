@@ -9,8 +9,8 @@ namespace Presentacion.ViewModels
         MainViewModel _mainViewModel;
         ServicioUsuario _servicioUsuario;
 
-        private string _userName = "Usuario";
-        private string _password = "Contraseña";
+        private string _userName;
+        private string _password;
         private string _errorMessage;
 
         //Propiedades
@@ -74,8 +74,7 @@ namespace Presentacion.ViewModels
         private void ExecutePersonViewCommand(object obj)
         {
 
-            if ((_userName.Equals("Usuario") || _password.Equals("Contraseña")) ||
-                string.IsNullOrEmpty(_userName) || string.IsNullOrEmpty(_password))
+            if (string.IsNullOrEmpty(_userName) || string.IsNullOrEmpty(_password))
             {
                 ErrorMessage = "Campos vacíos, rellene los campos necesarios";
             }

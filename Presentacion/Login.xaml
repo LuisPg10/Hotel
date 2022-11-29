@@ -29,11 +29,12 @@
                         Iniciar Sesión
                     </Label>
 
-                    <TextBox  x:Name="user" Style="{DynamicResource txtBox}" 
-                      Margin="0, 50, 0, 0" Text="{Binding UserName}">
+                    <TextBox  x:Name="user" Style="{StaticResource placeHolder}" 
+                    Margin="0, 50, 0, 0"
+                    Text="{Binding UserName}" Tag="Usuario">
                     </TextBox>
-                    <TextBox Margin="0, 15, 0, 18" Style="{DynamicResource txtBox}"
-                     Text="{Binding Password}">
+                    <TextBox Margin="0, 15, 0, 18" Style="{ StaticResource placeHolder}"
+                    Text="{Binding Password}" Tag="Contraseña">
                     </TextBox>
 
                     <Label HorizontalAlignment="Center" 

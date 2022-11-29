@@ -10,10 +10,10 @@ namespace Presentacion.ViewModels
         ServicioUsuario _servicioUsuario;
         MessageBox mensaje;
 
-        private string _correo = "Correo";
-        private string _nombre = "Nombre";
-        private string _userName = "Usuario";
-        private string _password = "Contraseña";
+        private string _correo;
+        private string _nombre;
+        private string _userName;
+        private string _password;
         private string _errorMessage;
 
         public string Correo
@@ -98,8 +98,7 @@ namespace Presentacion.ViewModels
         }
         private void ExeCuteShowSuccessFullCommand(object obj)
         {
-            if ((_userName.Equals("Usuario") || _password.Equals("Contraseña")) || _correo.Equals("Correo") ||
-                _nombre.Equals("Nombre") || string.IsNullOrEmpty(_userName) || 
+            if (string.IsNullOrEmpty(_userName) || 
                 string.IsNullOrEmpty(_password) || string.IsNullOrEmpty(_correo))
             {
                 ErrorMessage = "Campos vacíos, rellene los campos necesarios";

@@ -31,8 +31,8 @@
                     </Label>
 
                     <TextBox Margin="0, 50, 0, 0" 
-                         Style="{DynamicResource txtBox}"
-                         Text="{Binding Correo}">
+                         Style="{DynamicResource placeHolder}"
+                         Tag="Correo" Text="{Binding Correo}">
                     </TextBox>
 
                     <Grid>
@@ -42,19 +42,19 @@
                         </Grid.ColumnDefinitions>
 
                         <TextBox Grid.Column="0" Margin="0, 15, 10, 0"
-                         Style="{DynamicResource txtBox}"
+                         Style="{DynamicResource placeHolder}"
                          HorizontalContentAlignment="Center"
-                         Text="{Binding Nombre}">
+                         Tag="Nombre" Text="{Binding Nombre}">
                         </TextBox>
                         <TextBox  Grid.Column="1" Margin="0, 15, 0, 0"
-                         Style="{DynamicResource txtBox}"
+                         Style="{DynamicResource placeHolder}"
                          HorizontalContentAlignment="Center"
-                         Text="{Binding UserName}">
+                         Tag="Usuario" Text="{Binding UserName}">
                         </TextBox>
                     </Grid>
                     <TextBox Margin="0, 15, 0, 12" 
-                         Style="{DynamicResource txtBox}"
-                         Text="{Binding Password}">
+                         Style="{DynamicResource placeHolder}"
+                         Tag="Contraseña" Text="{Binding Password}">
                     </TextBox>
 
                     <Label HorizontalAlignment="Center" 
