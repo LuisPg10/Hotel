@@ -10,10 +10,6 @@
         ShowInTaskbar="False"
         BorderThickness="2" WindowStartupLocation="CenterOwner" MouseDown="Window_MouseDown">
 
-    <Window.DataContext>
-        <local:ConfirmReserva/>
-    </Window.DataContext>
-    
     <Grid>
         <Border BorderBrush="#908E8E" BorderThickness="3"
             Background="#FFFFFF">
@@ -37,8 +33,7 @@
                             <RowDefinition Height="80"/>
                         </Grid.RowDefinitions>
 
-                        <Label x:Name="tituloHabitacion" Grid.Row="0" FontSize="30"
-                           Content="{Binding tituloHabitacion}"/>
+                        <Label x:Name="tituloHabitacion" Grid.Row="0" FontSize="30"/>
 
                         <DatePicker  x:Name ="fecha" Style="{DynamicResource datoFecha}" Grid.Row="1" SelectedDateFormat="Short"
                                     DisplayDateStart="11/30/2022"
@@ -52,11 +47,10 @@
                                 <Label x:Name="idHabitacion" FontSize="20" 
                                    Content="{Binding idHabitacion}"/>
                                 <Label x:Name="NumHabitacion" FontSize="20" 
-                           Width="auto" Content="{Binding NumHabitacion}"/>
+                           Width="auto"/>
                                 <Label x:Name="tipoHabitacion" FontSize="20" 
-                            Width="auto" Content="{Binding tipoHabitacion}"/>
-                                <Label x:Name="precioHabitacion" FontSize="20" 
-                                   Content="{Binding precioHabitacion}"/>
+                            Width="auto"/>
+                                <Label x:Name="precioHabitacion" FontSize="20"/>
                             </StackPanel>
                         </ScrollViewer>
 

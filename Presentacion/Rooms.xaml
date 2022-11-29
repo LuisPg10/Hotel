@@ -9,10 +9,6 @@
              Height="350" d:DesignWidth="920"
              MaxWidth="920">
 
-    <UserControl.DataContext>
-        <local:Rooms/>
-    </UserControl.DataContext>
-
     <Border CornerRadius="30" BorderBrush="#908E8E" BorderThickness="3"
             Background="#FFFFFF">
         <Grid>
@@ -35,26 +31,22 @@
                         <RowDefinition Height="80"/>
                     </Grid.RowDefinitions>
 
-                    <Label x:Name="tituloHabitacion" Grid.Row="0" FontSize="30"
-                           Content="{Binding tituloHabitacion}"/>
+                    <Label x:Name="tituloHabitacion" Grid.Row="0" FontSize="30"/>
 
                     <ScrollViewer Grid.Row="1" Margin="0, 0, 12, 0" VerticalScrollBarVisibility="Auto">
                         <TextBlock x:Name="descripcion" FontSize="20"
                                    Margin="0, 0, 30, 0"
                                    TextWrapping="Wrap"
-                                   TextAlignment="Justify" 
-                                   Text="{Binding descripcion}"/>
+                                   TextAlignment="Justify"/>
                     </ScrollViewer>
                     <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
                         <StackPanel Orientation="Horizontal">
-                            <Label x:Name="idHabitacion" FontSize="20" 
-                                   Content="{Binding idHabitacion}"/>
+                            <Label x:Name="idHabitacion" FontSize="20"/>
                             <Label x:Name="NumHabitacion" FontSize="20" 
-                           Width="auto" Content="{Binding NumHabitacion}"/>
+                           Width="auto"/>
                             <Label x:Name="tipoHabitacion" FontSize="20" 
-                            Width="auto" Content="{Binding tipoHabitacion}"/>
-                            <Label x:Name="precioHabitacion" FontSize="20" 
-                                   Content="{Binding precioHabitacion}"/>
+                            Width="auto"/>
+                            <Label x:Name="precioHabitacion" FontSize="20"/>
                         </StackPanel>
                     </ScrollViewer>
 

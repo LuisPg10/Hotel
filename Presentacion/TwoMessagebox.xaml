@@ -11,10 +11,6 @@
         BorderBrush="#787474"
         BorderThickness="2" WindowStartupLocation="CenterOwner" SizeToContent="Width" MouseDown="Window_MouseDown">
 
-    <Window.DataContext>
-        <local:TwoMessagebox/>
-    </Window.DataContext>
-
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -23,7 +19,6 @@
 
         <Border Grid.Row="0" Padding="15">
             <Label x:Name="message" Grid.Row="1" FontSize="25"
-                   Content="{Binding message}" 
                    HorizontalContentAlignment="Center"/>
         </Border>
         <Border Grid.Row="1" Padding="10">

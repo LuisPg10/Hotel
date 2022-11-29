@@ -8,11 +8,7 @@
               Margin="20, 30, 20, 0"
              Height="350" d:DesignWidth="920"
              MaxWidth="920">
-
-    <UserControl.DataContext>
-        <local:Rooms/>
-    </UserControl.DataContext>
-
+   
     <Border CornerRadius="30" BorderBrush="#908E8E" BorderThickness="3"
             Background="#FFFFFF">
 
