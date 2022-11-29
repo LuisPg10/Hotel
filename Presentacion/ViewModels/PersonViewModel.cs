@@ -69,6 +69,7 @@ namespace Presentacion.ViewModels
                 Message = $" Bienvenido {namePerson} ";
                 TextBtn = "Habitacion reservada";
             }
+
         }
     }
 }

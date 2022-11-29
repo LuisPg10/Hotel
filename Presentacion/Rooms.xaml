@@ -60,8 +60,8 @@
 
                     <Border Grid.Row="3">
                         <StackPanel Grid.Row="3" Orientation="Horizontal" FlowDirection="RightToLeft">
-                            <Button Style="{StaticResource btnActionBox}"
-                                Margin="30, 0, 10, 0">
+                            <Button x:Name="btnComentrarios" Style="{StaticResource btnActionBox}"
+                                Margin="30, 0, 10, 0" Click="btnComentrarios_Click">
                                 Comentarios
                             </Button>
                             <Button x:Name="btnReserva" Style="{StaticResource btnActionBox}" Click="btnReserva_Click">

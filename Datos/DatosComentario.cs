@@ -84,8 +84,8 @@ namespace Datos
                 {
                     Comentario comentario = new Comentario();
                     comentario.Id = consulta.GetUInt32(0);
-                    comentario.Usuario = new DatosUsuario().ConsultarUsuario(consulta.GetString(3));
-                    comentario.Habitacion = new DatosHabitacion().ConsultarHabitacion(consulta.GetUInt32(1));
+                    comentario.Usuario = new DatosUsuario().ConsultarUsuario(consulta.GetUInt32(1));
+                    comentario.Habitacion = new DatosHabitacion().ConsultarHabitacion(consulta.GetUInt32(2));
                     comentario.Comentarios = consulta.GetString(3);
                     listaComentario.Add(comentario);
                 }

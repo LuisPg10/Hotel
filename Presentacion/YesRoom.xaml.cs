@@ -52,9 +52,8 @@ namespace Presentacion
 
         private void btnComentar_Click(object sender, RoutedEventArgs e)
         {
-            Comment comentario = new Comment(habitacion);
+            Comment comentario = new Comment(habitacion, Usuario);
             comentario.ShowDialog();
-
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Entidades;
+using Logica;
 using System.Windows.Controls;
 
 namespace Presentacion
@@ -11,11 +12,14 @@ namespace Presentacion
         Habitacion habitacion;
         Usuario usuario;
         StackPanel contenedor;
+        ServicioComentario servicioComentario;
 
         public Rooms(Habitacion habitacion, Usuario usuario, StackPanel contendor)
         {
             InitializeComponent();
             this.habitacion = habitacion;
+            servicioComentario = new ServicioComentario();
+
             tituloHabitacion.Content = habitacion.Nombre;
             descripcion.Text = habitacion.Descripcion;
             idHabitacion.Content = $"Id: {habitacion.Id}";
@@ -44,5 +48,19 @@ namespace Presentacion
                 mensaje.ShowDialog();
             }
         }
+
+        private void btnComentrarios_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            contenedor.Children.Clear();
+            foreach (var comentario in servicioComentario.ListaComentarios())
+            {
+                if (comentario.Habitacion.Id == habitacion.Id)
+                {
+                    var comentarioUsuario = new CommentUser(comentario);
+                    contenedor.Children.Add(comentarioUsuario);
+                }
+            }
+        }
+
     }
 }

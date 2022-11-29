@@ -1,18 +1,7 @@
 ﻿using Entidades;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Logica;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Forms;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Presentacion
 {
@@ -23,10 +12,13 @@ namespace Presentacion
     {
         Habitacion habitacion;
         Usuario usuario = new Usuario();
-        public Comment(Habitacion habitacion)
+        ServicioComentario servicioComentario;
+        public Comment(Habitacion habitacion, Usuario usuario)
         {
             InitializeComponent();
             this.habitacion = habitacion;
+            servicioComentario = new ServicioComentario();
+            this.usuario = usuario;
 
             tituloHabitacion.Content = habitacion.Nombre;
             idHabitacion.Content = $"Id: {habitacion.Id}";
@@ -46,6 +38,8 @@ namespace Presentacion
             {
                 var comentario = new Comentario(usuario, habitacion, textComentario.Text);
                 habitacion.comentarios.Add(comentario);
+                servicioComentario.RegistrarComentario(comentario);
+
                 var mensaje = new MessageBox("Comentario registrado");
                 mensaje.ShowDialog();
                 Close();

@@ -59,6 +59,9 @@
     <Compile Include="Comment.xaml.cs">
       <DependentUpon>Comment.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CommentUser.xaml.cs">
+      <DependentUpon>CommentUser.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ConfirmReserva.xaml.cs">
       <DependentUpon>ConfirmReserva.xaml</DependentUpon>
     </Compile>
@@ -69,6 +72,10 @@
       <DependentUpon>YesRoom.xaml</DependentUpon>
     </Compile>
     <Page Include="Comment.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CommentUser.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
