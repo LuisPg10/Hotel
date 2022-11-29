@@ -35,7 +35,8 @@
 
                         <Label x:Name="tituloHabitacion" Grid.Row="0" FontSize="30"/>
 
-                        <TextBox x:Name="textComentario" Grid.Row="1" Style="{StaticResource txtBox}" 
+                        <TextBox x:Name="textComentario" Grid.Row="1" Style="{StaticResource placeHolder}"
+                                 Tag="Inserte comentario"
                                      Padding="10"
                                      TextWrapping="Wrap" FontSize="15"
                                      HorizontalContentAlignment="Left"
