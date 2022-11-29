@@ -1,6 +1,6 @@
 # Script de base de datos
 
-```
+```SQL
     DROP DATABASE IF EXISTS bdhotel;
     CREATE DATABASE bdhotel;
     USE bdhotel;
@@ -52,6 +52,7 @@
 
     ALTER TABLE habitaciones ADD FOREIGN KEY (IdUsuario) REFERENCES usuarios(IdUsuario); 
 
+    /*Datos de prueba para la base de datos*/
     INSERT INTO  gerentes (Username, Pssword) 
     VALUES 
     ("luis", "luis10"),
