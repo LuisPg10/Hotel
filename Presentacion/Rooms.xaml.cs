@@ -9,16 +9,27 @@ namespace Presentacion
     /// </summary>
     public partial class Rooms : UserControl
     {
+        #region variables para Room
+
         Habitacion habitacion;
         Usuario usuario;
         StackPanel contenedor;
         ServicioComentario servicioComentario;
+        Label titulo;
+        Button button;
 
-        public Rooms(Habitacion habitacion, Usuario usuario, StackPanel contendor)
+        #endregion
+
+        public Rooms(Habitacion habitacion, Usuario usuario, 
+            StackPanel contenedor, Label titulo, Button button)
         {
             InitializeComponent();
             this.habitacion = habitacion;
             servicioComentario = new ServicioComentario();
+            this.usuario = usuario;
+            this.contenedor = contenedor;
+            this.titulo = titulo;
+            this.button = button;
 
             tituloHabitacion.Content = habitacion.Nombre;
             descripcion.Text = habitacion.Descripcion;
@@ -26,11 +37,11 @@ namespace Presentacion
             NumHabitacion.Content = $"No. Habitacion: {habitacion.NumHabitacion}";
             tipoHabitacion.Content = $"Tipo: {habitacion.TipoHabitacion}";
             precioHabitacion.Content = $"Precio: {habitacion.Precio}";
-            this.usuario = usuario;
-            this.contenedor = contendor;
         }
         public Rooms() { }
 
+        #region Eventos de esta clase
+        //Evento del boton para la reserva de la habitacion
         private void btnReserva_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             if (usuario.Habitacion==null)
@@ -49,8 +60,12 @@ namespace Presentacion
             }
         }
 
+        //Evento para mostrar los comentarios
         private void btnComentrarios_Click(object sender, System.Windows.RoutedEventArgs e)
         {
+            titulo.Content = " Comentarios ";
+            button.Content = "←";
+
             contenedor.Children.Clear();
             foreach (var comentario in servicioComentario.ListaComentarios())
             {
@@ -60,7 +75,13 @@ namespace Presentacion
                     contenedor.Children.Add(comentarioUsuario);
                 }
             }
-        }
 
+            if (contenedor.Children.Count == 0)
+            {
+                NotRoom mensaje = new NotRoom("Sin comentarios en esta habitacion");
+                contenedor.Children.Add(mensaje);
+            }
+        }
+        #endregion
     }
 }

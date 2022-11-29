@@ -36,7 +36,6 @@ namespace Presentacion.ViewModels
         }
         
         public ICommand ShowLoginViewCommand { get; }
-        public ICommand ShowRoomCommand { get; }
         public PersonViewModel() { }
         public PersonViewModel(MainViewModel mainViewModel, string namePerson) { 
 
@@ -47,7 +46,6 @@ namespace Presentacion.ViewModels
 
             
             ShowLoginViewCommand = new RelayCommand(ExecuteShowLoginViewCommand);
-            ShowRoomCommand = new RelayCommand(ExecuteShowRoomCommand);
         }
         private void ExecuteShowLoginViewCommand(object obj)
         {
@@ -55,21 +53,6 @@ namespace Presentacion.ViewModels
             LoginViewModel loginViewModel = new LoginViewModel(_mainViewModel);
             login.DataContext = loginViewModel;
             _mainViewModel.SetNewContent(login);
-        }
-        private void ExecuteShowRoomCommand(object obj)
-        {
-
-            if (Message.Equals($" Bienvenido {namePerson} "))
-            {
-                Message = " Habitación ";
-                TextBtn = "←";
-            }
-            else
-            {
-                Message = $" Bienvenido {namePerson} ";
-                TextBtn = "Habitacion reservada";
-            }
-
         }
     }
 }
