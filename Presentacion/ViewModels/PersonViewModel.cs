@@ -5,6 +5,8 @@ namespace Presentacion.ViewModels
     public class PersonViewModel: ViewModelBase
     {
         MainViewModel _mainViewModel;
+        LoginViewModel _loginViewModel;
+        Login login;
         
         private string namePerson;
         private string message = $" Bienvenido user ";
@@ -41,17 +43,17 @@ namespace Presentacion.ViewModels
 
             _mainViewModel = mainViewModel;
 
+            login = new Login();
+
             this.namePerson = namePerson;
             message = $" Bienvenido {namePerson} ";
 
-            
             ShowLoginViewCommand = new RelayCommand(ExecuteShowLoginViewCommand);
         }
         private void ExecuteShowLoginViewCommand(object obj)
         {
-            Login login = new Login();
-            LoginViewModel loginViewModel = new LoginViewModel(_mainViewModel);
-            login.DataContext = loginViewModel;
+            _loginViewModel = new LoginViewModel(_mainViewModel);
+            login.DataContext = _loginViewModel;
             _mainViewModel.SetNewContent(login);
         }
     }

@@ -159,7 +159,8 @@
             </Setter.Value>
         </Setter>
     </Style>
-
+    
+    <!--Estilo placeholder para los campos de texto-->
     <Style x:Key="placeHolder" TargetType="{x:Type TextBox}" BasedOn="{StaticResource {x:Type TextBox}}">
         <Setter Property="BorderBrush" Value="#BDBDBD"/>
         <Setter Property="Height" Value="58"/>
@@ -211,6 +212,54 @@
         </Setter>
     </Style>
 
+    <Style x:Key="placeHolder2" TargetType="{x:Type PasswordBox}" BasedOn="{StaticResource {x:Type PasswordBox}}">
+        <Setter Property="BorderBrush" Value="#BDBDBD"/>
+        <Setter Property="Height" Value="58"/>
+        <Setter Property="BorderThickness" Value="4"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type PasswordBox}">
+                    <Border CornerRadius="30" BorderBrush="#BDBDBD" BorderThickness="4">
+                        <Grid>
+                            <PasswordBox
+                                 x:Name="textSource" 
+                                 Background="Transparent" 
+                                 Panel.ZIndex="2" 
+                                 BorderThickness="0" 
+                                 HorizontalContentAlignment="Left"
+                                 FontSize="22"
+                                 VerticalContentAlignment="Center" 
+                                 Padding="10, 0, 0, 0"/>
+
+                            <TextBox Text="{TemplateBinding Tag}" 
+                                     Background="Transparent"  BorderThickness="0" 
+                                     HorizontalContentAlignment="Left"
+                                     VerticalContentAlignment="Center"
+                                     Padding="10, 0, 0, 0"
+                                     Panel.ZIndex="1" FontSize="22">
+                                <TextBox.Style>
+                                    <Style TargetType="{x:Type TextBox}">
+                                        <Setter Property="Foreground" Value="Transparent"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Path=Text, Source={x:Reference textSource}}" Value="">
+                                                <Setter Property="Foreground" Value="#adaaaa"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBox.Style>
+                            </TextBox>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsFocused" Value="True">
+                            <Setter Property="FocusManager.FocusedElement" TargetName="textSource" Value="{Binding RelativeSource={RelativeSource Self}}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
     <!--Boton cerrar-->
     <Style x:Key="StyleClose" TargetType="Button">
         <Setter Property="Width" Value="40"/>

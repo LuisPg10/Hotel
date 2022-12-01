@@ -8,6 +8,7 @@
         Height="350" Width="700" WindowStyle="None" AllowsTransparency="True"
         ResizeMode="NoResize"
         ShowInTaskbar="False"
+        Topmost="True"
         BorderThickness="2" WindowStartupLocation="CenterOwner" MouseDown="Window_MouseDown">
 
     <Grid>

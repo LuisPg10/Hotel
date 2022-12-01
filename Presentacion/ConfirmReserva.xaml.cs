@@ -15,25 +15,23 @@ namespace Presentacion
         ServicioUsuario servicioUsuario;
         ServicioHabitacion serviciohabitacion;
         public bool action = false;
-        public ConfirmReserva(Habitacion habitacion)
+        MessageBox mensaje;
+        public ConfirmReserva()
         {
             InitializeComponent();
-            this.habitacion = habitacion;
+
             serviciohabitacion = new ServicioHabitacion();
             servicioUsuario = new ServicioUsuario();
-            tituloHabitacion.Content = habitacion.Nombre;
-            idHabitacion.Content = $"Id: {habitacion.Id}";
-            NumHabitacion.Content = $"No. Habitacion: {habitacion.NumHabitacion}";
-            tipoHabitacion.Content = $"Tipo: {habitacion.TipoHabitacion}";
-            precioHabitacion.Content = $"Precio: {habitacion.Precio}";
+
+            mensaje = new MessageBox();
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
-            Close();
+            fecha.Text = string.Empty;
+            Visibility = Visibility.Collapsed;
             action = false;
         }
-        public ConfirmReserva(){ }
 
         private void Window_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
@@ -44,23 +42,33 @@ namespace Presentacion
         private void btnReserva_Click(object sender, RoutedEventArgs e)
         {
             DateTime? date = fecha.SelectedDate;
-            MessageBox mensaje;
-
             if (date!=null)
             {
                 Usuario.Habitacion = habitacion;
                 habitacion.Usuario = Usuario;
                 serviciohabitacion.ActualizarHabitacion(habitacion);
                 servicioUsuario.ActualizarUsuario(Usuario);
-                mensaje = new MessageBox("Reserva exitosa");
-                Close();
+
+                fecha.Text = string.Empty;
+                mensaje.Text("Reserva exitosa");
+                Visibility = Visibility.Collapsed;
                 action = true;
             }
             else
             {
-                mensaje = new MessageBox("Ingrese una fecha valida");
+                mensaje.Text("Ingrese una fecha valida");
             }
             mensaje.ShowDialog();
+        }
+
+        public void setContext(Habitacion habitacion)
+        {
+            this.habitacion = habitacion;
+            tituloHabitacion.Content = habitacion.Nombre;
+            idHabitacion.Content = $"Id: {habitacion.Id}";
+            NumHabitacion.Content = $"No. Habitacion: {habitacion.NumHabitacion}";
+            tipoHabitacion.Content = $"Tipo: {habitacion.TipoHabitacion}";
+            precioHabitacion.Content = $"Precio: {habitacion.Precio}";
         }
     }
 }

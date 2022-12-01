@@ -1,5 +1,7 @@
 ﻿using Entidades;
 using Logica;
+using System.Collections.Generic;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace Presentacion
@@ -17,19 +19,78 @@ namespace Presentacion
         ServicioComentario servicioComentario;
         Label titulo;
         Button button;
+        MessageBox mensaje;
+        NotRoom mensaje2;
+        ConfirmReserva confirm;
+        List<Comentario> comentarios;
+        List<Rooms> rooms;
+        public static List<CommentUser> controlesComentarios;
 
         #endregion
-
-        public Rooms(Habitacion habitacion, Usuario usuario, 
-            StackPanel contenedor, Label titulo, Button button)
+        public Rooms()
         {
             InitializeComponent();
-            this.habitacion = habitacion;
+            var window = Window.GetWindow(this);
+            mensaje = new MessageBox();
+            mensaje.Owner = window;
+            mensaje2 = new NotRoom();
+            confirm = new ConfirmReserva();
+            confirm.Owner = window;
+            comentarios = new List<Comentario>();
             servicioComentario = new ServicioComentario();
+            controlesComentarios = new List<CommentUser>();
+
+            comentarios = servicioComentario.ListaComentarios();
+            CargarComentarios();
+        }
+
+        #region Eventos de esta clase
+        //Evento del boton para la reserva de la habitacion
+        private void btnReserva_Click(object sender, RoutedEventArgs e)
+        {
+            if (usuario.Habitacion == null)
+            {
+                confirm.Usuario = usuario;
+                confirm.setContext(habitacion);
+                confirm.ShowDialog();
+
+                if (confirm.action == true)
+                {
+                    contenedor.Children.Remove(this);
+                    rooms.Remove(this);
+                }
+            }
+            else
+            {
+                mensaje.Text("Ya tienes una habitacion reservada");
+                mensaje.ShowDialog();
+            }
+        }
+
+        //Evento para mostrar los comentarios
+        private void btnComentrarios_Click(object sender, RoutedEventArgs e)
+        {
+            titulo.Content = " Comentarios ";
+            button.Content = "←";
+
+            contenedor.Children.Clear();
+            ListarComentarios();
+
+            if (contenedor.Children.Count == 0)
+            {
+                mensaje2.SetText("Sin comentarios en esta habitacion");
+                contenedor.Children.Add(mensaje2);
+            }
+        }
+        public void setContext(Habitacion habitacion, Usuario usuario,
+            StackPanel contenedor, Label titulo, Button button, List<Rooms> rooms)
+        {
+            this.habitacion = habitacion;
             this.usuario = usuario;
             this.contenedor = contenedor;
             this.titulo = titulo;
             this.button = button;
+            this.rooms = rooms;
 
             tituloHabitacion.Content = habitacion.Nombre;
             descripcion.Text = habitacion.Descripcion;
@@ -38,50 +99,26 @@ namespace Presentacion
             tipoHabitacion.Content = $"Tipo: {habitacion.TipoHabitacion}";
             precioHabitacion.Content = $"Precio: {habitacion.Precio}";
         }
-        public Rooms() { }
+        #endregion
 
-        #region Eventos de esta clase
-        //Evento del boton para la reserva de la habitacion
-        private void btnReserva_Click(object sender, System.Windows.RoutedEventArgs e)
+        private void CargarComentarios()
         {
-            if (usuario.Habitacion==null)
+            foreach (var comentario in comentarios)
             {
-                ConfirmReserva confirm = new ConfirmReserva(habitacion);
-                confirm.Usuario = usuario;
-                confirm.ShowDialog();
-
-                if (confirm.action == true)
-                    contenedor.Children.Remove(this);
-            }
-            else
-            {
-                var mensaje = new MessageBox("Ya tienes una habitacion reservada");
-                mensaje.ShowDialog();
+                var comentarioUsuario = new CommentUser(comentario);
+                controlesComentarios.Add(comentarioUsuario);
             }
         }
 
-        //Evento para mostrar los comentarios
-        private void btnComentrarios_Click(object sender, System.Windows.RoutedEventArgs e)
+        private void ListarComentarios()
         {
-            titulo.Content = " Comentarios ";
-            button.Content = "←";
-
-            contenedor.Children.Clear();
-            foreach (var comentario in servicioComentario.ListaComentarios())
+            foreach (var comentario in controlesComentarios)
             {
-                if (comentario.Habitacion.Id == habitacion.Id)
+                if (comentario.id == habitacion.Id)
                 {
-                    var comentarioUsuario = new CommentUser(comentario);
-                    contenedor.Children.Add(comentarioUsuario);
+                    contenedor.Children.Add(comentario);
                 }
             }
-
-            if (contenedor.Children.Count == 0)
-            {
-                NotRoom mensaje = new NotRoom("Sin comentarios en esta habitacion");
-                contenedor.Children.Add(mensaje);
-            }
         }
-        #endregion
     }
 }

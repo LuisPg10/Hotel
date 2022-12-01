@@ -7,17 +7,15 @@ namespace Presentacion
     /// </summary>
     public partial class MessageBox : Window
     {
-        public MessageBox(string label)
+        public MessageBox()
         {
             var window = GetWindow(this) as MainWindow;
             Owner = window;
             InitializeComponent();
-            message.Content = label;
         }
-        public MessageBox() { }
         private void btnAction_Click(object sender, RoutedEventArgs e)
         {
-            Close();
+            Visibility = Visibility.Collapsed;
         }
         private void Window_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {

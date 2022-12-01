@@ -13,26 +13,21 @@ namespace Presentacion
         Habitacion habitacion;
         Usuario usuario = new Usuario();
         ServicioComentario servicioComentario;
-        public Comment(Habitacion habitacion, Usuario usuario)
+        MessageBox mensaje;
+        public Comment()
         {
             InitializeComponent();
-            this.habitacion = habitacion;
-            servicioComentario = new ServicioComentario();
-            this.usuario = usuario;
 
-            tituloHabitacion.Content = habitacion.Nombre;
-            idHabitacion.Content = $"Id: {habitacion.Id}";
-            NumHabitacion.Content = $"No. Habitacion: {habitacion.NumHabitacion}";
-            tipoHabitacion.Content = $"Tipo: {habitacion.TipoHabitacion}";
-            precioHabitacion.Content = $"Precio: {habitacion.Precio}";
+            servicioComentario = new ServicioComentario();
+            mensaje = new MessageBox();
         }
 
         private void btnComment_Click(object sender, RoutedEventArgs e)
         {
             if (textComentario.Text.Equals(string.Empty))
             {
-                var mensaje = new MessageBox("Registre su comentario");
-                mensaje.Show();
+                mensaje.Text("Registre su comentario");
+                mensaje.ShowDialog();
             }
             else
             {
@@ -40,21 +35,36 @@ namespace Presentacion
                 habitacion.comentarios.Add(comentario);
                 servicioComentario.RegistrarComentario(comentario);
 
-                var mensaje = new MessageBox("Comentario registrado");
+                var comment = new CommentUser(comentario);
+                Rooms.controlesComentarios.Add(comment);
+                textComentario.Text = string.Empty;
+
+                mensaje.Text("Comentario registrado");
                 mensaje.ShowDialog();
-                Close();
+                Visibility = Visibility.Collapsed;
             }
         }
-
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed)
                 DragMove();
         }
-
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
-            Close();
+            textComentario.Text = string.Empty;
+            Visibility = Visibility.Collapsed;
+        }
+
+        public void setContext(Habitacion habitacion, Usuario usuario)
+        {
+            this.habitacion = habitacion;
+            this.usuario = usuario;
+
+            tituloHabitacion.Content = habitacion.Nombre;
+            idHabitacion.Content = $"Id: {habitacion.Id}";
+            NumHabitacion.Content = $"No. Habitacion: {habitacion.NumHabitacion}";
+            tipoHabitacion.Content = $"Tipo: {habitacion.TipoHabitacion}";
+            precioHabitacion.Content = $"Precio: {habitacion.Precio}";
         }
     }
 }

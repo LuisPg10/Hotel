@@ -4,6 +4,7 @@ using System.Windows.Input;
 using System.Runtime.InteropServices;
 using System.Windows.Interop;
 using Presentacion.ViewModels;
+using Logica;
 
 namespace Presentacion
 {
@@ -15,7 +16,7 @@ namespace Presentacion
         public MainWindow()
         {
             InitializeComponent();
-
+           
             MainViewModel mainViewModel = new MainViewModel();
             LoginViewModel loginViewModel = new LoginViewModel(mainViewModel);
             Login login = new Login();

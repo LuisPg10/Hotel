@@ -4,10 +4,12 @@ using System.Windows.Input;
 
 namespace Presentacion.ViewModels
 {
-    public class RegisterViewModel: ViewModelBase
+    public class RegisterViewModel : ViewModelBase
     {
         MainViewModel _mainViewModel;
-        ServicioUsuario _servicioUsuario;
+        LoginViewModel loginViewModel;
+        Login login = new Login();
+
         MessageBox mensaje;
 
         private string _correo;
@@ -82,40 +84,44 @@ namespace Presentacion.ViewModels
 
         public RegisterViewModel(MainViewModel mainViewModel)
         {
-            _servicioUsuario = new ServicioUsuario();
             _mainViewModel = mainViewModel;
+            mensaje = new MessageBox();
 
             ShowLoginCommand = new RelayCommand(ExecuteShowLoginCommand);
             ShowSuccessFullCommand = new RelayCommand(ExeCuteShowSuccessFullCommand);
         }
-        public RegisterViewModel(){}
+        public RegisterViewModel() { }
+
         private void ExecuteShowLoginCommand(object obj)
         {
-            LoginViewModel loginViewModel = new LoginViewModel(_mainViewModel);
-            Login login = new Login();
+            if (loginViewModel == null)
+            {
+                loginViewModel = new LoginViewModel(_mainViewModel);
+            }
+            
             login.DataContext = loginViewModel;
             _mainViewModel.SetNewContent(login);
         }
         private void ExeCuteShowSuccessFullCommand(object obj)
         {
-            if (string.IsNullOrEmpty(_userName) || 
+            if (string.IsNullOrEmpty(_userName) ||
                 string.IsNullOrEmpty(_password) || string.IsNullOrEmpty(_correo))
             {
                 ErrorMessage = "Campos vacíos, rellene los campos necesarios";
             }
-            else if (_servicioUsuario.VerificarUsuario(_userName) || _servicioUsuario.verificarCorreo(_correo))
+            else if (MainViewModel._servicioUsuario.VerificarUsuario(_userName)
+                || MainViewModel._servicioUsuario.verificarCorreo(_correo))
             {
                 ErrorMessage = "Usuario o correo ya registrado";
             }
             else
             {
                 Usuario user = new Usuario(_nombre, _correo, _userName, _password, null);
-                _servicioUsuario.RegistrarUsuario(user);
+                MainViewModel._servicioUsuario.RegistrarUsuario(user);
 
                 ErrorMessage = string.Empty;
-                mensaje = new MessageBox("Registro exitoso");
+                mensaje.Text("Registro exitoso");
                 mensaje.ShowDialog();
-
                 ExecuteShowLoginCommand(obj);
             }
         }

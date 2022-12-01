@@ -7,7 +7,11 @@ namespace Presentacion.ViewModels
     public class LoginViewModel : ViewModelBase
     {
         MainViewModel _mainViewModel;
-        ServicioUsuario _servicioUsuario;
+        RegisterViewModel registerViewModel;
+        Register register;
+
+        PersonViewModel personViewModel;
+        PWindow mainView;
 
         private string _userName;
         private string _password;
@@ -53,21 +57,23 @@ namespace Presentacion.ViewModels
         public ICommand ShowPersonViewModel { get; }
 
         //Constructor
+        
         public LoginViewModel(MainViewModel mainViewModel)
         {
             _mainViewModel = mainViewModel;
-            _servicioUsuario = new ServicioUsuario();
+            register = new Register();
 
             //Commands instance
             ShowRegisterCommand = new RelayCommand(ExeCuteRegisterCommand);
             ShowPersonViewModel = new RelayCommand(ExecutePersonViewCommand);
         }
         public LoginViewModel(){}
-
         private void ExeCuteRegisterCommand(object obj)
         {
-            RegisterViewModel registerViewModel = new RegisterViewModel(_mainViewModel);
-            Register register = new Register();
+            if (registerViewModel == null)
+            {
+                registerViewModel = new RegisterViewModel(_mainViewModel);
+            }
             register.DataContext = registerViewModel;
             _mainViewModel.SetNewContent(register);
         }
@@ -78,20 +84,22 @@ namespace Presentacion.ViewModels
             {
                 ErrorMessage = "Campos vacíos, rellene los campos necesarios";
             }
-            else if (!_servicioUsuario.VerificarEntradaUsuario(_userName, _password))
+            else if (!MainViewModel._servicioUsuario.VerificarEntradaUsuario(_userName, _password))
             {
                 ErrorMessage = "Usuario o contraseña incorrecta";
             }
             else
             {
                 ErrorMessage = string.Empty;
-                PersonViewModel personViewModel;
-                Usuario usuario = _servicioUsuario.ConsultarUsuario(UserName);
+                Usuario usuario = MainViewModel._servicioUsuario.ConsultarUsuario(UserName);
 
-                personViewModel = new PersonViewModel(_mainViewModel, usuario.Nombre);
-                PWindow user = new PWindow(usuario);
-                user.DataContext = personViewModel;
-                _mainViewModel.SetNewContent(user);
+                if (personViewModel == null && mainView == null)
+                {
+                    personViewModel = new PersonViewModel(_mainViewModel, usuario.Nombre);
+                    mainView = new PWindow(usuario);
+                }
+                mainView.DataContext = personViewModel;
+                _mainViewModel.SetNewContent(mainView);
             }
         }
     }

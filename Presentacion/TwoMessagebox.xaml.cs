@@ -8,17 +8,14 @@ namespace Presentacion
     public partial class TwoMessagebox : Window
     {
         public bool action = false;
-        public TwoMessagebox(string label)
+        public TwoMessagebox()
         {
             InitializeComponent();
-            message.Content = label;
         }
-
-        public TwoMessagebox() { }
 
         private void btnAction_Click(object sender, RoutedEventArgs e)
         {
-            Close();
+            Visibility = Visibility.Collapsed;
             action = true;
         }
         private void Window_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
@@ -29,8 +26,13 @@ namespace Presentacion
 
         private void cancel_Click(object sender, RoutedEventArgs e)
         {
-            Close();
-            action=false;
+            Visibility = Visibility.Collapsed;
+            action = false;
+        }
+
+        public void setText(string label)
+        {
+            message.Content = label;
         }
     }
 }

@@ -1,5 +1,7 @@
 ﻿using Entidades;
 using Logica;
+using System;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -12,19 +14,29 @@ namespace Presentacion
     {
         ServicioHabitacion servicioHabitacion;
         Usuario usuario;
+        List<Habitacion> habitaciones;
+        List<Rooms> rooms;
+        NotRoom noHabitacion;
+        YesRoom siHabitacion;
 
         public PWindow(Usuario usuario)
         {
             InitializeComponent();
-            this.usuario = usuario;
             servicioHabitacion = new ServicioHabitacion();
+            habitaciones = servicioHabitacion.ListaHabitaciones();
+            this.usuario = usuario;
+            rooms = new List<Rooms>();
+            noHabitacion = new NotRoom();
+            siHabitacion = new YesRoom();
+
             CargarHabitaciones();
+            ListarHabitaciones();
         }
-        public PWindow() { }
         
         //Metodo para controlar la vista despues del ingreso
         private void btnRoom_Back_Click(object sender, RoutedEventArgs e)
         {
+            contenedorPersonal.Children.Clear();
             if (labelTitulo.Content.Equals($" Bienvenido {usuario.Nombre} "))
             {
                 labelTitulo.Content = " Habitación ";
@@ -32,37 +44,43 @@ namespace Presentacion
 
                 if (usuario.Habitacion == null)
                 {
-                    contenedorPersonal.Children.Clear();
-                    var habitaciuon = new NotRoom("No has reservado habitación");
-                    contenedorPersonal.Children.Add(habitaciuon);
+                    noHabitacion.SetText("No has reservado habitación");
+                    contenedorPersonal.Children.Add(noHabitacion);
                 }
                 else
                 {
-                    contenedorPersonal.Children.Clear();
-                    var habitacion = new YesRoom(usuario.Habitacion, contenedorPersonal);
-                    habitacion.Usuario = usuario;
-                    contenedorPersonal.Children.Add(habitacion);
+                    siHabitacion.setContext(usuario.Habitacion, usuario, 
+                        contenedorPersonal, labelTitulo, btnRoom_Back, rooms);
+                    contenedorPersonal.Children.Add(siHabitacion);
                 }
             }
             else
             {
                 labelTitulo.Content = $" Bienvenido {usuario.Nombre} ";
                 btnRoom_Back.Content = "Habitacion reservada";
-                CargarHabitaciones();
+                ListarHabitaciones();
             }
         }
 
         //Metodo para el cargue de las habitaciones en el programa
         private void CargarHabitaciones()
         {
-            contenedorPersonal.Children.Clear();
-            foreach (var habitacion in servicioHabitacion.ListaHabitaciones())
+            foreach (var habitacion in habitaciones)
             {
                 if (habitacion.Usuario == null)
                 {
-                    var room = new Rooms(habitacion, usuario, contenedorPersonal, labelTitulo, btnRoom_Back);
-                    contenedorPersonal.Children.Add(room);
+                    var room = new Rooms();
+                    room.setContext(habitacion, usuario, contenedorPersonal, 
+                        labelTitulo, btnRoom_Back, rooms);
+                    rooms.Add(room);
                 }
+            }
+        }
+        private void ListarHabitaciones()
+        {
+            foreach (var room in rooms)
+            {
+                contenedorPersonal.Children.Add(room);
             }
         }
     }

@@ -1,10 +1,12 @@
-﻿using System.Windows.Controls;
+﻿using Logica;
+using System.Windows.Controls;
 
 namespace Presentacion.ViewModels
 {
     public class MainViewModel: ViewModelBase
     {
         private UserControl currentChildView;
+        public static ServicioUsuario _servicioUsuario = new ServicioUsuario();
 
         internal void SetNewContent(UserControl currentChildView)
         {

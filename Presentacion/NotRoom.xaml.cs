@@ -7,12 +7,14 @@ namespace Presentacion
     /// </summary>
     public partial class NotRoom : UserControl
     {
-        public NotRoom(string label)
+        public NotRoom()
         {
             InitializeComponent();
-            txtInfo.Content = label;
-
         }
-        public NotRoom(){}
+
+        public void SetText(string label)
+        {
+            txtInfo.Content = label;
+        }
     }
 }
