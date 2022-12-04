@@ -7,7 +7,8 @@ namespace Logica
 
     public class ServicioAdministrador
     {
-        DatosAdministrador datos = new DatosAdministrador();
+        public static Conexion conexion = new Conexion();
+        DatosAdministrador datos = new DatosAdministrador(conexion);
 
         //Metodo para registrar administradores a traves de los datos de un objeto de tipo Administrador
         public void RegistrarAdministrador(Administrador user)

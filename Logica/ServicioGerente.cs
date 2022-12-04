@@ -6,7 +6,7 @@ namespace Logica
 {
     public class ServicioGerente
     {
-        DatosGerente datos = new DatosGerente();
+        DatosGerente datos = new DatosGerente(ServicioAdministrador.conexion);
 
         //Metodo para registrar gerentes a traves de los datos de un objeto de tipo Gerente
         public void RegistrarGerente(Gerente user)

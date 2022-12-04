@@ -7,7 +7,11 @@ namespace Datos
 {
     public class DatosHabitacion
     {
-        Conexion conexion = new Conexion();
+        Conexion conexion;
+        public DatosHabitacion(Conexion conexion)
+        {
+            this.conexion = conexion;
+        }
 
         //Metodo para registrar Habitaciones a traves de los datos de un objeto de tipo Habitacion
         public void RegistrarHabitacion(Habitacion habitacion)

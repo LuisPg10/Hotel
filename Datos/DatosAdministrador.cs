@@ -7,7 +7,11 @@ namespace Datos
 {
     public class DatosAdministrador
     {
-        Conexion conexion = new Conexion();
+        Conexion conexion;
+        public DatosAdministrador(Conexion conexion)
+        {
+            this.conexion = conexion;
+        }
 
         //Metodo para registrar administradores a traves de los datos de un objeto de tipo Administrador
         public void RegistrarAdministrador(Administrador user)

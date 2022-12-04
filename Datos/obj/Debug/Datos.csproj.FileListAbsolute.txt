@@ -18,3 +18,23 @@ C:\Users\dapin\OneDrive\Documentos\Materias semestre\Programación\Hotel\Datos\o
 C:\Users\dapin\OneDrive\Documentos\Materias semestre\Programación\Hotel\Datos\obj\Debug\Datos.csproj.CopyComplete
 C:\Users\dapin\OneDrive\Documentos\Materias semestre\Programación\Hotel\Datos\obj\Debug\Datos.dll
 C:\Users\dapin\OneDrive\Documentos\Materias semestre\Programación\Hotel\Datos\obj\Debug\Datos.pdb
+C:\Users\LENOVO\Hotel\Datos\bin\Debug\Datos.dll
+C:\Users\LENOVO\Hotel\Datos\bin\Debug\Datos.pdb
+C:\Users\LENOVO\Hotel\Datos\bin\Debug\Entidades.dll
+C:\Users\LENOVO\Hotel\Datos\bin\Debug\MySql.Data.dll
+C:\Users\LENOVO\Hotel\Datos\bin\Debug\Google.Protobuf.dll
+C:\Users\LENOVO\Hotel\Datos\bin\Debug\ZstdNet.dll
+C:\Users\LENOVO\Hotel\Datos\bin\Debug\K4os.Compression.LZ4.Streams.dll
+C:\Users\LENOVO\Hotel\Datos\bin\Debug\BouncyCastle.Crypto.dll
+C:\Users\LENOVO\Hotel\Datos\bin\Debug\System.Memory.dll
+C:\Users\LENOVO\Hotel\Datos\bin\Debug\System.Buffers.dll
+C:\Users\LENOVO\Hotel\Datos\bin\Debug\K4os.Compression.LZ4.dll
+C:\Users\LENOVO\Hotel\Datos\bin\Debug\K4os.Hash.xxHash.dll
+C:\Users\LENOVO\Hotel\Datos\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\LENOVO\Hotel\Datos\bin\Debug\Entidades.pdb
+C:\Users\LENOVO\Hotel\Datos\bin\Debug\MySql.Data.xml
+C:\Users\LENOVO\Hotel\Datos\obj\Debug\Datos.csproj.AssemblyReference.cache
+C:\Users\LENOVO\Hotel\Datos\obj\Debug\Datos.csproj.CoreCompileInputs.cache
+C:\Users\LENOVO\Hotel\Datos\obj\Debug\Datos.csproj.CopyComplete
+C:\Users\LENOVO\Hotel\Datos\obj\Debug\Datos.dll
+C:\Users\LENOVO\Hotel\Datos\obj\Debug\Datos.pdb

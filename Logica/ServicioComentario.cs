@@ -6,7 +6,7 @@ namespace Logica
 {
     public class ServicioComentario
     {
-        DatosComentario datos = new DatosComentario();
+        DatosComentario datos = new DatosComentario(ServicioAdministrador.conexion);
 
         //Metodo para registrar comentarios a traves de los datos de un objeto de tipo Usuario, habitacion y un dato de tipo string
         public void RegistrarComentario(Comentario comentario)

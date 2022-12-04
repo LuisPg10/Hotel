@@ -6,7 +6,7 @@ namespace Logica
 {
     public class ServicioUsuario
     {
-        DatosUsuario datos = new DatosUsuario();
+        DatosUsuario datos = new DatosUsuario(ServicioAdministrador.conexion);
 
         //Metodo para registrar usuarios a traves de los datos de un objeto de tipo Usuario
         public void RegistrarUsuario(Usuario user)

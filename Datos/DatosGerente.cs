@@ -7,7 +7,11 @@ namespace Datos
 {
     public class DatosGerente
     {
-        Conexion conexion = new Conexion();
+        Conexion conexion;
+        public DatosGerente(Conexion conexion)
+        {
+            this.conexion = conexion;
+        }
 
         //Metodo para registrar gerentes a traves de los datos de un objeto de tipo Gerente
         public void RegistrarGerente(Gerente user)

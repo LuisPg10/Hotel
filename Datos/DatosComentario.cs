@@ -7,7 +7,11 @@ namespace Datos
 {
     public class DatosComentario
     {
-        Conexion conexion = new Conexion();
+        Conexion conexion;
+        public DatosComentario(Conexion conexion)
+        {
+            this.conexion = conexion;
+        }
 
         //Metodo para registrar comentarios a traves de los datos de un objeto de tipo Usuario, habitacion y un dato de tipo string
         public void RegistrarComentario(Comentario comentario)

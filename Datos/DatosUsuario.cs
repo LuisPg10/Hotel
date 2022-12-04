@@ -7,8 +7,12 @@ namespace Datos
 {
     public class DatosUsuario
     {
-        Conexion conexion= new Conexion();
-        
+        Conexion conexion;
+        public DatosUsuario(Conexion conexion)
+        {
+            this.conexion = conexion;
+        }
+
         //Metodo para registrar usuarios a traves de los datos de un objeto de tipo Usuario
         public void RegistrarUsuario(Usuario user)
         {

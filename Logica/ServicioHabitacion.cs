@@ -6,7 +6,7 @@ namespace Logica
 {
     public class ServicioHabitacion
     {
-        DatosHabitacion datos = new DatosHabitacion();
+        DatosHabitacion datos = new DatosHabitacion(ServicioAdministrador.conexion);
 
         //Metodo para registrar Habitaciones a traves de los datos de un objeto de tipo Habitacion
         public void RegistrarHabitacion(Habitacion habitacion)
